@@ -6,6 +6,7 @@ export class ConfigService {
   constructor() {
     dotenv.config({
       path: `.env`,
+      override: true,
     });
 
     for (const envName of Object.keys(process.env)) {
@@ -26,19 +27,6 @@ export class ConfigService {
       host: this.get('HOST') || 'localhost',
       port: this.get('PORT') || 4000,
       url: this.get('APP_URL') || '',
-    };
-  }
-
-  get point() {
-    return {
-      referralJoined: this.getNumber('REFERRAL_JOINED_POINT') || 0,
-      successOnboard: this.getNumber('SUCCESS_ONBOARD_POINT') || 0,
-    };
-  }
-
-  get referrals() {
-    return {
-      maximum: this.getNumber('MAXIMUM_REFERRALS') || 0,
     };
   }
 }

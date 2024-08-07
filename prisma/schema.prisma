@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  walletAddress     String    @map("wallet_address")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+  deletedAt         DateTime? @map("deleted_at")
+
+  @@map("users")
+}
+
+model Property {
+  id                String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  address           String             @map("address")
+  city              String             @map("city")
+  state             String             @map("state")
+  country           String             @map("country")
+  type              String             @map("type")
+  description       String             @map("description") @db.Text
+  createdBy         String             @map("createdBy")
+  updatedBy         String             @map("updatedBy")
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt @map("updated_at")
+  deletedAt         DateTime?          @map("deleted_at")
+  facilities        PropertyFacility[] @relation("PropertyFacilities")
+  images            PropertyImage[]    @relation("PropertyImages")
+
+  @@map("properties")
+}
+
+model PropertyFacility {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  propertyId     String   @map("property_id") @db.Uuid
+  type           String   @map("type")
+  facility       String   @map("facility")
+  isHighlight    Boolean  @map("is_highlight")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  property       Property @relation(fields: [propertyId], references: [id], name: "PropertyFacilities")
+
+  @@map("property_facilities")
+}
+
+model PropertyImage {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  propertyId     String   @map("property_id") @db.Uuid
+  image          String   @map("image")
+  isHighlight    Boolean  @map("is_highlight")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  property       Property @relation(fields: [propertyId], references: [id], name: "PropertyImages")
+
+  @@map("property_images")
+}
+

@@ -7,6 +7,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants/auth.constants';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { PropertyController } from './app/property/property.controller';
+import { PropertyService } from './app/property/property.service';
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import { join } from 'path';
       signOptions: { expiresIn: '2h' },
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, PropertyController],
+  providers: [AppService, PropertyService],
 })
 export class AppModule {}
