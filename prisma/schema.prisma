@@ -25,6 +25,7 @@ model User {
 
 model Property {
   id                String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  contractAddress   String             @map("contract_address")
   address           String             @map("address")
   city              String             @map("city")
   state             String             @map("state")

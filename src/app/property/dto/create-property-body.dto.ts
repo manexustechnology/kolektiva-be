@@ -10,6 +10,7 @@ export class CreatePropertyImageDto {
 }
 
 export class CreatePropertyDto {
+    contractAddress: string;
     address: string;
     city: string;
     state: string;
