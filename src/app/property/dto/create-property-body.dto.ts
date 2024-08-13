@@ -1,24 +1,25 @@
 export class CreatePropertyFacilityDto {
-    type: string;
-    facility: string;
-    isHighlight: boolean;
+  type: string;
+  facility: string;
+  isHighlight: boolean;
 }
 
 export class CreatePropertyImageDto {
-    image: string;
-    isHighlight: boolean;
+  image: string;
+  isHighlight: boolean;
 }
 
 export class CreatePropertyDto {
-    contractAddress: string;
-    address: string;
-    city: string;
-    state: string;
-    country: string;
-    type: string;
-    description: string;
-    createdBy: string;
-    updatedBy: string;
-    facilities: CreatePropertyFacilityDto[];
-    images: CreatePropertyImageDto[];
+  marketAddress: string;
+  tokenAddress: string;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+  type: string;
+  description: string;
+  createdBy: string;
+  updatedBy: string;
+  facilities: CreatePropertyFacilityDto[];
+  images: CreatePropertyImageDto[];
 }
