@@ -1,9 +1,10 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post, Query } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/create-property-body.dto';
 import { UpdatePropertyDto } from './dto/update-property-body.dto';
 import { PropertyService } from './property.service';
 import { ResponseMessage } from '../../decorators/response/response.decorator';
 import { ApiOkResponse } from '@nestjs/swagger';
+import { ListPropertyQueryDto } from './dto/list-property-query.dto';
 
 @Controller('property')
 export class PropertyController {
@@ -25,8 +26,8 @@ export class PropertyController {
     })
     @ResponseMessage('Successfully get property data!')
     @Get()
-    findAll() {
-        return this.propertyService.findAll();
+    findAll(@Query() request: ListPropertyQueryDto) {
+        return this.propertyService.findAll(request);
     }
 
     @HttpCode(HttpStatus.OK)

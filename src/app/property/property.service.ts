@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/create-property-body.dto';
 import { PrismaService } from '../../shared/prisma/prisma.service';
 import { UpdatePropertyDto } from './dto/update-property-body.dto';
+import { ListPropertyQueryDto } from './dto/list-property-query.dto';
 
 @Injectable()
 export class PropertyService {
@@ -26,9 +27,33 @@ export class PropertyService {
         },
       });
     }
+
+    async findAll(request: ListPropertyQueryDto) {
+      const { sort, location, propertyType } = request;
   
-    async findAll() {
+      const whereClause: any = {};
+  
+      if (location && location !== 'All') {
+        whereClause.country = location;
+      }
+  
+      if (propertyType && propertyType !== 'All') {
+        whereClause.type = propertyType;
+      }
+  
+      const orderByClause: any[] = [];
+  
+      if (sort === 'Featured') {
+        orderByClause.push({ isFeatured: 'desc' });
+      } else if (sort === 'Newest') {
+        orderByClause.push({ createdAt: 'desc' });
+      } else if (sort === 'Oldest') {
+        orderByClause.push({ createdAt: 'asc' });
+      }
+  
       return this.prisma.property.findMany({
+        where: whereClause,
+        orderBy: orderByClause,
         include: {
           facilities: true,
           images: true,
