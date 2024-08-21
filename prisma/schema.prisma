@@ -32,6 +32,8 @@ model Property {
   state         String             @map("state")
   country       String             @map("country")
   type          String             @map("type")
+  latitude      String?            @map("latitude")
+  longitude     String?            @map("longitude")
   description   String             @map("description") @db.Text
   isFeatured    Boolean?           @map("is_featured")
   createdBy     String             @map("created_by")
