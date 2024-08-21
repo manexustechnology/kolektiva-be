@@ -36,6 +36,7 @@ model Property {
   longitude     String?            @map("longitude")
   description   String             @map("description") @db.Text
   isFeatured    Boolean?           @map("is_featured")
+  isUpcoming    Boolean?           @map("is_upcoming")
   createdBy     String             @map("created_by")
   updatedBy     String             @map("updated_by")
   createdAt     DateTime           @default(now()) @map("created_at")
