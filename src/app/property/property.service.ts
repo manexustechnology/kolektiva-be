@@ -34,7 +34,10 @@ export class PropertyService {
       const whereClause: any = {};
   
       if (location && location !== 'All') {
-        whereClause.country = location;
+        whereClause.OR = [
+          { state: location },
+          { city: location },
+        ];
       }
   
       if (propertyType && propertyType !== 'All') {
