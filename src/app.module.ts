@@ -9,6 +9,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { PropertyController } from './app/property/property.controller';
 import { PropertyService } from './app/property/property.service';
+import { PropertyListingRequestModule } from './app/property-listing-request/property-listing-request.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { PropertyService } from './app/property/property.service';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '2h' },
     }),
+    PropertyListingRequestModule,
   ],
   controllers: [AppController, PropertyController],
   providers: [AppService, PropertyService],
