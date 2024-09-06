@@ -24,26 +24,27 @@ model User {
 }
 
 model Property {
-  id            String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  marketAddress String             @map("market_address")
-  tokenAddress  String             @map("token_address")
-  address       String             @map("address")
-  city          String             @map("city")
-  state         String             @map("state")
-  country       String             @map("country")
-  type          String             @map("type")
-  latitude      String?            @map("latitude")
-  longitude     String?            @map("longitude")
-  description   String             @map("description") @db.Text
-  isFeatured    Boolean?           @map("is_featured")
-  isUpcoming    Boolean?           @map("is_upcoming")
-  createdBy     String             @map("created_by")
-  updatedBy     String             @map("updated_by")
-  createdAt     DateTime           @default(now()) @map("created_at")
-  updatedAt     DateTime           @updatedAt @map("updated_at")
-  deletedAt     DateTime?          @map("deleted_at")
-  facilities    PropertyFacility[] @relation("PropertyFacilities")
-  images        PropertyImage[]    @relation("PropertyImages")
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  marketAddress String    @map("market_address")
+  tokenAddress  String    @map("token_address")
+  address       String    @map("address")
+  city          String    @map("city")
+  state         String    @map("state")
+  country       String    @map("country")
+  type          String    @map("type")
+  description   String    @map("description") @db.Text
+  createdBy     String    @map("created_by")
+  updatedBy     String    @map("updated_by")
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+  isFeatured    Boolean?  @map("is_featured")
+  latitude      String?   @map("latitude")
+  longitude     String?   @map("longitude")
+  isUpcoming    Boolean?  @map("is_upcoming")
+
+  facilities PropertyFacility[] @relation("PropertyFacilities")
+  images     PropertyImage[]    @relation("PropertyImages")
 
   @@map("properties")
 }
@@ -73,4 +74,18 @@ model PropertyImage {
   property Property @relation(fields: [propertyId], references: [id], name: "PropertyImages")
 
   @@map("property_images")
+}
+
+model PropertyListingRequest {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name            String   @map("name")
+  phone           String   @map("phone")
+  email           String   @map("email")
+  address         String   @map("address")
+  priceEstimation Decimal  @map("price_estimation") @db.Money
+  propertyData    Json?    @map("property_data")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("property_listing_requests")
 }

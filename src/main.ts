@@ -14,7 +14,10 @@ import { get } from 'http';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  app.enableCors({
+    origin: '*',
+    preflightContinue: false,
+  });
 
   const configService = app.select(SharedModule).get(ConfigService);
 
