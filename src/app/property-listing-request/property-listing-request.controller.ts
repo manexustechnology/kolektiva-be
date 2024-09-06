@@ -1,9 +1,10 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { PropertyListingRequestService } from './property-listing-request.service';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ResponseMessage } from '../../decorators/response/response.decorator';
 import { SubmitPropertyListingDto } from './dto/submit-property-listing-request.dto';
 
+@ApiTags('Property Listing')
 @Controller('property-listing-request')
 export class PropertyListingRequestController {
   constructor(
