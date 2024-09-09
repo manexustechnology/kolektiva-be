@@ -22,7 +22,7 @@ import { PropertyListingRequestModule } from './app/property-listing-request/pro
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '2h' },
+      signOptions: { expiresIn: '300s' },
     }),
     PropertyListingRequestModule,
   ],
