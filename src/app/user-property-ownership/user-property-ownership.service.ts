@@ -34,18 +34,23 @@ export class UserPropertyOwnershipService {
     });
   }
 
+  async count(walletAddress: string) {
+    return this.prisma.userPropertyOwnership.count({
+      where: { walletAddress },
+    });
+  }
+
   async findUserProperties(
     walletAddress: string,
     request: ListUserPropertyQueryDto,
   ) {
     const { sort, location, propertyType } = request;
+    console.log(request);
 
-    // Base where clause for user properties
     const whereClause: any = {
       walletAddress,
     };
 
-    // Property-specific where clause
     const propertyWhereClause: any = {};
 
     if (location && location !== 'All') {
@@ -56,23 +61,24 @@ export class UserPropertyOwnershipService {
       propertyWhereClause.type = propertyType;
     }
 
-    const orderByClause: any[] = [];
+    let orderPropertyByClause: any = {};
 
     if (sort === 'Featured') {
-      orderByClause.push({ property: { isFeatured: 'desc' } });
+      orderPropertyByClause = { isFeatured: 'desc' };
     } else if (sort === 'Newest') {
-      orderByClause.push({ property: { createdAt: 'desc' } });
+      orderPropertyByClause = { createdAt: 'desc' };
     } else if (sort === 'Oldest') {
-      orderByClause.push({ property: { createdAt: 'asc' } });
+      orderPropertyByClause = { createdAt: 'asc' };
     }
 
-    // Find user properties with related property filtering
     return this.prisma.userPropertyOwnership.findMany({
       where: {
         ...whereClause,
         property: propertyWhereClause,
       },
-      orderBy: orderByClause,
+      orderBy: Object.keys(orderPropertyByClause).length
+        ? { property: orderPropertyByClause }
+        : undefined,
       include: {
         property: {
           include: {

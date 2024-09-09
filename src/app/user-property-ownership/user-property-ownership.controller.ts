@@ -46,4 +46,14 @@ export class UserPropertyOwnershipController {
       request,
     );
   }
+
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Successfully get count user property data!',
+  })
+  @ResponseMessage('Successfully get count user property data!')
+  @Get('count/:walletAddress')
+  async getCountUserProperties(@Param('walletAddress') walletAddress: string) {
+    return this.userPropertyOwnershipService.count(walletAddress);
+  }
 }
