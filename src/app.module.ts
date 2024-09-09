@@ -23,7 +23,7 @@ import { UserPropertyOwnershipModule } from './app/user-property-ownership/user-
     JwtModule.register({
       global: true,
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '2h' },
+      signOptions: { expiresIn: '300s' },
     }),
     PropertyListingRequestModule,
     UserPropertyOwnershipModule,

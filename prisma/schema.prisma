@@ -108,6 +108,7 @@ model PropertyListingRequest {
   email           String   @map("email")
   address         String   @map("address")
   priceEstimation Decimal  @map("price_estimation") @db.Money
+  status          String   @default("pending") @map("status")
   propertyData    Json?    @map("property_data")
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
