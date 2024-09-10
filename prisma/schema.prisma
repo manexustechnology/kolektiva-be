@@ -15,13 +15,23 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  walletAddress String    @unique @map("wallet_address")
-  createdAt     DateTime  @default(now()) @map("created_at")
-  updatedAt     DateTime  @updatedAt @map("updated_at")
-  deletedAt     DateTime? @map("deleted_at")
+  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  walletAddress     String    @map("wallet_address") @unique
+  inviteCode        String?   @map("invite_code")
+  referralCode      String?   @map("referral_code")
+  referralCodeLimit Int?      @map("referral_code_limit")
+  point             BigInt    @default(0)
+  onboardingStep    BigInt    @default(1) @map("onboarding_step")
+  finishOnboarding  Boolean   @default(false) @map("finish_onboarding")
+  zkmeVerification  Boolean   @default(false) @map("zkme_verification")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+  deletedAt         DateTime? @map("deleted_at")
 
-  ownerships UserPropertyOwnership[] @relation("OwnershipByUser")
+  ownerships     UserPropertyOwnership[] @relation("OwnershipByUser")
+  myReferral     Referral?        @relation(name: "InvitedUser")
+  invitedUsers   Referral[]       @relation(name: "ReferralUser")
+  completedQuest CompletedQuest[]
 
   @@map("users")
 }
@@ -113,3 +123,54 @@ model PropertyListingRequest {
 
   @@map("property_listing_requests")
 }
+
+model Referral {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  referralUserId String   @map("referral_user_id") @db.Uuid
+  invitedUserId  String?  @unique @map("invited_user_id") @db.Uuid
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  referralUser User  @relation(fields: [referralUserId], references: [id], name: "ReferralUser")
+  invitedUser  User? @relation(fields: [invitedUserId], references: [id], name: "InvitedUser")
+
+  @@map("referrals")
+}
+
+model Quest {
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  imageUrl       String?   @map("image_url") @db.Text
+  authorName     String    @map("author_name")
+  authorUsername String?   @map("author_username")
+  title          String?
+  description    String    @db.Text
+  type           String
+  startDate      DateTime? @map("start_date")
+  endDate        DateTime? @map("end_date")
+  status         String    @default("active")
+  rewardPoint    BigInt    @map("reward_point")
+  totalReward    BigInt    @default(0) @map("total_reward")
+  campaignLink   String?   @map("campaign_link") @db.Text
+  ctaButton      String    @map("cta_button")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+
+  completedQuest CompletedQuest[]
+
+  @@map("quests")
+}
+
+model CompletedQuest {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  questId     String   @map("quest_id") @db.Uuid
+  userId      String   @map("user_id") @db.Uuid
+  rewardPoint BigInt   @map("reward_point")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  quest Quest @relation(fields: [questId], references: [id])
+  user  User  @relation(fields: [userId], references: [id])
+
+  @@map("completed_quests")
+}
+

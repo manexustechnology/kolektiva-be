@@ -29,4 +29,17 @@ export class ConfigService {
       url: this.get('APP_URL') || '',
     };
   }
+
+  get point() {
+    return {
+      referralJoined: this.getNumber('REFERRAL_JOINED_POINT') || 0,
+      successOnboard: this.getNumber('SUCCESS_ONBOARD_POINT') || 0,
+    };
+  }
+
+  get referrals() {
+    return {
+      maximum: this.getNumber('MAXIMUM_REFERRALS') || 0,
+    };
+  }
 }
