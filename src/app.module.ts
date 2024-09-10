@@ -11,6 +11,7 @@ import { PropertyController } from './app/property/property.controller';
 import { PropertyService } from './app/property/property.service';
 import { PropertyListingRequestModule } from './app/property-listing-request/property-listing-request.module';
 import { UserPropertyOwnershipModule } from './app/user-property-ownership/user-property-ownership.module';
+import { AuthModule } from './app/auth/auth.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { UserPropertyOwnershipModule } from './app/user-property-ownership/user-
     }),
     PropertyListingRequestModule,
     UserPropertyOwnershipModule,
+    AuthModule
   ],
   controllers: [AppController, PropertyController],
   providers: [AppService, PropertyService],
