@@ -1,27 +1,10 @@
-/*
-  Warnings:
-
-  - You are about to drop the column `createdBy` on the `properties` table. All the data in the column will be lost.
-  - You are about to drop the column `updatedBy` on the `properties` table. All the data in the column will be lost.
-  - A unique constraint covering the columns `[wallet_address]` on the table `users` will be added. If there are existing duplicate values, this will fail.
-  - Added the required column `created_by` to the `properties` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `updated_by` to the `properties` table without a default value. This is not possible if the table is not empty.
-
-*/
 -- AlterTable
-ALTER TABLE "properties" DROP COLUMN "createdBy",
-DROP COLUMN "updatedBy",
+ALTER TABLE "properties" 
 ADD COLUMN     "chain_id" INTEGER,
-ADD COLUMN     "created_by" TEXT NOT NULL,
 ADD COLUMN     "is_aftermarket" BOOLEAN,
-ADD COLUMN     "is_featured" BOOLEAN,
-ADD COLUMN     "is_upcoming" BOOLEAN,
-ADD COLUMN     "latitude" TEXT,
-ADD COLUMN     "longitude" TEXT,
 ADD COLUMN     "token_name" TEXT,
 ADD COLUMN     "token_symbol" TEXT,
-ADD COLUMN     "total_supply" INTEGER,
-ADD COLUMN     "updated_by" TEXT NOT NULL;
+ADD COLUMN     "total_supply" INTEGER;
 
 -- CreateTable
 CREATE TABLE "user_property_ownerships" (
