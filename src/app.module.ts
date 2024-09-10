@@ -13,6 +13,7 @@ import { PropertyListingRequestModule } from './app/property-listing-request/pro
 import { UserPropertyOwnershipModule } from './app/user-property-ownership/user-property-ownership.module';
 import { AdminPropertyListingRequestModule } from './app/admin/admin-property-listing-request/admin-property-listing-request.module';
 import { AdminListedPropertyModule } from './app/admin/admin-listed-property/admin-listed-property.module';
+import { AuthModule } from './app/auth/auth.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { AdminListedPropertyModule } from './app/admin/admin-listed-property/adm
     PropertyListingRequestModule,
     AdminPropertyListingRequestModule,
     AdminListedPropertyModule,
+    AuthModule
   ],
   controllers: [AppController, PropertyController],
   providers: [AppService, PropertyService],
