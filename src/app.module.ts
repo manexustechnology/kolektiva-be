@@ -10,6 +10,7 @@ import { join } from 'path';
 import { PropertyController } from './app/property/property.controller';
 import { PropertyService } from './app/property/property.service';
 import { PropertyListingRequestModule } from './app/property-listing-request/property-listing-request.module';
+import { UserPropertyOwnershipModule } from './app/user-property-ownership/user-property-ownership.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { PropertyListingRequestModule } from './app/property-listing-request/pro
       signOptions: { expiresIn: '300s' },
     }),
     PropertyListingRequestModule,
+    UserPropertyOwnershipModule,
   ],
   controllers: [AppController, PropertyController],
   providers: [AppService, PropertyService],

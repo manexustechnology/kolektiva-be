@@ -17,6 +17,7 @@ import { ListPropertyListingRequestQueryDto } from './dto/list-property-listing-
 import { TransformInterceptor } from '../../interceptors/transform/transform.interceptor';
 import { changePropertyListingRequestStatusBodyDto } from './dto/change-property-listing-request-status-body.dto';
 
+
 @ApiTags('Property Listing Request')
 @UseInterceptors(TransformInterceptor)
 @Controller('property-listing-request')
