@@ -7,16 +7,17 @@ import {
   Param,
   Post,
   Query,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { PropertyListingRequestService } from './property-listing-request.service';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ResponseMessage } from '../../decorators/response/response.decorator';
 import { SubmitPropertyListingDto } from './dto/submit-property-listing-request.dto';
 import { ListPropertyListingRequestQueryDto } from './dto/list-property-listing-request-query.dto';
 import { TransformInterceptor } from '../../interceptors/transform/transform.interceptor';
 import { changePropertyListingRequestStatusBodyDto } from './dto/change-property-listing-request-status-body.dto';
-
+import { AdminGuard } from '../../guards/admin.guard';
 
 @ApiTags('Property Listing Request')
 @UseInterceptors(TransformInterceptor)
@@ -38,6 +39,8 @@ export class PropertyListingRequestController {
     );
   }
 
+  @ApiBearerAuth()
+  @UseGuards(AdminGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Data retrieved successfully!',
@@ -52,6 +55,8 @@ export class PropertyListingRequestController {
     );
   }
 
+  @ApiBearerAuth()
+  @UseGuards(AdminGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Data retrieved successfully!',
@@ -64,6 +69,8 @@ export class PropertyListingRequestController {
     );
   }
 
+  @ApiBearerAuth()
+  @UseGuards(AdminGuard)
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
     description: 'Status successfully updated!',
