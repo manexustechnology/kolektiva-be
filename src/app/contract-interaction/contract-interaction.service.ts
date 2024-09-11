@@ -1,28 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import {
-  createWalletClient,
-  http,
-  publicActions,
-  Client,
-  Transport,
-  Chain,
-  Account,
-  Address,
-} from 'viem';
+import { createWalletClient, http, publicActions, Address } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { liskSepolia, lisk } from 'viem/chains';
 import { deployedContracts } from '../../../deployed-contracts/deployedContracts';
-
-import * as dotenv from 'dotenv';
 import { ReadContractDto } from './dto/read-contract-dto';
 import { WriteContractDto } from './dto/write-contract-dto';
 import { GetContractEventDto } from './dto/get-contract-event-dto';
+import * as dotenv from 'dotenv';
 
 dotenv.config();
 
 @Injectable()
 export class ContractInteractionService {
-  //   private client: Client<Transport, Chain, Account>;
   private client: any;
 
   constructor() {
@@ -33,7 +22,6 @@ export class ContractInteractionService {
       account,
       chain: liskSepolia,
       transport: http(),
-      // }).extend(publicActions) as Client<Transport, Chain, Account>;
     }).extend(publicActions);
   }
 
@@ -54,7 +42,6 @@ export class ContractInteractionService {
     }
   }
 
-  // Function to read from the contract
   async readFunction(readContractDto: ReadContractDto): Promise<any> {
     const { chainId, contractName, contractAddress, ...others } =
       readContractDto;

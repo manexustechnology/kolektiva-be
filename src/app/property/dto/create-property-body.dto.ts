@@ -1,5 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { isArray, IsBoolean, IsNotEmpty, IsString } from 'class-validator';
+import {
+  isArray,
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+} from 'class-validator';
 
 export class CreatePropertyFacilityDto {
   @ApiProperty()
@@ -78,6 +84,10 @@ export class CreatePropertyDto {
   @IsNotEmpty()
   @IsString()
   updatedBy: string;
+
+  @ApiProperty()
+  @IsNumber()
+  chainId: number;
 
   @ApiProperty({ type: [CreatePropertyFacilityDto] })
   facilities: CreatePropertyFacilityDto[];

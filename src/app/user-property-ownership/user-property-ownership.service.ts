@@ -45,7 +45,6 @@ export class UserPropertyOwnershipService {
     request: ListUserPropertyQueryDto,
   ) {
     const { sort, location, propertyType } = request;
-    console.log(request);
 
     const whereClause: any = {
       walletAddress,
