@@ -2,7 +2,7 @@ import { ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsOptional, IsNumber, IsString } from 'class-validator';
 
-export class ListPropertyListingRequestQueryDto {
+export class AdminListedPropertyListDto {
   @ApiPropertyOptional()
   @IsOptional()
   @Type(() => Number)
@@ -20,4 +20,10 @@ export class ListPropertyListingRequestQueryDto {
   @Type(() => String)
   @IsString()
   status?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @Type(() => String)
+  @IsString()
+  searchAddress?: string;
 }
