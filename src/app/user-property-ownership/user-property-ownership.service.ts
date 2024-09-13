@@ -44,20 +44,35 @@ export class UserPropertyOwnershipService {
     walletAddress: string,
     request: ListUserPropertyQueryDto,
   ) {
-    const { sort, location, propertyType } = request;
+    const { sort, location, propertyType, search } = request;
 
     const whereClause: any = {
       walletAddress,
     };
 
-    const propertyWhereClause: any = {};
+    const propertyWhereClause: any = { AND: [] };
 
+    // Location filter
     if (location && location !== 'All') {
-      propertyWhereClause.OR = [{ state: location }, { city: location }];
+      propertyWhereClause.AND.push({
+        OR: [{ state: location }, { city: location }],
+      });
     }
 
+    // Property type filter
     if (propertyType && propertyType !== 'All') {
-      propertyWhereClause.type = propertyType;
+      propertyWhereClause.AND.push({ type: propertyType });
+    }
+
+    // Search filter
+    if (search?.trim()) {
+      propertyWhereClause.AND.push({
+        OR: [
+          { tokenName: { contains: search, mode: 'insensitive' } },
+          { address: { contains: search, mode: 'insensitive' } },
+          { tokenSymbol: { contains: search, mode: 'insensitive' } },
+        ],
+      });
     }
 
     let orderPropertyByClause: any = {};

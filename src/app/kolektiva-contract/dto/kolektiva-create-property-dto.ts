@@ -6,6 +6,7 @@ import {
   IsString,
   IsEthereumAddress,
 } from 'class-validator';
+import { Address } from 'viem';
 
 export class CreateKolektivaPropertyDto {
   @ApiProperty()
@@ -16,11 +17,6 @@ export class CreateKolektivaPropertyDto {
   @IsNotEmpty()
   @IsString()
   name: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  address: string;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -64,5 +60,5 @@ export class CreateKolektivaPropertyDto {
 
   @ApiProperty()
   @IsEthereumAddress()
-  propertyOwner: string;
+  propertyOwnerAddress: Address;
 }

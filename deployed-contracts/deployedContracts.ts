@@ -2249,7 +2249,7 @@ export const deployedContracts: DeployedContracts = {
   },
   31337: {
     MockUSDT: {
-      address: '0x5fbdb2315678afecb367f032d93f642f64180aa3',
+      address: '0x5fc8d32690cc91d4c39d9d3abcbd16989f875707',
       abi: [
         {
           type: 'constructor',
@@ -2678,7 +2678,7 @@ export const deployedContracts: DeployedContracts = {
       inheritedFunctions: {},
     },
     KolektivaOracle: {
-      address: '0xe7f1725e7734ce288f8367e1bb143e90bb3f0512',
+      address: '0x0165878a594ca255338adfa4d48449f69242eb8f',
       abi: [
         {
           type: 'constructor',
@@ -3076,7 +3076,7 @@ export const deployedContracts: DeployedContracts = {
       inheritedFunctions: {},
     },
     KolektivaHandler: {
-      address: '0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0',
+      address: '0xa513e6e4b8f2a923d98304ec87f64353c4d5c853',
       abi: [
         {
           type: 'constructor',
@@ -3396,7 +3396,7 @@ export const deployedContracts: DeployedContracts = {
             {
               name: 'name',
               type: 'string',
-              indexed: false,
+              indexed: true,
               internalType: 'string',
             },
             {
@@ -3415,7 +3415,7 @@ export const deployedContracts: DeployedContracts = {
             {
               name: 'name',
               type: 'string',
-              indexed: false,
+              indexed: true,
               internalType: 'string',
             },
             {
@@ -3440,7 +3440,7 @@ export const deployedContracts: DeployedContracts = {
             {
               name: 'name',
               type: 'string',
-              indexed: false,
+              indexed: true,
               internalType: 'string',
             },
             {
@@ -3484,7 +3484,7 @@ export const deployedContracts: DeployedContracts = {
             {
               name: 'name',
               type: 'string',
-              indexed: false,
+              indexed: true,
               internalType: 'string',
             },
             {
@@ -3503,7 +3503,7 @@ export const deployedContracts: DeployedContracts = {
             {
               name: 'name',
               type: 'string',
-              indexed: false,
+              indexed: true,
               internalType: 'string',
             },
             {
@@ -3535,13 +3535,13 @@ export const deployedContracts: DeployedContracts = {
             {
               name: 'name',
               type: 'string',
-              indexed: false,
+              indexed: true,
               internalType: 'string',
             },
             {
               name: 'tokenAddress',
               type: 'address',
-              indexed: false,
+              indexed: true,
               internalType: 'address',
             },
             {

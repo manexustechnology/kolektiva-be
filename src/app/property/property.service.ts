@@ -3,24 +3,43 @@ import { CreatePropertyDto } from './dto/create-property-body.dto';
 import { PrismaService } from '../../shared/prisma/prisma.service';
 import { UpdatePropertyDto } from './dto/update-property-body.dto';
 import { ListPropertyQueryDto } from './dto/list-property-query.dto';
-import { ContractInteractionService } from '../contract-interaction/contract-interaction.service';
-import { ReadContractDto } from '../contract-interaction/dto/read-contract-dto';
-import { WriteContractDto } from '../contract-interaction/dto/write-contract-dto';
+import { KolektivaContractService } from '../kolektiva-contract/kolektiva-contract.service';
+
+import * as dotenv from 'dotenv';
+import { Address } from 'viem';
+dotenv.config();
 
 @Injectable()
 export class PropertyService {
   constructor(
     private prisma: PrismaService,
-    private contractInteraction: ContractInteractionService,
+    private kolektivaContract: KolektivaContractService,
   ) {}
 
   async create(createPropertyDto: CreatePropertyDto) {
-    const { facilities, images, ...propertyData } =
-      createPropertyDto;
+    const { facilities, images, ...propertyData } = createPropertyDto;
+    const tokenSymbol = await this.generateTokenSymbol();
 
+    const { logs } = await this.kolektivaContract.createProperty({
+      chainId: propertyData.chainId,
+      name: propertyData.tokenName,
+      symbol: tokenSymbol,
+      propertyType: propertyData.type,
+      country: propertyData.country,
+      state: propertyData.state,
+      city: propertyData.city,
+      location: propertyData.location,
+      totalSupply: propertyData.totalSupply,
+      salePrice: propertyData.salePrice,
+      propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
+    });
 
-    await this.prisma.property.create({
+    return await this.prisma.property.create({
       data: {
+        propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
+        marketAddress: logs[0].args.marketAddress,
+        tokenAddress: logs[0].args.tokenAddress,
+        tokenSymbol,
         ...propertyData,
         facilities: {
           create: facilities,
@@ -110,5 +129,16 @@ export class PropertyService {
         images: true,
       },
     });
+  }
+
+  private async generateTokenSymbol() {
+    const count = (await this.prisma.property.count()) + 1;
+    const prefix = 'KLTV';
+    const maxLimit = 9999; // KLV0001 format
+
+    if (count <= maxLimit) {
+      return prefix + count.toString().padStart(4, '0');
+    }
+    return prefix + count.toString();
   }
 }

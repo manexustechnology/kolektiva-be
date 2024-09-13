@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { KolektivaContractController } from './kolektiva-contract.controller';
 import { KolektivaContractService } from './kolektiva-contract.service';
+import { KolektivaContractController } from './kolektiva-contract.controller';
 
 describe('KolektivaContractController', () => {
   let controller: KolektivaContractController;
@@ -11,7 +11,9 @@ describe('KolektivaContractController', () => {
       providers: [KolektivaContractService],
     }).compile();
 
-    controller = module.get<KolektivaContractController>(KolektivaContractController);
+    controller = module.get<KolektivaContractController>(
+      KolektivaContractController,
+    );
   });
 
   it('should be defined', () => {

@@ -3,4 +3,5 @@ export class ListUserPropertyQueryDto {
   sort: string;
   location: string;
   propertyType: string;
+  search: string;
 }

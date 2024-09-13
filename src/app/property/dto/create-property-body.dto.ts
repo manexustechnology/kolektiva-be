@@ -2,10 +2,12 @@ import { ApiProperty } from '@nestjs/swagger';
 import {
   isArray,
   IsBoolean,
+  IsEthereumAddress,
   IsNotEmpty,
   IsNumber,
   IsString,
 } from 'class-validator';
+import { Address } from 'viem';
 
 export class CreatePropertyFacilityDto {
   @ApiProperty()
@@ -35,20 +37,29 @@ export class CreatePropertyImageDto {
 }
 
 export class CreatePropertyDto {
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  marketAddress: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // marketAddress: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  tokenAddress: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // tokenAddress: string;
+
+  // @ApiProperty()
+  // @IsEthereumAddress()
+  // propertyOwnerAddress: Address;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
   address: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  location: string;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -74,6 +85,19 @@ export class CreatePropertyDto {
   @IsNotEmpty()
   @IsString()
   description: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  tokenName: string;
+
+  @ApiProperty()
+  @IsNumber()
+  totalSupply: number;
+
+  @ApiProperty()
+  @IsNumber()
+  salePrice: number;
 
   @ApiProperty()
   @IsNotEmpty()

@@ -5,13 +5,19 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
+<<<<<<< HEAD
   provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
+=======
+  provider = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+>>>>>>> 99f14e8 (add kolektiva contract interaction)
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  extensions = [pg_trgm]
 }
 
 model User {
@@ -63,8 +69,6 @@ model Property {
   deletedAt     DateTime?               @map("deleted_at")
   facilities    PropertyFacility[]      @relation("PropertyFacilities")
   images        PropertyImage[]         @relation("PropertyImages")
-  ownerships    UserPropertyOwnership[] @relation("OwnershipOfProperty")
-
   @@map("properties")
 }
 
