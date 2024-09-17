@@ -44,7 +44,7 @@ export class UserPropertyOwnershipService {
     walletAddress: string,
     request: ListUserPropertyQueryDto,
   ) {
-    const { sort, location, propertyType, search } = request;
+    const { sort, location, propertyType, search, chainId } = request;
 
     const whereClause: any = {
       walletAddress,
@@ -52,10 +52,15 @@ export class UserPropertyOwnershipService {
 
     const propertyWhereClause: any = { AND: [] };
 
+    // Chain Id filter
+    if (chainId && !isNaN(Number(chainId))) {
+      propertyWhereClause.AND.push({ chainId: Number(chainId) });
+    }
+
     // Location filter
     if (location && location !== 'All') {
       propertyWhereClause.AND.push({
-        OR: [{ state: location }, { city: location }],
+        OR: [{ state: location }, { city: location }, { location: location }],
       });
     }
 
@@ -66,8 +71,6 @@ export class UserPropertyOwnershipService {
 
     // Search filter
     if (search && search.trim()) {
-      console.log(search);
-
       propertyWhereClause.AND.push({
         OR: [
           { tokenName: { contains: search, mode: 'insensitive' } },

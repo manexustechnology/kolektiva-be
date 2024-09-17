@@ -56,16 +56,30 @@ export class PropertyService {
   }
 
   async findAll(request: ListPropertyQueryDto) {
-    const { sort, location, propertyType } = request;
+    const { sort, location, propertyType, search, chainId } = request;
 
-    const whereClause: any = {};
+    const whereClause: any = { AND: [] };
+
+    if (chainId && !isNaN(Number(chainId))) {
+      whereClause.chainId = Number(chainId);
+    }
 
     if (location && location !== 'All') {
-      whereClause.OR = [{ state: location }, { city: location }];
+      whereClause.AND.push({ OR: [{ state: location }, { city: location }] });
     }
 
     if (propertyType && propertyType !== 'All') {
       whereClause.type = propertyType;
+    }
+
+    if (search && search.trim()) {
+      whereClause.AND.push({
+        OR: [
+          { tokenName: { contains: search, mode: 'insensitive' } },
+          { address: { contains: search, mode: 'insensitive' } },
+          { tokenSymbol: { contains: search, mode: 'insensitive' } },
+        ],
+      });
     }
 
     const orderByClause: any[] = [];

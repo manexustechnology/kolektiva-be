@@ -4,4 +4,5 @@ export class ListUserPropertyQueryDto {
   location: string;
   propertyType: string;
   search: string;
+  chainId: string;
 }
