@@ -65,7 +65,9 @@ export class UserPropertyOwnershipService {
     }
 
     // Search filter
-    if (search?.trim()) {
+    if (search && search.trim()) {
+      console.log(search);
+
       propertyWhereClause.AND.push({
         OR: [
           { tokenName: { contains: search, mode: 'insensitive' } },

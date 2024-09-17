@@ -11,7 +11,26 @@ interface DeployedSignatures {
 
 export const deployedSignatures: DeployedSignatures = {
   "4202": {
-    "MockUSDT": {
+    "KolektivaHandler": {
+      "MarketCreated": "event MarketCreated(string indexed name, address tokenAddress, address marketAddress)",
+      "MarketRevoked": "event MarketRevoked(string indexed name, address tokenAddress, address marketAddress)",
+      "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
+      "TokenCreated": "event TokenCreated(string indexed name, address tokenAddress)",
+      "TokenRevoked": "event TokenRevoked(string indexed name, address tokenAddress)",
+      "WithdrawnFee": "event WithdrawnFee(uint256 amount)",
+      "WithdrawnToken": "event WithdrawnToken(string indexed name, address indexed tokenAddress, uint256 amount)"
+    },
+    "KolektivaMarket": {
+      "InitialOfferingPurchase": "event InitialOfferingPurchase(address indexed buyer, uint256 amount, uint256 totalCost, uint256 fee, uint256 timestamp)",
+      "InstantTrade": "event InstantTrade(address indexed trader, uint256 amount, uint256 totalPrice, bool isBuy, uint256 timestamp)",
+      "OrderCancelled": "event OrderCancelled(address indexed trader, uint256 amount, uint256 price, bool isBuyOrder, uint256 timestamp)",
+      "OrderFulfilled": "event OrderFulfilled(address indexed buyer, address indexed seller, uint256 amount, uint256 price, uint256 timestamp)",
+      "OrderPlaced": "event OrderPlaced(address indexed trader, uint256 amount, uint256 price, bool isBuyOrder, uint256 timestamp)",
+      "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
+      "PriceUpdated": "event PriceUpdated(uint256 newPrice)",
+      "PropertyOwnerWithdrawal": "event PropertyOwnerWithdrawal(address indexed owner, uint256 amount)"
+    },
+    "KolektivaToken": {
       "Approval": "event Approval(address indexed owner, address indexed spender, uint256 value)",
       "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
       "Transfer": "event Transfer(address indexed from, address indexed to, uint256 value)"
@@ -24,30 +43,10 @@ export const deployedSignatures: DeployedSignatures = {
       "ThresholdChanged": "event ThresholdChanged(uint256 newThreshold)",
       "Unpaused": "event Unpaused(address account)"
     },
-    "KolektivaHandler": {
-      "FeePercentageUpdated": "event FeePercentageUpdated(string name, uint256 newFeePercentage)",
-      "MarketCreated": "event MarketCreated(string name, address tokenAddress, address marketAddress)",
-      "MarketRevoked": "event MarketRevoked(string name, address tokenAddress, address marketAddress)",
-      "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
-      "TokenCreated": "event TokenCreated(string name, address tokenAddress)",
-      "TokenRevoked": "event TokenRevoked(string name, address tokenAddress)",
-      "WithdrawnFee": "event WithdrawnFee(uint256 amount)",
-      "WithdrawnToken": "event WithdrawnToken(string name, address tokenAddress, uint256 amount)"
-    },
-    "KolektivaToken": {
+    "MockUSDT": {
       "Approval": "event Approval(address indexed owner, address indexed spender, uint256 value)",
       "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
       "Transfer": "event Transfer(address indexed from, address indexed to, uint256 value)"
-    },
-    "KolektivaMarket": {
-      "InitialOfferingPurchase": "event InitialOfferingPurchase(address indexed buyer, uint256 amount, uint256 totalCost, uint256 fee, uint256 timestamp)",
-      "InstantTrade": "event InstantTrade(address indexed trader, uint256 amount, uint256 totalPrice, bool isBuy, uint256 timestamp)",
-      "OrderCancelled": "event OrderCancelled(address indexed trader, uint256 amount, uint256 price, bool isBuyOrder, uint256 timestamp)",
-      "OrderFulfilled": "event OrderFulfilled(address indexed buyer, address indexed seller, uint256 amount, uint256 price, uint256 timestamp)",
-      "OrderPlaced": "event OrderPlaced(address indexed trader, uint256 amount, uint256 price, bool isBuyOrder, uint256 timestamp)",
-      "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
-      "PriceUpdated": "event PriceUpdated(uint256 newPrice)",
-      "PropertyOwnerWithdrawal": "event PropertyOwnerWithdrawal(address indexed owner, uint256 amount)"
     }
   },
   "31337": {
@@ -65,14 +64,28 @@ export const deployedSignatures: DeployedSignatures = {
       "Unpaused": "event Unpaused(address account)"
     },
     "KolektivaHandler": {
-      "FeePercentageUpdated": "event FeePercentageUpdated(string name, uint256 newFeePercentage)",
-      "MarketCreated": "event MarketCreated(string name, address tokenAddress, address marketAddress)",
-      "MarketRevoked": "event MarketRevoked(string name, address tokenAddress, address marketAddress)",
+      "MarketCreated": "event MarketCreated(string indexed name, address tokenAddress, address marketAddress)",
+      "MarketRevoked": "event MarketRevoked(string indexed name, address tokenAddress, address marketAddress)",
       "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
-      "TokenCreated": "event TokenCreated(string name, address tokenAddress)",
-      "TokenRevoked": "event TokenRevoked(string name, address tokenAddress)",
+      "TokenCreated": "event TokenCreated(string indexed name, address tokenAddress)",
+      "TokenRevoked": "event TokenRevoked(string indexed name, address tokenAddress)",
       "WithdrawnFee": "event WithdrawnFee(uint256 amount)",
-      "WithdrawnToken": "event WithdrawnToken(string name, address tokenAddress, uint256 amount)"
+      "WithdrawnToken": "event WithdrawnToken(string indexed name, address indexed tokenAddress, uint256 amount)"
+    },
+    "KolektivaMarket": {
+      "InitialOfferingPurchase": "event InitialOfferingPurchase(address indexed buyer, uint256 amount, uint256 totalCost, uint256 fee, uint256 timestamp)",
+      "InstantTrade": "event InstantTrade(address indexed trader, uint256 amount, uint256 totalPrice, bool isBuy, uint256 timestamp)",
+      "OrderCancelled": "event OrderCancelled(address indexed trader, uint256 amount, uint256 price, bool isBuyOrder, uint256 timestamp)",
+      "OrderFulfilled": "event OrderFulfilled(address indexed buyer, address indexed seller, uint256 amount, uint256 price, uint256 timestamp)",
+      "OrderPlaced": "event OrderPlaced(address indexed trader, uint256 amount, uint256 price, bool isBuyOrder, uint256 timestamp)",
+      "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
+      "PriceUpdated": "event PriceUpdated(uint256 newPrice)",
+      "PropertyOwnerWithdrawal": "event PropertyOwnerWithdrawal(address indexed owner, uint256 amount)"
+    },
+    "KolektivaToken": {
+      "Approval": "event Approval(address indexed owner, address indexed spender, uint256 value)",
+      "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
+      "Transfer": "event Transfer(address indexed from, address indexed to, uint256 value)"
     }
   },
   "11155111": {
@@ -90,14 +103,28 @@ export const deployedSignatures: DeployedSignatures = {
       "Unpaused": "event Unpaused(address account)"
     },
     "KolektivaHandler": {
-      "FeePercentageUpdated": "event FeePercentageUpdated(string name, uint256 newFeePercentage)",
-      "MarketCreated": "event MarketCreated(string name, address tokenAddress, address marketAddress)",
-      "MarketRevoked": "event MarketRevoked(string name, address tokenAddress, address marketAddress)",
+      "MarketCreated": "event MarketCreated(string indexed name, address tokenAddress, address marketAddress)",
+      "MarketRevoked": "event MarketRevoked(string indexed name, address tokenAddress, address marketAddress)",
       "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
-      "TokenCreated": "event TokenCreated(string name, address tokenAddress)",
-      "TokenRevoked": "event TokenRevoked(string name, address tokenAddress)",
+      "TokenCreated": "event TokenCreated(string indexed name, address tokenAddress)",
+      "TokenRevoked": "event TokenRevoked(string indexed name, address tokenAddress)",
       "WithdrawnFee": "event WithdrawnFee(uint256 amount)",
-      "WithdrawnToken": "event WithdrawnToken(string name, address tokenAddress, uint256 amount)"
+      "WithdrawnToken": "event WithdrawnToken(string indexed name, address indexed tokenAddress, uint256 amount)"
+    },
+    "KolektivaMarket": {
+      "InitialOfferingPurchase": "event InitialOfferingPurchase(address indexed buyer, uint256 amount, uint256 totalCost, uint256 fee, uint256 timestamp)",
+      "InstantTrade": "event InstantTrade(address indexed trader, uint256 amount, uint256 totalPrice, bool isBuy, uint256 timestamp)",
+      "OrderCancelled": "event OrderCancelled(address indexed trader, uint256 amount, uint256 price, bool isBuyOrder, uint256 timestamp)",
+      "OrderFulfilled": "event OrderFulfilled(address indexed buyer, address indexed seller, uint256 amount, uint256 price, uint256 timestamp)",
+      "OrderPlaced": "event OrderPlaced(address indexed trader, uint256 amount, uint256 price, bool isBuyOrder, uint256 timestamp)",
+      "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
+      "PriceUpdated": "event PriceUpdated(uint256 newPrice)",
+      "PropertyOwnerWithdrawal": "event PropertyOwnerWithdrawal(address indexed owner, uint256 amount)"
+    },
+    "KolektivaToken": {
+      "Approval": "event Approval(address indexed owner, address indexed spender, uint256 value)",
+      "OwnershipTransferred": "event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)",
+      "Transfer": "event Transfer(address indexed from, address indexed to, uint256 value)"
     }
   }
 };

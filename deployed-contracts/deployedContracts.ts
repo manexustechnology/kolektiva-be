@@ -17,2660 +17,1848 @@ interface DeployedContracts {
 
 export const deployedContracts: DeployedContracts = {
   4202: {
-    MockUSDT: {
-      address: '0x2e6a4bb23db7991efb4987bbc53753a52a52e991',
-      abi: [
-        {
-          type: 'constructor',
-          inputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'allowance',
-          inputs: [
-            {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'approve',
-          inputs: [
-            {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
-            },
-          ],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'balanceOf',
-          inputs: [
-            {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'decimals',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint8',
-              internalType: 'uint8',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'mint',
-          inputs: [
-            {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'mintFor',
-          inputs: [
-            {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'name',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'owner',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'renounceOwnership',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'symbol',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'totalSupply',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'transfer',
-          inputs: [
-            {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
-            },
-          ],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferFrom',
-          inputs: [
-            {
-              name: 'from',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
-            },
-          ],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferOwnership',
-          inputs: [
-            {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'event',
-          name: 'Approval',
-          inputs: [
-            {
-              name: 'owner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'spender',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OwnershipTransferred',
-          inputs: [
-            {
-              name: 'previousOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'newOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'Transfer',
-          inputs: [
-            {
-              name: 'from',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'to',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'error',
-          name: 'ERC20InsufficientAllowance',
-          inputs: [
-            {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'allowance',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            {
-              name: 'needed',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InsufficientBalance',
-          inputs: [
-            {
-              name: 'sender',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'balance',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            {
-              name: 'needed',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidApprover',
-          inputs: [
-            {
-              name: 'approver',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidReceiver',
-          inputs: [
-            {
-              name: 'receiver',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidSender',
-          inputs: [
-            {
-              name: 'sender',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidSpender',
-          inputs: [
-            {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
-          inputs: [
-            {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
-          inputs: [
-            {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-      ],
-      inheritedFunctions: {},
-    },
-    KolektivaOracle: {
-      address: '0xb5479eab222051e86370e1d99ad93d304ec7efba',
-      abi: [
-        {
-          type: 'constructor',
-          inputs: [
-            {
-              name: '_owner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'PRICE_PRECISION',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'batchUpdateCategoryPrices',
-          inputs: [
-            {
-              name: 'categoryHashes',
-              type: 'bytes32[]',
-              internalType: 'bytes32[]',
-            },
-            {
-              name: 'newPrices',
-              type: 'uint256[]',
-              internalType: 'uint256[]',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'categoryPriceData',
-          inputs: [
-            {
-              name: '',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-          ],
-          outputs: [
-            {
-              name: 'averagePricePerSqm',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            {
-              name: 'lastUpdateTimestamp',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getCategoryPrice',
-          inputs: [
-            {
-              name: 'categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getFrequency',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getPropertyValue',
-          inputs: [
-            {
-              name: 'categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-            {
-              name: 'totalArea',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getThreshold',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'owner',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'pause',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'paused',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'renounceOwnership',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'setFrequency',
-          inputs: [
-            {
-              name: 'newFrequency',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'setThreshold',
-          inputs: [
-            {
-              name: 'newThreshold',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferOwnership',
-          inputs: [
-            {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'unpause',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'updateCategoryPrice',
-          inputs: [
-            {
-              name: '_categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-            {
-              name: '_newAveragePricePerSqm',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'event',
-          name: 'CategoryPriceUpdated',
-          inputs: [
-            {
-              name: 'categoryHash',
-              type: 'bytes32',
-              indexed: true,
-              internalType: 'bytes32',
-            },
-            {
-              name: 'newPrice',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'updateTime',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'FrequencyChanged',
-          inputs: [
-            {
-              name: 'newFrequency',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OwnershipTransferred',
-          inputs: [
-            {
-              name: 'previousOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'newOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'Paused',
-          inputs: [
-            {
-              name: 'account',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'ThresholdChanged',
-          inputs: [
-            {
-              name: 'newThreshold',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'Unpaused',
-          inputs: [
-            {
-              name: 'account',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'error',
-          name: 'CategoryPriceNotSet',
-          inputs: [],
-        },
-        {
-          type: 'error',
-          name: 'EnforcedPause',
-          inputs: [],
-        },
-        {
-          type: 'error',
-          name: 'ExpectedPause',
-          inputs: [],
-        },
-        {
-          type: 'error',
-          name: 'FrequencyNotMet',
-          inputs: [],
-        },
-        {
-          type: 'error',
-          name: 'MismatchHashesAndPricesLength',
-          inputs: [],
-        },
-        {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
-          inputs: [
-            {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
-          inputs: [
-            {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'PriceAboveThreshold',
-          inputs: [],
-        },
-      ],
-      inheritedFunctions: {},
-    },
     KolektivaHandler: {
-      address: '0x6811b65c31325d0abc0b59ad9be0d8add8299dcf',
+      address: "0x870225C4DDD2C3d72fbC6e62664A22F8D6E0A2D6",
       abi: [
         {
-          type: 'constructor',
+          type: "constructor",
           inputs: [
             {
-              name: '_owner',
-              type: 'address',
-              internalType: 'address',
+              name: "_owner",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: '_usdtTokenAddress',
-              type: 'address',
-              internalType: 'address',
+              name: "_usdtTokenAddress",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'approveMarketToTransferTokens',
+          type: "function",
+          name: "approveMarketToTransferTokens",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'burnTokens',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: 'from',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'checkTokenBalance',
+          type: "function",
+          name: "burnTokens",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "checkTokenBalance",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'createToken',
+          type: "function",
+          name: "createToken",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'symbol',
-              type: 'string',
-              internalType: 'string',
+              name: "symbol",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'propertyType',
-              type: 'string',
-              internalType: 'string',
+              name: "propertyType",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'country',
-              type: 'string',
-              internalType: 'string',
+              name: "country",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'state',
-              type: 'string',
-              internalType: 'string',
+              name: "state",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'city',
-              type: 'string',
-              internalType: 'string',
+              name: "city",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'location',
-              type: 'string',
-              internalType: 'string',
+              name: "location",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'totalSupply',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "totalSupply",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: 'salePrice',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "salePrice",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: 'propertyOwner',
-              type: 'address',
-              internalType: 'address',
+              name: "propertyOwner",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'getTokenNames',
+          type: "function",
+          name: "getTokenNames",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'string[]',
-              internalType: 'string[]',
+              name: "",
+              type: "string[]",
+              internalType: "string[]",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'marketAddresses',
+          type: "function",
+          name: "marketAddresses",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'mintTokens',
+          type: "function",
+          name: "mintTokens",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
+              name: "to",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'owner',
+          type: "function",
+          name: "owner",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'renounceOwnership',
+          type: "function",
+          name: "renounceOwnership",
           inputs: [],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'revokeToken',
+          type: "function",
+          name: "revokeToken",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'setFeePercentage',
+          type: "function",
+          name: "tokenAddresses",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: '_newFeePercentage',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'tokenAddresses',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'transferOwnership',
+          type: "function",
+          name: "transferOwnership",
           inputs: [
             {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'usdtToken',
+          type: "function",
+          name: "usdtToken",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'contract IERC20',
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'withdrawFee',
+          type: "function",
+          name: "withdrawFee",
           inputs: [
             {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'withdrawToken',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'event',
-          name: 'FeePercentageUpdated',
+          type: "function",
+          name: "withdrawToken",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'newFeePercentage',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          anonymous: false,
+          outputs: [],
+          stateMutability: "nonpayable",
         },
         {
-          type: 'event',
-          name: 'MarketCreated',
+          type: "event",
+          name: "MarketCreated",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
-            },
-            {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-            {
-              name: 'marketAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'MarketRevoked',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
-            },
-            {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-            {
-              name: 'marketAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OwnershipTransferred',
-          inputs: [
-            {
-              name: 'previousOwner',
-              type: 'address',
+              name: "name",
+              type: "string",
               indexed: true,
-              internalType: 'address',
+              internalType: "string",
             },
             {
-              name: 'newOwner',
-              type: 'address',
+              name: "tokenAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "marketAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "MarketRevoked",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
               indexed: true,
-              internalType: 'address',
+              internalType: "string",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "marketAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'TokenCreated',
+          type: "event",
+          name: "OwnershipTransferred",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
             },
             {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'TokenRevoked',
+          type: "event",
+          name: "TokenCreated",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              indexed: true,
+              internalType: "string",
             },
             {
-              name: 'tokenAddress',
-              type: 'address',
+              name: "tokenAddress",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'WithdrawnFee',
+          type: "event",
+          name: "TokenRevoked",
           inputs: [
             {
-              name: 'amount',
-              type: 'uint256',
+              name: "name",
+              type: "string",
+              indexed: true,
+              internalType: "string",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'WithdrawnToken',
+          type: "event",
+          name: "WithdrawnFee",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
+              name: "amount",
+              type: "uint256",
               indexed: false,
-              internalType: 'string',
-            },
-            {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'error',
-          name: 'InsufficientBalance',
+          type: "event",
+          name: "WithdrawnToken",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              indexed: true,
+              internalType: "string",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "InsufficientBalance",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'MarketDoesNotExist',
+          type: "error",
+          name: "MarketDoesNotExist",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
+          type: "error",
+          name: "OwnableInvalidOwner",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
+              name: "owner",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'TokenAlreadyExist',
+          type: "error",
+          name: "TokenAlreadyExist",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'TokenDoesNotExist',
+          type: "error",
+          name: "TokenDoesNotExist",
+          inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    KolektivaMarket: {
+      address: "",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_kolektivaToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_usdtToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_propertyOwner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_handler",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_salePrice",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "calculateBuyCost",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "totalCost",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "fees",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "calculateSellProceeds",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "totalProceeds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "fees",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "cancelOrder",
+          inputs: [
+            {
+              name: "_index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "endInitialOffering",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getBuyOrderByIndex",
+          inputs: [
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "order",
+              type: "tuple",
+              internalType: "struct OrderLib.Order",
+              components: [
+                {
+                  name: "trader",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "price",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "orderId",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getBuyOrdersCount",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getFeePercentage",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getFeePrecision",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getInitialOfferingPercentage",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getSellOrderByIndex",
+          inputs: [
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "order",
+              type: "tuple",
+              internalType: "struct OrderLib.Order",
+              components: [
+                {
+                  name: "trader",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "price",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "orderId",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getSellOrdersCount",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "handler",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "initialOfferingActive",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "initialOfferingBuy",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "initialOfferingSupply",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "instantTrade",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuy",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "kolektivaToken",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "lastTradedPrice",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "placeOrder",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "_price",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "propertyOwner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "propertyOwnerBalance",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "salePrice",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "usdtToken",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "withdrawPropertyOwnerFunds",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "InitialOfferingPurchase",
+          inputs: [
+            {
+              name: "buyer",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "totalCost",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "fee",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "InstantTrade",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "totalPrice",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuy",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderCancelled",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderFulfilled",
+          inputs: [
+            {
+              name: "buyer",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "seller",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderPlaced",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PriceUpdated",
+          inputs: [
+            {
+              name: "newPrice",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PropertyOwnerWithdrawal",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "IndexOutOfBounds",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InitialOfferingEnded",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InitialOfferingOngoing",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InsufficientBalance",
+          inputs: [
+            {
+              name: "available",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "required",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "InsufficientSupply",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InvalidAmount",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InvalidOrder",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "NoFundsToWithdraw",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ReentrancyGuardReentrantCall",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "TransferFailed",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "Unauthorized",
           inputs: [],
         },
       ],
       inheritedFunctions: {},
     },
     KolektivaToken: {
-      address: '',
+      address: "",
       abi: [
         {
-          type: 'constructor',
+          type: "constructor",
           inputs: [
-            { name: 'name', type: 'string', internalType: 'string' },
-            { name: 'symbol', type: 'string', internalType: 'string' },
-            { name: '_propertyType', type: 'string', internalType: 'string' },
-            { name: '_country', type: 'string', internalType: 'string' },
-            { name: '_state', type: 'string', internalType: 'string' },
-            { name: '_city', type: 'string', internalType: 'string' },
-            { name: '_location', type: 'string', internalType: 'string' },
             {
-              name: '_totalSupply',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: '_tokenHandler',
-              type: 'address',
-              internalType: 'address',
+              name: "symbol",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_propertyType",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_country",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_state",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_city",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_location",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_totalSupply",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "_tokenHandler",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'allowance',
+          type: "function",
+          name: "allowance",
           inputs: [
-            { name: 'owner', type: 'address', internalType: 'address' },
-            { name: 'spender', type: 'address', internalType: 'address' },
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
           ],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'approve',
+          type: "function",
+          name: "approve",
           inputs: [
-            { name: 'spender', type: 'address', internalType: 'address' },
-            { name: 'value', type: 'uint256', internalType: 'uint256' },
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
           ],
-          outputs: [{ name: '', type: 'bool', internalType: 'bool' }],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'availableForSale',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'balanceOf',
-          inputs: [
-            { name: 'account', type: 'address', internalType: 'address' },
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
           ],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'burn',
-          inputs: [
-            { name: 'from', type: 'address', internalType: 'address' },
-            { name: 'amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'decimals',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint8', internalType: 'uint8' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getInformation',
+          type: "function",
+          name: "availableForSale",
           inputs: [],
           outputs: [
-            { name: '', type: 'string', internalType: 'string' },
-            { name: '', type: 'string', internalType: 'string' },
-            { name: '', type: 'string', internalType: 'string' },
-            { name: '', type: 'string', internalType: 'string' },
-            { name: '', type: 'string', internalType: 'string' },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'lastAppraisalDate',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'mint',
-          inputs: [
-            { name: 'to', type: 'address', internalType: 'address' },
-            { name: 'amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'name',
-          inputs: [],
-          outputs: [{ name: '', type: 'string', internalType: 'string' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'owner',
-          inputs: [],
-          outputs: [{ name: '', type: 'address', internalType: 'address' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'propertyValue',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'renounceOwnership',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'symbol',
-          inputs: [],
-          outputs: [{ name: '', type: 'string', internalType: 'string' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'tokenHandler',
-          inputs: [],
-          outputs: [{ name: '', type: 'address', internalType: 'address' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'totalSupply',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'transfer',
-          inputs: [
-            { name: 'to', type: 'address', internalType: 'address' },
-            { name: 'amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [{ name: '', type: 'bool', internalType: 'bool' }],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferFrom',
-          inputs: [
-            { name: 'from', type: 'address', internalType: 'address' },
-            { name: 'to', type: 'address', internalType: 'address' },
-            { name: 'amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [{ name: '', type: 'bool', internalType: 'bool' }],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferOwnership',
-          inputs: [
-            { name: 'newOwner', type: 'address', internalType: 'address' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'event',
-          name: 'Approval',
+          type: "function",
+          name: "balanceOf",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "burn",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'spender',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "decimals",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint8",
+              internalType: "uint8",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getInformation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'value',
-              type: 'uint256',
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "lastAppraisalDate",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "mint",
+          inputs: [
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "name",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "propertyValue",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "symbol",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "tokenHandler",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "totalSupply",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transfer",
+          inputs: [
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferFrom",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "Approval",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'OwnershipTransferred',
+          type: "event",
+          name: "OwnershipTransferred",
           inputs: [
             {
-              name: 'previousOwner',
-              type: 'address',
+              name: "previousOwner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'newOwner',
-              type: 'address',
+              name: "newOwner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'Transfer',
+          type: "event",
+          name: "Transfer",
           inputs: [
             {
-              name: 'from',
-              type: 'address',
+              name: "from",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'to',
-              type: 'address',
+              name: "to",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'value',
-              type: 'uint256',
+              name: "value",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        { type: 'error', name: 'CannotBeTransferredYet', inputs: [] },
-        {
-          type: 'error',
-          name: 'ERC20InsufficientAllowance',
-          inputs: [
-            { name: 'spender', type: 'address', internalType: 'address' },
-            { name: 'allowance', type: 'uint256', internalType: 'uint256' },
-            { name: 'needed', type: 'uint256', internalType: 'uint256' },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InsufficientBalance',
-          inputs: [
-            { name: 'sender', type: 'address', internalType: 'address' },
-            { name: 'balance', type: 'uint256', internalType: 'uint256' },
-            { name: 'needed', type: 'uint256', internalType: 'uint256' },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidApprover',
-          inputs: [
-            { name: 'approver', type: 'address', internalType: 'address' },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidReceiver',
-          inputs: [
-            { name: 'receiver', type: 'address', internalType: 'address' },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidSender',
-          inputs: [
-            { name: 'sender', type: 'address', internalType: 'address' },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidSpender',
-          inputs: [
-            { name: 'spender', type: 'address', internalType: 'address' },
-          ],
-        },
-        { type: 'error', name: 'ExceedMaxSupply', inputs: [] },
-        {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
-          inputs: [{ name: 'owner', type: 'address', internalType: 'address' }],
-        },
-        {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
-          inputs: [
-            { name: 'account', type: 'address', internalType: 'address' },
-          ],
-        },
-      ],
-      inheritedFunctions: {},
-    },
-    KolektivaMarket: {
-      address: '',
-      abi: [
-        {
-          type: 'constructor',
-          inputs: [
-            {
-              name: '_kolektivaToken',
-              type: 'address',
-              internalType: 'address',
-            },
-            { name: '_usdtToken', type: 'address', internalType: 'address' },
-            {
-              name: '_propertyOwner',
-              type: 'address',
-              internalType: 'address',
-            },
-            { name: '_handler', type: 'address', internalType: 'address' },
-            { name: '_salePrice', type: 'uint256', internalType: 'uint256' },
-          ],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'FEE_PRECISION',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint128', internalType: 'uint128' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'calculateBuyCost',
-          inputs: [
-            { name: '_amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [
-            { name: 'totalCost', type: 'uint256', internalType: 'uint256' },
-            { name: 'fees', type: 'uint256', internalType: 'uint256' },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'calculateSellProceeds',
-          inputs: [
-            { name: '_amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [
-            {
-              name: 'totalProceeds',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            { name: 'fees', type: 'uint256', internalType: 'uint256' },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'cancelOrder',
-          inputs: [
-            { name: '_index', type: 'uint256', internalType: 'uint256' },
-            { name: 'isBuyOrder', type: 'bool', internalType: 'bool' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'endInitialOffering',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'feePercentage',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint128', internalType: 'uint128' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getBuyOrderByIndex',
-          inputs: [{ name: 'index', type: 'uint256', internalType: 'uint256' }],
-          outputs: [
-            {
-              name: '',
-              type: 'tuple',
-              internalType: 'struct OrderLib.Order',
-              components: [
-                { name: 'trader', type: 'address', internalType: 'address' },
-                { name: 'amount', type: 'uint256', internalType: 'uint256' },
-                { name: 'price', type: 'uint256', internalType: 'uint256' },
-                { name: 'orderId', type: 'uint256', internalType: 'uint256' },
-              ],
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getBuyOrdersCount',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getSellOrderByIndex',
-          inputs: [{ name: 'index', type: 'uint256', internalType: 'uint256' }],
-          outputs: [
-            {
-              name: '',
-              type: 'tuple',
-              internalType: 'struct OrderLib.Order',
-              components: [
-                { name: 'trader', type: 'address', internalType: 'address' },
-                { name: 'amount', type: 'uint256', internalType: 'uint256' },
-                { name: 'price', type: 'uint256', internalType: 'uint256' },
-                { name: 'orderId', type: 'uint256', internalType: 'uint256' },
-              ],
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getSellOrdersCount',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'handler',
-          inputs: [],
-          outputs: [{ name: '', type: 'address', internalType: 'address' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'initialOfferingActive',
-          inputs: [],
-          outputs: [{ name: '', type: 'bool', internalType: 'bool' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'initialOfferingBuy',
-          inputs: [
-            { name: '_amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'initialOfferingSupply',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'instantBuy',
-          inputs: [
-            { name: '_amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'instantSell',
-          inputs: [
-            { name: '_amount', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'kolektivaToken',
-          inputs: [],
-          outputs: [
-            { name: '', type: 'address', internalType: 'contract IERC20' },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'lastTradedPrice',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'owner',
-          inputs: [],
-          outputs: [{ name: '', type: 'address', internalType: 'address' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'placeBuyOrder',
-          inputs: [
-            { name: '_amount', type: 'uint256', internalType: 'uint256' },
-            { name: '_price', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'placeSellOrder',
-          inputs: [
-            { name: '_amount', type: 'uint256', internalType: 'uint256' },
-            { name: '_price', type: 'uint256', internalType: 'uint256' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'propertyOwner',
-          inputs: [],
-          outputs: [{ name: '', type: 'address', internalType: 'address' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'propertyOwnerBalance',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'renounceOwnership',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'salePrice',
-          inputs: [],
-          outputs: [{ name: '', type: 'uint256', internalType: 'uint256' }],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'setFeePercentage',
-          inputs: [
-            {
-              name: '_newFeePercentage',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferOwnership',
-          inputs: [
-            { name: 'newOwner', type: 'address', internalType: 'address' },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'usdtToken',
-          inputs: [],
-          outputs: [
-            { name: '', type: 'address', internalType: 'contract IERC20' },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'withdrawPropertyOwnerFunds',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'event',
-          name: 'InitialOfferingPurchase',
-          inputs: [
-            {
-              name: 'buyer',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'totalCost',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'fee',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'timestamp',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'InstantTrade',
-          inputs: [
-            {
-              name: 'trader',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'totalPrice',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'isBuy',
-              type: 'bool',
-              indexed: false,
-              internalType: 'bool',
-            },
-            {
-              name: 'timestamp',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OrderCancelled',
-          inputs: [
-            {
-              name: 'trader',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'price',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'isBuyOrder',
-              type: 'bool',
-              indexed: false,
-              internalType: 'bool',
-            },
-            {
-              name: 'timestamp',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OrderFulfilled',
-          inputs: [
-            {
-              name: 'buyer',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'seller',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'price',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'timestamp',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OrderPlaced',
-          inputs: [
-            {
-              name: 'trader',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'price',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-            {
-              name: 'isBuyOrder',
-              type: 'bool',
-              indexed: false,
-              internalType: 'bool',
-            },
-            {
-              name: 'timestamp',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OwnershipTransferred',
-          inputs: [
-            {
-              name: 'previousOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'newOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'PriceUpdated',
-          inputs: [
-            {
-              name: 'newPrice',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'PropertyOwnerWithdrawal',
-          inputs: [
-            {
-              name: 'owner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        { type: 'error', name: 'IndexOutOfBounds', inputs: [] },
-        { type: 'error', name: 'InitialOfferingEnded', inputs: [] },
-        { type: 'error', name: 'InitialOfferingOngoing', inputs: [] },
-        {
-          type: 'error',
-          name: 'InsufficientBalance',
-          inputs: [
-            { name: 'available', type: 'uint256', internalType: 'uint256' },
-            { name: 'required', type: 'uint256', internalType: 'uint256' },
-          ],
-        },
-        { type: 'error', name: 'InsufficientSupply', inputs: [] },
-        { type: 'error', name: 'InvalidAmount', inputs: [] },
-        { type: 'error', name: 'InvalidOrder', inputs: [] },
-        { type: 'error', name: 'NoFundsToWithdraw', inputs: [] },
-        {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
-          inputs: [{ name: 'owner', type: 'address', internalType: 'address' }],
-        },
-        {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
-          inputs: [
-            { name: 'account', type: 'address', internalType: 'address' },
-          ],
-        },
-        { type: 'error', name: 'ReentrancyGuardReentrantCall', inputs: [] },
-        { type: 'error', name: 'TransferFailed', inputs: [] },
-        { type: 'error', name: 'Unauthorized', inputs: [] },
-      ],
-      inheritedFunctions: {},
-    },
-  },
-  31337: {
-    MockUSDT: {
-      address: '0x5fc8d32690cc91d4c39d9d3abcbd16989f875707',
-      abi: [
-        {
-          type: 'constructor',
+          type: "error",
+          name: "CannotBeTransferredYet",
           inputs: [],
-          stateMutability: 'nonpayable',
         },
         {
-          type: 'function',
-          name: 'allowance',
+          type: "error",
+          name: "ERC20InsufficientAllowance",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
+              name: "spender",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
+              name: "allowance",
+              type: "uint256",
+              internalType: "uint256",
             },
-          ],
-          outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
         },
         {
-          type: 'function',
-          name: 'approve',
+          type: "error",
+          name: "ERC20InsufficientBalance",
           inputs: [
             {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
+              name: "sender",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "balance",
+              type: "uint256",
+              internalType: "uint256",
             },
-          ],
-          outputs: [
             {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'nonpayable',
         },
         {
-          type: 'function',
-          name: 'balanceOf',
+          type: "error",
+          name: "ERC20InvalidApprover",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "approver",
+              type: "address",
+              internalType: "address",
             },
           ],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
         },
         {
-          type: 'function',
-          name: 'decimals',
+          type: "error",
+          name: "ERC20InvalidReceiver",
+          inputs: [
+            {
+              name: "receiver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSender",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSpender",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ExceedMaxSupply",
           inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint8',
-              internalType: 'uint8',
-            },
-          ],
-          stateMutability: 'view',
         },
         {
-          type: 'function',
-          name: 'mint',
+          type: "error",
+          name: "OwnableInvalidOwner",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "owner",
+              type: "address",
+              internalType: "address",
             },
           ],
-          outputs: [],
-          stateMutability: 'nonpayable',
         },
         {
-          type: 'function',
-          name: 'mintFor',
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'name',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'owner',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'renounceOwnership',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'symbol',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'totalSupply',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'transfer',
-          inputs: [
-            {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
-            },
-          ],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferFrom',
-          inputs: [
-            {
-              name: 'from',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
-            },
-          ],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferOwnership',
-          inputs: [
-            {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'event',
-          name: 'Approval',
-          inputs: [
-            {
-              name: 'owner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'spender',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OwnershipTransferred',
-          inputs: [
-            {
-              name: 'previousOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'newOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'Transfer',
-          inputs: [
-            {
-              name: 'from',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'to',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-            {
-              name: 'value',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'error',
-          name: 'ERC20InsufficientAllowance',
-          inputs: [
-            {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'allowance',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            {
-              name: 'needed',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InsufficientBalance',
-          inputs: [
-            {
-              name: 'sender',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'balance',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            {
-              name: 'needed',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidApprover',
-          inputs: [
-            {
-              name: 'approver',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidReceiver',
-          inputs: [
-            {
-              name: 'receiver',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidSender',
-          inputs: [
-            {
-              name: 'sender',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'ERC20InvalidSpender',
-          inputs: [
-            {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
-          inputs: [
-            {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-        },
-        {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
-          inputs: [
-            {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
@@ -2678,922 +1866,3505 @@ export const deployedContracts: DeployedContracts = {
       inheritedFunctions: {},
     },
     KolektivaOracle: {
-      address: '0x0165878a594ca255338adfa4d48449f69242eb8f',
+      address: "0xb5479eab222051e86370e1d99ad93d304ec7efba",
       abi: [
         {
-          type: 'constructor',
+          type: "constructor",
           inputs: [
             {
-              name: '_owner',
-              type: 'address',
-              internalType: 'address',
+              name: "_owner",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'PRICE_PRECISION',
+          type: "function",
+          name: "PRICE_PRECISION",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'batchUpdateCategoryPrices',
+          type: "function",
+          name: "batchUpdateCategoryPrices",
           inputs: [
             {
-              name: 'categoryHashes',
-              type: 'bytes32[]',
-              internalType: 'bytes32[]',
+              name: "categoryHashes",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
             },
             {
-              name: 'newPrices',
-              type: 'uint256[]',
-              internalType: 'uint256[]',
+              name: "newPrices",
+              type: "uint256[]",
+              internalType: "uint256[]",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'categoryPriceData',
+          type: "function",
+          name: "categoryPriceData",
           inputs: [
             {
-              name: '',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-          ],
-          outputs: [
-            {
-              name: 'averagePricePerSqm',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            {
-              name: 'lastUpdateTimestamp',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getCategoryPrice',
-          inputs: [
-            {
-              name: 'categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "averagePricePerSqm",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "lastUpdateTimestamp",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'getFrequency',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getPropertyValue',
+          type: "function",
+          name: "getCategoryPrice",
           inputs: [
             {
-              name: 'categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-            {
-              name: 'totalArea',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'getThreshold',
+          type: "function",
+          name: "getFrequency",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'owner',
+          type: "function",
+          name: "getPropertyValue",
+          inputs: [
+            {
+              name: "categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "totalArea",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getThreshold",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'pause',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'paused',
+          type: "function",
+          name: "owner",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'renounceOwnership',
+          type: "function",
+          name: "pause",
           inputs: [],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'setFrequency',
-          inputs: [
+          type: "function",
+          name: "paused",
+          inputs: [],
+          outputs: [
             {
-              name: 'newFrequency',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "bool",
+              internalType: "bool",
             },
           ],
-          outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'setThreshold',
-          inputs: [
-            {
-              name: 'newThreshold',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferOwnership',
-          inputs: [
-            {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'unpause',
+          type: "function",
+          name: "renounceOwnership",
           inputs: [],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'updateCategoryPrice',
+          type: "function",
+          name: "setFrequency",
           inputs: [
             {
-              name: '_categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-            {
-              name: '_newAveragePricePerSqm',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "newFrequency",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'event',
-          name: 'CategoryPriceUpdated',
+          type: "function",
+          name: "setThreshold",
           inputs: [
             {
-              name: 'categoryHash',
-              type: 'bytes32',
+              name: "newThreshold",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "unpause",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "updateCategoryPrice",
+          inputs: [
+            {
+              name: "_categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "_newAveragePricePerSqm",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "CategoryPriceUpdated",
+          inputs: [
+            {
+              name: "categoryHash",
+              type: "bytes32",
               indexed: true,
-              internalType: 'bytes32',
+              internalType: "bytes32",
             },
             {
-              name: 'newPrice',
-              type: 'uint256',
+              name: "newPrice",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
             {
-              name: 'updateTime',
-              type: 'uint256',
+              name: "updateTime",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'FrequencyChanged',
+          type: "event",
+          name: "FrequencyChanged",
           inputs: [
             {
-              name: 'newFrequency',
-              type: 'uint256',
+              name: "newFrequency",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'OwnershipTransferred',
+          type: "event",
+          name: "OwnershipTransferred",
           inputs: [
             {
-              name: 'previousOwner',
-              type: 'address',
+              name: "previousOwner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'newOwner',
-              type: 'address',
+              name: "newOwner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'Paused',
+          type: "event",
+          name: "Paused",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
+              name: "account",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'ThresholdChanged',
+          type: "event",
+          name: "ThresholdChanged",
           inputs: [
             {
-              name: 'newThreshold',
-              type: 'uint256',
+              name: "newThreshold",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'Unpaused',
+          type: "event",
+          name: "Unpaused",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
+              name: "account",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'error',
-          name: 'CategoryPriceNotSet',
+          type: "error",
+          name: "CategoryPriceNotSet",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'EnforcedPause',
+          type: "error",
+          name: "EnforcedPause",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'ExpectedPause',
+          type: "error",
+          name: "ExpectedPause",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'FrequencyNotMet',
+          type: "error",
+          name: "FrequencyNotMet",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'MismatchHashesAndPricesLength',
+          type: "error",
+          name: "MismatchHashesAndPricesLength",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
+          type: "error",
+          name: "OwnableInvalidOwner",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
+              name: "owner",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'PriceAboveThreshold',
+          type: "error",
+          name: "PriceAboveThreshold",
+          inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    MockUSDT: {
+      address: "0x2e6a4bb23db7991efb4987bbc53753a52a52e991",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "allowance",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "approve",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "balanceOf",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "decimals",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint8",
+              internalType: "uint8",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "mint",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "mintFor",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "name",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "symbol",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "totalSupply",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transfer",
+          inputs: [
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferFrom",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "Approval",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "Transfer",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "ERC20InsufficientAllowance",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "allowance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InsufficientBalance",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "balance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidApprover",
+          inputs: [
+            {
+              name: "approver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidReceiver",
+          inputs: [
+            {
+              name: "receiver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSender",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSpender",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+      ],
+      inheritedFunctions: {},
+    },
+  },
+  31337: {
+    MockUSDT: {
+      address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "allowance",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "approve",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "balanceOf",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "decimals",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint8",
+              internalType: "uint8",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "mint",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "mintFor",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "name",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "symbol",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "totalSupply",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transfer",
+          inputs: [
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferFrom",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "Approval",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "Transfer",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "ERC20InsufficientAllowance",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "allowance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InsufficientBalance",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "balance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidApprover",
+          inputs: [
+            {
+              name: "approver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidReceiver",
+          inputs: [
+            {
+              name: "receiver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSender",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSpender",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    KolektivaOracle: {
+      address: "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "PRICE_PRECISION",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "batchUpdateCategoryPrices",
+          inputs: [
+            {
+              name: "categoryHashes",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
+            },
+            {
+              name: "newPrices",
+              type: "uint256[]",
+              internalType: "uint256[]",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "categoryPriceData",
+          inputs: [
+            {
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "averagePricePerSqm",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "lastUpdateTimestamp",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getCategoryPrice",
+          inputs: [
+            {
+              name: "categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getFrequency",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getPropertyValue",
+          inputs: [
+            {
+              name: "categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "totalArea",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getThreshold",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "pause",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "paused",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setFrequency",
+          inputs: [
+            {
+              name: "newFrequency",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "setThreshold",
+          inputs: [
+            {
+              name: "newThreshold",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "unpause",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "updateCategoryPrice",
+          inputs: [
+            {
+              name: "_categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "_newAveragePricePerSqm",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "CategoryPriceUpdated",
+          inputs: [
+            {
+              name: "categoryHash",
+              type: "bytes32",
+              indexed: true,
+              internalType: "bytes32",
+            },
+            {
+              name: "newPrice",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "updateTime",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "FrequencyChanged",
+          inputs: [
+            {
+              name: "newFrequency",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "Paused",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "ThresholdChanged",
+          inputs: [
+            {
+              name: "newThreshold",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "Unpaused",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "CategoryPriceNotSet",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "EnforcedPause",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "ExpectedPause",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "FrequencyNotMet",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "MismatchHashesAndPricesLength",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "PriceAboveThreshold",
           inputs: [],
         },
       ],
       inheritedFunctions: {},
     },
     KolektivaHandler: {
-      address: '0xa513e6e4b8f2a923d98304ec87f64353c4d5c853',
+      address: "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
       abi: [
         {
-          type: 'constructor',
+          type: "constructor",
           inputs: [
             {
-              name: '_owner',
-              type: 'address',
-              internalType: 'address',
+              name: "_owner",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: '_usdtTokenAddress',
-              type: 'address',
-              internalType: 'address',
+              name: "_usdtTokenAddress",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'approveMarketToTransferTokens',
+          type: "function",
+          name: "approveMarketToTransferTokens",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'burnTokens',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: 'from',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'checkTokenBalance',
+          type: "function",
+          name: "burnTokens",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "checkTokenBalance",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'createToken',
+          type: "function",
+          name: "createToken",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'symbol',
-              type: 'string',
-              internalType: 'string',
+              name: "symbol",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'propertyType',
-              type: 'string',
-              internalType: 'string',
+              name: "propertyType",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'country',
-              type: 'string',
-              internalType: 'string',
+              name: "country",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'state',
-              type: 'string',
-              internalType: 'string',
+              name: "state",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'city',
-              type: 'string',
-              internalType: 'string',
+              name: "city",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'location',
-              type: 'string',
-              internalType: 'string',
+              name: "location",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'totalSupply',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "totalSupply",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: 'salePrice',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "salePrice",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: 'propertyOwner',
-              type: 'address',
-              internalType: 'address',
+              name: "propertyOwner",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'getTokenNames',
+          type: "function",
+          name: "getTokenNames",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'string[]',
-              internalType: 'string[]',
+              name: "",
+              type: "string[]",
+              internalType: "string[]",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'marketAddresses',
+          type: "function",
+          name: "marketAddresses",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          outputs: [
-            {
-              name: '',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'mintTokens',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'owner',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'renounceOwnership',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'revokeToken',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'setFeePercentage',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: '_newFeePercentage',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'tokenAddresses',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'transferOwnership',
+          type: "function",
+          name: "mintTokens",
           inputs: [
             {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'usdtToken',
+          type: "function",
+          name: "owner",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'contract IERC20',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'withdrawFee',
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "revokeToken",
           inputs: [
             {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'withdrawToken',
+          type: "function",
+          name: "tokenAddresses",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
+          ],
+          outputs: [
             {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'event',
-          name: 'FeePercentageUpdated',
+          type: "function",
+          name: "usdtToken",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "withdrawFee",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: true,
-              internalType: 'string',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "withdrawToken",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'newFeePercentage',
-              type: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "MarketCreated",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              indexed: true,
+              internalType: "string",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "address",
+            },
+            {
+              name: "marketAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'MarketCreated',
+          type: "event",
+          name: "MarketRevoked",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
+              name: "name",
+              type: "string",
               indexed: true,
-              internalType: 'string',
+              internalType: "string",
             },
             {
-              name: 'tokenAddress',
-              type: 'address',
+              name: "tokenAddress",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'marketAddress',
-              type: 'address',
+              name: "marketAddress",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'MarketRevoked',
+          type: "event",
+          name: "OwnershipTransferred",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
+              name: "previousOwner",
+              type: "address",
               indexed: true,
-              internalType: 'string',
+              internalType: "address",
             },
             {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-            {
-              name: 'marketAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'OwnershipTransferred',
+          type: "event",
+          name: "TokenCreated",
           inputs: [
             {
-              name: 'previousOwner',
-              type: 'address',
+              name: "name",
+              type: "string",
               indexed: true,
-              internalType: 'address',
+              internalType: "string",
             },
             {
-              name: 'newOwner',
-              type: 'address',
-              indexed: true,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'TokenCreated',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              indexed: true,
-              internalType: 'string',
-            },
-            {
-              name: 'tokenAddress',
-              type: 'address',
+              name: "tokenAddress",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'TokenRevoked',
+          type: "event",
+          name: "TokenRevoked",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
+              name: "name",
+              type: "string",
               indexed: true,
-              internalType: 'string',
+              internalType: "string",
             },
             {
-              name: 'tokenAddress',
-              type: 'address',
+              name: "tokenAddress",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'WithdrawnFee',
+          type: "event",
+          name: "WithdrawnFee",
           inputs: [
             {
-              name: 'amount',
-              type: 'uint256',
+              name: "amount",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'WithdrawnToken',
+          type: "event",
+          name: "WithdrawnToken",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
+              name: "name",
+              type: "string",
               indexed: true,
-              internalType: 'string',
+              internalType: "string",
             },
             {
-              name: 'tokenAddress',
-              type: 'address',
+              name: "tokenAddress",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'amount',
-              type: 'uint256',
+              name: "amount",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'error',
-          name: 'InsufficientBalance',
+          type: "error",
+          name: "InsufficientBalance",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'MarketDoesNotExist',
+          type: "error",
+          name: "MarketDoesNotExist",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
+          type: "error",
+          name: "OwnableInvalidOwner",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
+              name: "owner",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'TokenAlreadyExist',
+          type: "error",
+          name: "TokenAlreadyExist",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'TokenDoesNotExist',
+          type: "error",
+          name: "TokenDoesNotExist",
           inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    KolektivaMarket: {
+      address: "",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_kolektivaToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_usdtToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_propertyOwner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_handler",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_salePrice",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "calculateBuyCost",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "totalCost",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "fees",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "calculateSellProceeds",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "totalProceeds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "fees",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "cancelOrder",
+          inputs: [
+            {
+              name: "_index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "endInitialOffering",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getBuyOrderByIndex",
+          inputs: [
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "order",
+              type: "tuple",
+              internalType: "struct OrderLib.Order",
+              components: [
+                {
+                  name: "trader",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "price",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "orderId",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getBuyOrdersCount",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getFeePercentage",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getFeePrecision",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getInitialOfferingPercentage",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getSellOrderByIndex",
+          inputs: [
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "order",
+              type: "tuple",
+              internalType: "struct OrderLib.Order",
+              components: [
+                {
+                  name: "trader",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "price",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "orderId",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getSellOrdersCount",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "handler",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "initialOfferingActive",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "initialOfferingBuy",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "initialOfferingSupply",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "instantTrade",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuy",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "kolektivaToken",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "lastTradedPrice",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "placeOrder",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "_price",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "propertyOwner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "propertyOwnerBalance",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "salePrice",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "usdtToken",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "withdrawPropertyOwnerFunds",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "InitialOfferingPurchase",
+          inputs: [
+            {
+              name: "buyer",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "totalCost",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "fee",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "InstantTrade",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "totalPrice",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuy",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderCancelled",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderFulfilled",
+          inputs: [
+            {
+              name: "buyer",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "seller",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderPlaced",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PriceUpdated",
+          inputs: [
+            {
+              name: "newPrice",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PropertyOwnerWithdrawal",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "IndexOutOfBounds",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InitialOfferingEnded",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InitialOfferingOngoing",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InsufficientBalance",
+          inputs: [
+            {
+              name: "available",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "required",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "InsufficientSupply",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InvalidAmount",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InvalidOrder",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "NoFundsToWithdraw",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ReentrancyGuardReentrantCall",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "TransferFailed",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "Unauthorized",
+          inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    KolektivaToken: {
+      address: "",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "symbol",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_propertyType",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_country",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_state",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_city",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_location",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_totalSupply",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "_tokenHandler",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "allowance",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "approve",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "availableForSale",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "balanceOf",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "burn",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "decimals",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint8",
+              internalType: "uint8",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getInformation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "lastAppraisalDate",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "mint",
+          inputs: [
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "name",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "propertyValue",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "symbol",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "tokenHandler",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "totalSupply",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transfer",
+          inputs: [
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferFrom",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "Approval",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "Transfer",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "CannotBeTransferredYet",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "ERC20InsufficientAllowance",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "allowance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InsufficientBalance",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "balance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidApprover",
+          inputs: [
+            {
+              name: "approver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidReceiver",
+          inputs: [
+            {
+              name: "receiver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSender",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSpender",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ExceedMaxSupply",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
       ],
       inheritedFunctions: {},
@@ -3601,428 +5372,428 @@ export const deployedContracts: DeployedContracts = {
   },
   11155111: {
     MockUSDT: {
-      address: '0xf50b3b8164e22f5984b32accce45aa196a67e87c',
+      address: "0x9e677d3281329d04fb3aa444e3668500bba139b2",
       abi: [
         {
-          type: 'constructor',
+          type: "constructor",
           inputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'allowance',
+          type: "function",
+          name: "allowance",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
+              name: "owner",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
+              name: "spender",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'approve',
+          type: "function",
+          name: "approve",
           inputs: [
             {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
+              name: "spender",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
+              name: "",
+              type: "bool",
+              internalType: "bool",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'balanceOf',
+          type: "function",
+          name: "balanceOf",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'decimals',
+          type: "function",
+          name: "decimals",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'uint8',
-              internalType: 'uint8',
+              name: "",
+              type: "uint8",
+              internalType: "uint8",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'mint',
+          type: "function",
+          name: "mint",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'mintFor',
+          type: "function",
+          name: "mintFor",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'name',
+          type: "function",
+          name: "name",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'string',
-              internalType: 'string',
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'owner',
+          type: "function",
+          name: "owner",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'renounceOwnership',
+          type: "function",
+          name: "renounceOwnership",
           inputs: [],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'symbol',
+          type: "function",
+          name: "symbol",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'string',
-              internalType: 'string',
+              name: "",
+              type: "string",
+              internalType: "string",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'totalSupply',
+          type: "function",
+          name: "totalSupply",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'transfer',
+          type: "function",
+          name: "transfer",
           inputs: [
             {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
+              name: "to",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
+              name: "",
+              type: "bool",
+              internalType: "bool",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'transferFrom',
+          type: "function",
+          name: "transferFrom",
           inputs: [
             {
-              name: 'from',
-              type: 'address',
-              internalType: 'address',
+              name: "from",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
+              name: "to",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'value',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
+              name: "",
+              type: "bool",
+              internalType: "bool",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'transferOwnership',
+          type: "function",
+          name: "transferOwnership",
           inputs: [
             {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'event',
-          name: 'Approval',
+          type: "event",
+          name: "Approval",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
+              name: "owner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'spender',
-              type: 'address',
+              name: "spender",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'value',
-              type: 'uint256',
+              name: "value",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'OwnershipTransferred',
+          type: "event",
+          name: "OwnershipTransferred",
           inputs: [
             {
-              name: 'previousOwner',
-              type: 'address',
+              name: "previousOwner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'newOwner',
-              type: 'address',
+              name: "newOwner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'Transfer',
+          type: "event",
+          name: "Transfer",
           inputs: [
             {
-              name: 'from',
-              type: 'address',
+              name: "from",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'to',
-              type: 'address',
+              name: "to",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'value',
-              type: 'uint256',
+              name: "value",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'error',
-          name: 'ERC20InsufficientAllowance',
+          type: "error",
+          name: "ERC20InsufficientAllowance",
           inputs: [
             {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
+              name: "spender",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'allowance',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "allowance",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: 'needed',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'ERC20InsufficientBalance',
+          type: "error",
+          name: "ERC20InsufficientBalance",
           inputs: [
             {
-              name: 'sender',
-              type: 'address',
-              internalType: 'address',
+              name: "sender",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'balance',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "balance",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: 'needed',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'ERC20InvalidApprover',
+          type: "error",
+          name: "ERC20InvalidApprover",
           inputs: [
             {
-              name: 'approver',
-              type: 'address',
-              internalType: 'address',
+              name: "approver",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'ERC20InvalidReceiver',
+          type: "error",
+          name: "ERC20InvalidReceiver",
           inputs: [
             {
-              name: 'receiver',
-              type: 'address',
-              internalType: 'address',
+              name: "receiver",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'ERC20InvalidSender',
+          type: "error",
+          name: "ERC20InvalidSender",
           inputs: [
             {
-              name: 'sender',
-              type: 'address',
-              internalType: 'address',
+              name: "sender",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'ERC20InvalidSpender',
+          type: "error",
+          name: "ERC20InvalidSpender",
           inputs: [
             {
-              name: 'spender',
-              type: 'address',
-              internalType: 'address',
+              name: "spender",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
+          type: "error",
+          name: "OwnableInvalidOwner",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
+              name: "owner",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
@@ -4030,922 +5801,2247 @@ export const deployedContracts: DeployedContracts = {
       inheritedFunctions: {},
     },
     KolektivaOracle: {
-      address: '0x9eeb17d185a31b5d067f100a7f87f0166b39c4b6',
+      address: "0x48abbfd9bdb6043f7d353530d6a4a55daf6cf6a9",
       abi: [
         {
-          type: 'constructor',
+          type: "constructor",
           inputs: [
             {
-              name: '_owner',
-              type: 'address',
-              internalType: 'address',
+              name: "_owner",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'PRICE_PRECISION',
+          type: "function",
+          name: "PRICE_PRECISION",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'batchUpdateCategoryPrices',
+          type: "function",
+          name: "batchUpdateCategoryPrices",
           inputs: [
             {
-              name: 'categoryHashes',
-              type: 'bytes32[]',
-              internalType: 'bytes32[]',
+              name: "categoryHashes",
+              type: "bytes32[]",
+              internalType: "bytes32[]",
             },
             {
-              name: 'newPrices',
-              type: 'uint256[]',
-              internalType: 'uint256[]',
+              name: "newPrices",
+              type: "uint256[]",
+              internalType: "uint256[]",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'categoryPriceData',
+          type: "function",
+          name: "categoryPriceData",
           inputs: [
             {
-              name: '',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-          ],
-          outputs: [
-            {
-              name: 'averagePricePerSqm',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-            {
-              name: 'lastUpdateTimestamp',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getCategoryPrice',
-          inputs: [
-            {
-              name: 'categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
+              name: "",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "averagePricePerSqm",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "lastUpdateTimestamp",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'getFrequency',
-          inputs: [],
-          outputs: [
-            {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          stateMutability: 'view',
-        },
-        {
-          type: 'function',
-          name: 'getPropertyValue',
+          type: "function",
+          name: "getCategoryPrice",
           inputs: [
             {
-              name: 'categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-            {
-              name: 'totalArea',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'getThreshold',
+          type: "function",
+          name: "getFrequency",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'owner',
+          type: "function",
+          name: "getPropertyValue",
+          inputs: [
+            {
+              name: "categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "totalArea",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getThreshold",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'pause',
-          inputs: [],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'paused',
+          type: "function",
+          name: "owner",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'bool',
-              internalType: 'bool',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'renounceOwnership',
+          type: "function",
+          name: "pause",
           inputs: [],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'setFrequency',
-          inputs: [
+          type: "function",
+          name: "paused",
+          inputs: [],
+          outputs: [
             {
-              name: 'newFrequency',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "bool",
+              internalType: "bool",
             },
           ],
-          outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'setThreshold',
-          inputs: [
-            {
-              name: 'newThreshold',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'transferOwnership',
-          inputs: [
-            {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'unpause',
+          type: "function",
+          name: "renounceOwnership",
           inputs: [],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'updateCategoryPrice',
+          type: "function",
+          name: "setFrequency",
           inputs: [
             {
-              name: '_categoryHash',
-              type: 'bytes32',
-              internalType: 'bytes32',
-            },
-            {
-              name: '_newAveragePricePerSqm',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "newFrequency",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'event',
-          name: 'CategoryPriceUpdated',
+          type: "function",
+          name: "setThreshold",
           inputs: [
             {
-              name: 'categoryHash',
-              type: 'bytes32',
+              name: "newThreshold",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "unpause",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "updateCategoryPrice",
+          inputs: [
+            {
+              name: "_categoryHash",
+              type: "bytes32",
+              internalType: "bytes32",
+            },
+            {
+              name: "_newAveragePricePerSqm",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "CategoryPriceUpdated",
+          inputs: [
+            {
+              name: "categoryHash",
+              type: "bytes32",
               indexed: true,
-              internalType: 'bytes32',
+              internalType: "bytes32",
             },
             {
-              name: 'newPrice',
-              type: 'uint256',
+              name: "newPrice",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
             {
-              name: 'updateTime',
-              type: 'uint256',
+              name: "updateTime",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'FrequencyChanged',
+          type: "event",
+          name: "FrequencyChanged",
           inputs: [
             {
-              name: 'newFrequency',
-              type: 'uint256',
+              name: "newFrequency",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'OwnershipTransferred',
+          type: "event",
+          name: "OwnershipTransferred",
           inputs: [
             {
-              name: 'previousOwner',
-              type: 'address',
+              name: "previousOwner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
             {
-              name: 'newOwner',
-              type: 'address',
+              name: "newOwner",
+              type: "address",
               indexed: true,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'Paused',
+          type: "event",
+          name: "Paused",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
+              name: "account",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'ThresholdChanged',
+          type: "event",
+          name: "ThresholdChanged",
           inputs: [
             {
-              name: 'newThreshold',
-              type: 'uint256',
+              name: "newThreshold",
+              type: "uint256",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'Unpaused',
+          type: "event",
+          name: "Unpaused",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
+              name: "account",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'error',
-          name: 'CategoryPriceNotSet',
+          type: "error",
+          name: "CategoryPriceNotSet",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'EnforcedPause',
+          type: "error",
+          name: "EnforcedPause",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'ExpectedPause',
+          type: "error",
+          name: "ExpectedPause",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'FrequencyNotMet',
+          type: "error",
+          name: "FrequencyNotMet",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'MismatchHashesAndPricesLength',
+          type: "error",
+          name: "MismatchHashesAndPricesLength",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
+          type: "error",
+          name: "OwnableInvalidOwner",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
+              name: "owner",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'PriceAboveThreshold',
+          type: "error",
+          name: "PriceAboveThreshold",
           inputs: [],
         },
       ],
       inheritedFunctions: {},
     },
     KolektivaHandler: {
-      address: '0x7897fa31ecb334b3a0e0300faa549d91a6761aeb',
+      address: "0x031dfa7b58713500fa54d5e5eaf4140b2170f8be",
       abi: [
         {
-          type: 'constructor',
+          type: "constructor",
           inputs: [
             {
-              name: '_owner',
-              type: 'address',
-              internalType: 'address',
+              name: "_owner",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: '_usdtTokenAddress',
-              type: 'address',
-              internalType: 'address',
+              name: "_usdtTokenAddress",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'approveMarketToTransferTokens',
+          type: "function",
+          name: "approveMarketToTransferTokens",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'burnTokens',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: 'from',
-              type: 'address',
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'checkTokenBalance',
+          type: "function",
+          name: "burnTokens",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "checkTokenBalance",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'createToken',
+          type: "function",
+          name: "createToken",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'symbol',
-              type: 'string',
-              internalType: 'string',
+              name: "symbol",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'propertyType',
-              type: 'string',
-              internalType: 'string',
+              name: "propertyType",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'country',
-              type: 'string',
-              internalType: 'string',
+              name: "country",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'state',
-              type: 'string',
-              internalType: 'string',
+              name: "state",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'city',
-              type: 'string',
-              internalType: 'string',
+              name: "city",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'location',
-              type: 'string',
-              internalType: 'string',
+              name: "location",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'totalSupply',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "totalSupply",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: 'salePrice',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "salePrice",
+              type: "uint256",
+              internalType: "uint256",
             },
             {
-              name: 'propertyOwner',
-              type: 'address',
-              internalType: 'address',
+              name: "propertyOwner",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'getTokenNames',
+          type: "function",
+          name: "getTokenNames",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'string[]',
-              internalType: 'string[]',
+              name: "",
+              type: "string[]",
+              internalType: "string[]",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'marketAddresses',
+          type: "function",
+          name: "marketAddresses",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'mintTokens',
+          type: "function",
+          name: "mintTokens",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'to',
-              type: 'address',
-              internalType: 'address',
+              name: "to",
+              type: "address",
+              internalType: "address",
             },
             {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'owner',
+          type: "function",
+          name: "owner",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'renounceOwnership',
+          type: "function",
+          name: "renounceOwnership",
           inputs: [],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'revokeToken',
+          type: "function",
+          name: "revokeToken",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'setFeePercentage',
+          type: "function",
+          name: "tokenAddresses",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: '_newFeePercentage',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'tokenAddresses',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
           ],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'address',
+              name: "",
+              type: "address",
+              internalType: "address",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'transferOwnership',
+          type: "function",
+          name: "transferOwnership",
           inputs: [
             {
-              name: 'newOwner',
-              type: 'address',
-              internalType: 'address',
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'function',
-          name: 'usdtToken',
+          type: "function",
+          name: "usdtToken",
           inputs: [],
           outputs: [
             {
-              name: '',
-              type: 'address',
-              internalType: 'contract IERC20',
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
             },
           ],
-          stateMutability: 'view',
+          stateMutability: "view",
         },
         {
-          type: 'function',
-          name: 'withdrawFee',
+          type: "function",
+          name: "withdrawFee",
           inputs: [
             {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
-            },
-          ],
-          outputs: [],
-          stateMutability: 'nonpayable',
-        },
-        {
-          type: 'function',
-          name: 'withdrawToken',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              internalType: 'string',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              internalType: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
           outputs: [],
-          stateMutability: 'nonpayable',
+          stateMutability: "nonpayable",
         },
         {
-          type: 'event',
-          name: 'FeePercentageUpdated',
+          type: "function",
+          name: "withdrawToken",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              internalType: "string",
             },
             {
-              name: 'newFeePercentage',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
             },
           ],
-          anonymous: false,
+          outputs: [],
+          stateMutability: "nonpayable",
         },
         {
-          type: 'event',
-          name: 'MarketCreated',
+          type: "event",
+          name: "MarketCreated",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
-            },
-            {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-            {
-              name: 'marketAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'MarketRevoked',
-          inputs: [
-            {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
-            },
-            {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-            {
-              name: 'marketAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-          ],
-          anonymous: false,
-        },
-        {
-          type: 'event',
-          name: 'OwnershipTransferred',
-          inputs: [
-            {
-              name: 'previousOwner',
-              type: 'address',
+              name: "name",
+              type: "string",
               indexed: true,
-              internalType: 'address',
+              internalType: "string",
             },
             {
-              name: 'newOwner',
-              type: 'address',
+              name: "tokenAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "marketAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "MarketRevoked",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
               indexed: true,
-              internalType: 'address',
+              internalType: "string",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
+            },
+            {
+              name: "marketAddress",
+              type: "address",
+              indexed: false,
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'TokenCreated',
+          type: "event",
+          name: "OwnershipTransferred",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
             },
             {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'TokenRevoked',
+          type: "event",
+          name: "TokenCreated",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
-              indexed: false,
-              internalType: 'string',
+              name: "name",
+              type: "string",
+              indexed: true,
+              internalType: "string",
             },
             {
-              name: 'tokenAddress',
-              type: 'address',
+              name: "tokenAddress",
+              type: "address",
               indexed: false,
-              internalType: 'address',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'WithdrawnFee',
+          type: "event",
+          name: "TokenRevoked",
           inputs: [
             {
-              name: 'amount',
-              type: 'uint256',
+              name: "name",
+              type: "string",
+              indexed: true,
+              internalType: "string",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
               indexed: false,
-              internalType: 'uint256',
+              internalType: "address",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'event',
-          name: 'WithdrawnToken',
+          type: "event",
+          name: "WithdrawnFee",
           inputs: [
             {
-              name: 'name',
-              type: 'string',
+              name: "amount",
+              type: "uint256",
               indexed: false,
-              internalType: 'string',
-            },
-            {
-              name: 'tokenAddress',
-              type: 'address',
-              indexed: false,
-              internalType: 'address',
-            },
-            {
-              name: 'amount',
-              type: 'uint256',
-              indexed: false,
-              internalType: 'uint256',
+              internalType: "uint256",
             },
           ],
           anonymous: false,
         },
         {
-          type: 'error',
-          name: 'InsufficientBalance',
+          type: "event",
+          name: "WithdrawnToken",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              indexed: true,
+              internalType: "string",
+            },
+            {
+              name: "tokenAddress",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "InsufficientBalance",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'MarketDoesNotExist',
+          type: "error",
+          name: "MarketDoesNotExist",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'OwnableInvalidOwner',
+          type: "error",
+          name: "OwnableInvalidOwner",
           inputs: [
             {
-              name: 'owner',
-              type: 'address',
-              internalType: 'address',
+              name: "owner",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'OwnableUnauthorizedAccount',
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
           inputs: [
             {
-              name: 'account',
-              type: 'address',
-              internalType: 'address',
+              name: "account",
+              type: "address",
+              internalType: "address",
             },
           ],
         },
         {
-          type: 'error',
-          name: 'TokenAlreadyExist',
+          type: "error",
+          name: "TokenAlreadyExist",
           inputs: [],
         },
         {
-          type: 'error',
-          name: 'TokenDoesNotExist',
+          type: "error",
+          name: "TokenDoesNotExist",
           inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    KolektivaMarket: {
+      address: "",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "_kolektivaToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_usdtToken",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_propertyOwner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_handler",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "_salePrice",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "calculateBuyCost",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "totalCost",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "fees",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "calculateSellProceeds",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "totalProceeds",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "fees",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "cancelOrder",
+          inputs: [
+            {
+              name: "_index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "endInitialOffering",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "getBuyOrderByIndex",
+          inputs: [
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "order",
+              type: "tuple",
+              internalType: "struct OrderLib.Order",
+              components: [
+                {
+                  name: "trader",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "price",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "orderId",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getBuyOrdersCount",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getFeePercentage",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getFeePrecision",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getInitialOfferingPercentage",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint128",
+              internalType: "uint128",
+            },
+          ],
+          stateMutability: "pure",
+        },
+        {
+          type: "function",
+          name: "getSellOrderByIndex",
+          inputs: [
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "order",
+              type: "tuple",
+              internalType: "struct OrderLib.Order",
+              components: [
+                {
+                  name: "trader",
+                  type: "address",
+                  internalType: "address",
+                },
+                {
+                  name: "amount",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "price",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+                {
+                  name: "orderId",
+                  type: "uint256",
+                  internalType: "uint256",
+                },
+              ],
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getSellOrdersCount",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "handler",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "initialOfferingActive",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "initialOfferingBuy",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "initialOfferingSupply",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "instantTrade",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuy",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "kolektivaToken",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "lastTradedPrice",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "placeOrder",
+          inputs: [
+            {
+              name: "_amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "_price",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "propertyOwner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "propertyOwnerBalance",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "salePrice",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "usdtToken",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "contract IERC20",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "withdrawPropertyOwnerFunds",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "InitialOfferingPurchase",
+          inputs: [
+            {
+              name: "buyer",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "totalCost",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "fee",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "InstantTrade",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "totalPrice",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuy",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderCancelled",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderFulfilled",
+          inputs: [
+            {
+              name: "buyer",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "seller",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OrderPlaced",
+          inputs: [
+            {
+              name: "trader",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "price",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "isBuyOrder",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
+            {
+              name: "timestamp",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PriceUpdated",
+          inputs: [
+            {
+              name: "newPrice",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "PropertyOwnerWithdrawal",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "IndexOutOfBounds",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InitialOfferingEnded",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InitialOfferingOngoing",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InsufficientBalance",
+          inputs: [
+            {
+              name: "available",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "required",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "InsufficientSupply",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InvalidAmount",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "InvalidOrder",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "NoFundsToWithdraw",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ReentrancyGuardReentrantCall",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "TransferFailed",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "Unauthorized",
+          inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    KolektivaToken: {
+      address: "",
+      abi: [
+        {
+          type: "constructor",
+          inputs: [
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "symbol",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_propertyType",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_country",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_state",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_city",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_location",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_totalSupply",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "_tokenHandler",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "allowance",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "approve",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "availableForSale",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "balanceOf",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "burn",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "decimals",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint8",
+              internalType: "uint8",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "getInformation",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "lastAppraisalDate",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "mint",
+          inputs: [
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "name",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "owner",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "propertyValue",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "renounceOwnership",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "symbol",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "tokenHandler",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "totalSupply",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transfer",
+          inputs: [
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferFrom",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "amount",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "transferOwnership",
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "event",
+          name: "Approval",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "spender",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "OwnershipTransferred",
+          inputs: [
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "event",
+          name: "Transfer",
+          inputs: [
+            {
+              name: "from",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "value",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
+          anonymous: false,
+        },
+        {
+          type: "error",
+          name: "CannotBeTransferredYet",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "ERC20InsufficientAllowance",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "allowance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InsufficientBalance",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "balance",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "needed",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidApprover",
+          inputs: [
+            {
+              name: "approver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidReceiver",
+          inputs: [
+            {
+              name: "receiver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSender",
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ERC20InvalidSpender",
+          inputs: [
+            {
+              name: "spender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "ExceedMaxSupply",
+          inputs: [],
+        },
+        {
+          type: "error",
+          name: "OwnableInvalidOwner",
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+        },
+        {
+          type: "error",
+          name: "OwnableUnauthorizedAccount",
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
       ],
       inheritedFunctions: {},
