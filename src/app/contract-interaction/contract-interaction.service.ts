@@ -5,13 +5,10 @@ import {
   publicActions,
   Address,
   Account,
-  toEventHash,
   parseEventLogs,
-  decodeEventLog,
 } from 'viem';
 import { privateKeyToAccount } from 'viem/accounts';
 import { deployedContracts } from '../../../deployed-contracts/deployedContracts';
-import { deployedSignatures } from '../../../deployed-contracts/deployedSignatures';
 import { ReadContractDto } from './dto/read-contract-dto';
 import { WriteContractDto } from './dto/write-contract-dto';
 import { chainsConstant } from './contract-interaction.constant';
@@ -23,11 +20,20 @@ dotenv.config();
 @Injectable()
 export class ContractInteractionService {
   private account: Account;
+
+  /**
+   * Initializes the service with the deployer's account.
+   */
   constructor() {
     const privateKey = process.env.DEPLOYER_PRIVATE_KEY! as Address;
     this.account = privateKeyToAccount(privateKey);
   }
 
+  /**
+   * Creates a wallet client for interacting with the blockchain.
+   * @param chainId The chain ID to create the client for.
+   * @returns A wallet client instance.
+   */
   private createClient(chainId: string) {
     return createWalletClient({
       account: this.account,
@@ -36,6 +42,13 @@ export class ContractInteractionService {
     }).extend(publicActions);
   }
 
+  /**
+   * Retrieves the contract instance for interaction.
+   * @param chainId The chain ID where the contract is deployed.
+   * @param contractName The name of the contract.
+   * @param contractAddress The address of the contract (optional).
+   * @returns An object containing the client, ABI, and address of the contract.
+   */
   private getContract(
     chainId: string,
     contractName: string,
@@ -54,6 +67,11 @@ export class ContractInteractionService {
     }
   }
 
+  /**
+   * Reads data from a contract using a given read contract DTO.
+   * @param readContractDto The DTO containing read parameters.
+   * @returns The result of the contract read operation.
+   */
   async readFunction(readContractDto: ReadContractDto): Promise<any> {
     const { chainId, contractName, contractAddress, ...others } =
       readContractDto;
@@ -69,6 +87,11 @@ export class ContractInteractionService {
     });
   }
 
+  /**
+   * Retrieves logs for contract events based on filters.
+   * @param getContractEventDto The DTO containing event filter parameters.
+   * @returns The parsed event logs.
+   */
   async getLogs(getContractEventDto: GetLogsEventDto): Promise<any> {
     const { chainId, contractName, contractAddress, args, ...others } =
       getContractEventDto;
@@ -78,8 +101,8 @@ export class ContractInteractionService {
       contractAddress,
     );
     // Only can filter the indexed arguments
+    //   fromBlock: 9416687n,
     const filter = await client.createContractEventFilter({
-      //   fromBlock: 9416687n,
       ...others,
       abi,
       address,
@@ -89,6 +112,11 @@ export class ContractInteractionService {
     return parseEventLogs({ abi, logs });
   }
 
+  /**
+   * Writes data to a contract using a given write contract DTO.
+   * @param writeContractDto The DTO containing write parameters.
+   * @returns The result of the contract write operation, including transaction receipt and parsed logs.
+   */
   async writeFunction(writeContractDto: WriteContractDto): Promise<any> {
     try {
       const { chainId, contractName, contractAddress, eventName, ...others } =

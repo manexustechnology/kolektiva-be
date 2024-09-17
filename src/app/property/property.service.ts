@@ -20,7 +20,8 @@ export class PropertyService {
     const { facilities, images, ...propertyData } = createPropertyDto;
     const tokenSymbol = await this.generateTokenSymbol();
 
-    const { logs } = await this.kolektivaContract.createProperty({
+    // Create market and token contracts onchain
+    const { logs, ...others } = await this.kolektivaContract.createProperty({
       chainId: propertyData.chainId,
       name: propertyData.tokenName,
       symbol: tokenSymbol,
@@ -33,6 +34,7 @@ export class PropertyService {
       salePrice: propertyData.salePrice,
       propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
     });
+    console.log('createProp:', others);
 
     return await this.prisma.property.create({
       data: {
@@ -109,6 +111,19 @@ export class PropertyService {
         facilities: true,
         images: true,
       },
+    });
+  }
+
+  async approveMarket(id: string) {
+    const propertyData = await this.findOne(id);
+    if (!propertyData) {
+      throw new Error(`Property id ${id} not found`);
+    }
+
+    // Approve the market allowance onchain
+    return await this.kolektivaContract.approveMarket({
+      chainId: propertyData.chainId,
+      name: propertyData.tokenName,
     });
   }
 

@@ -8,7 +8,7 @@ import {
 } from 'class-validator';
 import { Address } from 'viem';
 
-export class CreateKolektivaPropertyDto {
+export class KolektivaCreatePropertyDto {
   @ApiProperty()
   @IsNumber()
   chainId: number;
