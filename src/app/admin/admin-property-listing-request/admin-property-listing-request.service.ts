@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PropertyListingRequest, Prisma } from '@prisma/client';
-import { PaginateFunction, paginator, PaginatedResult } from '../../../commons/paginator.commons';
+import {
+  PaginateFunction,
+  paginator,
+  PaginatedResult,
+} from '../../../commons/paginator.commons';
 import { PrismaService } from '../../../shared/prisma/prisma.service';
 import { AdminListPropertyListingRequestQueryDto } from './dto/admin-list-property-listing-request-query.dto';
 import { AdminChangePropertyListingRequestStatusBodyDto } from './dto/admin-change-property-listing-request-status-body.dto';
@@ -17,6 +21,12 @@ export class AdminPropertyListingRequestService {
     const queryList: Prisma.PropertyListingRequestFindManyArgs = {
       where: {
         status: query.status || undefined,
+        address: {
+          search: query.search || undefined,
+        },
+        name: {
+          search: query.search || undefined,
+        },
       },
       orderBy: {
         updatedAt: 'desc',
