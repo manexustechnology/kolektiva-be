@@ -1,4 +1,15 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Query, UseGuards, UseInterceptors } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Post,
+  Query,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import { AdminPropertyListingRequestService } from './admin-property-listing-request.service';
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ResponseMessage } from '../../../decorators/response/response.decorator';
@@ -11,7 +22,9 @@ import { TransformInterceptor } from '../../../interceptors/transform/transform.
 @UseInterceptors(TransformInterceptor)
 @Controller('admin/property-listing-request')
 export class AdminPropertyListingRequestController {
-  constructor(private readonly adminPropertyListingRequestService: AdminPropertyListingRequestService) {}
+  constructor(
+    private readonly adminPropertyListingRequestService: AdminPropertyListingRequestService,
+  ) {}
 
   @ApiBearerAuth()
   @UseGuards(AdminGuard)

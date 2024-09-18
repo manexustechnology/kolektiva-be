@@ -20,4 +20,10 @@ export class AdminListPropertyListingRequestQueryDto {
   @Type(() => String)
   @IsString()
   status?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @Type(() => String)
+  @IsString()
+  search?: string;
 }
