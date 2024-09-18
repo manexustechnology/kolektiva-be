@@ -2,15 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { SubmitPropertyListingDto } from './dto/submit-property-listing-request.dto';
 import { Prisma, PropertyListingRequest } from '@prisma/client';
 import { PrismaService } from '../../shared/prisma/prisma.service';
-import {
-  PaginatedResult,
-  PaginateFunction,
-  paginator,
-} from '../../commons/paginator.commons';
-import { ListPropertyListingRequestQueryDto } from './dto/list-property-listing-request-query.dto';
-import { changePropertyListingRequestStatusBodyDto } from './dto/change-property-listing-request-status-body.dto';
-
-const paginate: PaginateFunction = paginator({ perPage: 10 });
 
 @Injectable()
 export class PropertyListingRequestService {
@@ -48,52 +39,5 @@ export class PropertyListingRequestService {
     } catch (error) {
       throw new Error('Failed to submit property listing request');
     }
-  }
-
-  async getListPropertyRequest(
-    query: ListPropertyListingRequestQueryDto,
-  ): Promise<PaginatedResult<PropertyListingRequest[]>> {
-    const queryList: Prisma.PropertyListingRequestFindManyArgs = {
-      where: {
-        status: query.status || undefined,
-      },
-      orderBy: {
-        updatedAt: 'desc',
-      },
-    };
-
-    const propertyListingList: PaginatedResult<PropertyListingRequest[]> =
-      await paginate(this.prisma.propertyListingRequest, queryList, {
-        page: query.page,
-        perPage: query.perPage,
-      });
-
-    return propertyListingList;
-  }
-
-  async getPropertyRequestDetail(id: string): Promise<PropertyListingRequest> {
-    const data = await this.prisma.propertyListingRequest.findFirst({
-      where: {
-        id,
-      },
-    });
-
-    return data;
-  }
-
-  async changePropertyRequestStatus(
-    id: string,
-    body: changePropertyListingRequestStatusBodyDto,
-  ): Promise<PropertyListingRequest> {
-    const data = await this.prisma.propertyListingRequest.update({
-      where: {
-        id,
-      },
-      data: {
-        status: body.status,
-      },
-    });
-
-    return data;
   }
 }
