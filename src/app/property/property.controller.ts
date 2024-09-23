@@ -67,6 +67,16 @@ export class PropertyController {
 
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({
+    description: 'Market successfully approved for property!',
+  })
+  @ResponseMessage('Market successfully approved for property!')
+  @Post('approve-market/:id')
+  approveMarket(@Param('id') id: string) {
+    return this.propertyService.approveMarket(id);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
     description: 'Successfully deleted property!',
   })
   @ResponseMessage('Successfully deleted property!')

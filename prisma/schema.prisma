@@ -6,12 +6,13 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch"]
+  previewFeatures = ["fullTextSearch", "postgresqlExtensions"]
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  extensions = [pg_trgm]
 }
 
 model User {
@@ -40,15 +41,18 @@ model Property {
   id            String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   marketAddress String                  @map("market_address")
   tokenAddress  String                  @map("token_address")
+  propertyOwnerAddress  String?             @map("property_owner_address")
+  tokenName     String?            @map("token_name")
+  tokenSymbol   String?            @map("token_symbol")
+  totalSupply   Int?               @map("total_supply")
+  salePrice     Int?               @map("sale_price")
   address       String                  @map("address")
+  location       String?             @map("location")
   city          String                  @map("city")
   state         String                  @map("state")
   country       String                  @map("country")
   type          String                  @map("type")
   chainId       Int?                    @map("chain_id")
-  tokenName     String?                 @map("token_name")
-  tokenSymbol   String?                 @map("token_symbol")
-  totalSupply   Int?                    @map("total_supply")
   latitude      String?                 @map("latitude")
   longitude     String?                 @map("longitude")
   description   String                  @map("description") @db.Text
@@ -63,8 +67,7 @@ model Property {
   deletedAt     DateTime?               @map("deleted_at")
   facilities    PropertyFacility[]      @relation("PropertyFacilities")
   images        PropertyImage[]         @relation("PropertyImages")
-  ownerships    UserPropertyOwnership[] @relation("OwnershipOfProperty")
-
+  ownerships UserPropertyOwnership[] @relation("OwnershipOfProperty")
   @@map("properties")
 }
 

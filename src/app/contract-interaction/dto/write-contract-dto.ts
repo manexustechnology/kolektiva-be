@@ -4,4 +4,5 @@ export class WriteContractDto {
   functionName: string;
   args: any[];
   contractAddress?: string;
+  eventName?: string[];
 }
