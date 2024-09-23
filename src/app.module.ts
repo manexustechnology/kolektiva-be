@@ -11,6 +11,8 @@ import { PropertyController } from './app/property/property.controller';
 import { PropertyService } from './app/property/property.service';
 import { PropertyListingRequestModule } from './app/property-listing-request/property-listing-request.module';
 import { UserPropertyOwnershipModule } from './app/user-property-ownership/user-property-ownership.module';
+import { AdminPropertyListingRequestModule } from './app/admin/admin-property-listing-request/admin-property-listing-request.module';
+import { AdminListedPropertyModule } from './app/admin/admin-listed-property/admin-listed-property.module';
 import { AuthModule } from './app/auth/auth.module';
 
 @Module({
@@ -26,8 +28,10 @@ import { AuthModule } from './app/auth/auth.module';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '300s' },
     }),
-    PropertyListingRequestModule,
     UserPropertyOwnershipModule,
+    PropertyListingRequestModule,
+    AdminPropertyListingRequestModule,
+    AdminListedPropertyModule,
     AuthModule
   ],
   controllers: [AppController, PropertyController],
