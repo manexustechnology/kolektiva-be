@@ -11,11 +11,3 @@ export class GetLogsEventDto {
 class ArgsEventDto {
   [argsEvent: string]: any;
 }
-
-export class GetLogsEventFromReceiptDto {
-  txReceipt: any;
-  chainId: string;
-  contractName: string;
-  eventName: string;
-  contractAddress?: string;
-}
