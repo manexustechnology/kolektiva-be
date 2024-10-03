@@ -65,15 +65,15 @@ export class PropertyController {
     return this.propertyService.update(id, updatePropertyDto);
   }
 
-  @HttpCode(HttpStatus.OK)
-  @ApiOkResponse({
-    description: 'Market successfully approved for property!',
-  })
-  @ResponseMessage('Market successfully approved for property!')
-  @Post('approve-market/:id')
-  approveMarket(@Param('id') id: string) {
-    return this.propertyService.approveMarket(id);
-  }
+  // @HttpCode(HttpStatus.OK)
+  // @ApiOkResponse({
+  //   description: 'Market successfully approved for property!',
+  // })
+  // @ResponseMessage('Market successfully approved for property!')
+  // @Post('approve-market/:id')
+  // approveMarket(@Param('id') id: string) {
+  //   return this.propertyService.approveMarket(id);
+  // }
 
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({

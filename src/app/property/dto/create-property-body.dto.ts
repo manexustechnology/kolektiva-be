@@ -6,8 +6,10 @@ import {
   IsNotEmpty,
   IsNumber,
   IsString,
+  ValidateNested,
 } from 'class-validator';
-import { Address } from 'viem';
+import { PropertyDataJsonDto } from '../../property-listing-request/dto/property-data-json.dto';
+import { Type } from 'class-transformer';
 
 export class CreatePropertyFacilityDto {
   @ApiProperty()
@@ -37,20 +39,6 @@ export class CreatePropertyImageDto {
 }
 
 export class CreatePropertyDto {
-  // @ApiProperty()
-  // @IsNotEmpty()
-  // @IsString()
-  // marketAddress: string;
-
-  // @ApiProperty()
-  // @IsNotEmpty()
-  // @IsString()
-  // tokenAddress: string;
-
-  // @ApiProperty()
-  // @IsEthereumAddress()
-  // propertyOwnerAddress: Address;
-
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
@@ -118,4 +106,9 @@ export class CreatePropertyDto {
 
   @ApiProperty({ type: [CreatePropertyImageDto] })
   images: CreatePropertyImageDto[];
+
+  @ApiProperty({ type: PropertyDataJsonDto })
+  @ValidateNested()
+  @Type(() => PropertyDataJsonDto)
+  propertyData: PropertyDataJsonDto;
 }

@@ -6,7 +6,9 @@ import {
   IsNotEmpty,
   IsNumber,
   IsString,
+  ValidateNested,
 } from 'class-validator';
+import { PropertyDataJsonDto } from './property-data-json.dto';
 
 export class SubmitPropertyListingDto {
   @ApiProperty()
@@ -32,69 +34,74 @@ export class SubmitPropertyListingDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsString()
-  googleMapsLink: string;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @Type(() => Number)
-  @IsNumber()
-  landArea: number;
-
-  @ApiProperty()
-  @IsNotEmpty()
-  @Type(() => Number)
-  @IsNumber()
-  buildingArea: number;
-
-  @ApiProperty()
-  @IsNotEmpty()
   @Type(() => Number)
   @IsNumber()
   priceEstimation: number;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  planToSell: string;
+  @ApiProperty({ type: PropertyDataJsonDto })
+  @ValidateNested()
+  @Type(() => PropertyDataJsonDto)
+  propertyData: PropertyDataJsonDto;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  propertyType: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // googleMapsLink: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  ownershipStatus: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @Type(() => Number)
+  // @IsNumber()
+  // landArea: number;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  propertyCondition: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @Type(() => Number)
+  // @IsNumber()
+  // buildingArea: number;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  occupancyStatus: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // planToSell: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  propertyManager: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // propertyType: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsString()
-  furniture: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // ownershipStatus: string;
 
-  @ApiProperty()
-  @IsNotEmpty()
-  @IsArray()
-  @IsString({ each: true })
-  propertyIssues: string[];
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // propertyCondition: string;
 
-  @ApiProperty()
-  @IsString()
-  includedFurniture: string;
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // occupancyStatus: string;
+
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // propertyManager: string;
+
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsString()
+  // furniture: string;
+
+  // @ApiProperty()
+  // @IsNotEmpty()
+  // @IsArray()
+  // @IsString({ each: true })
+  // propertyIssues: string[];
+
+  // @ApiProperty()
+  // @IsString()
+  // includedFurniture: string;
 }
