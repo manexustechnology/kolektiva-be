@@ -1,3 +1,9 @@
+/*
+  Warnings:
+
+  - A unique constraint covering the columns `[token_name]` on the table `properties` will be added. If there are existing duplicate values, this will fail.
+
+*/
 -- AlterTable
 ALTER TABLE "properties" ADD COLUMN     "property_data" JSONB;
 
@@ -57,6 +63,9 @@ CREATE TABLE "completed_quests" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "referrals_invited_user_id_key" ON "referrals"("invited_user_id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "properties_token_name_key" ON "properties"("token_name");
 
 -- AddForeignKey
 ALTER TABLE "referrals" ADD CONSTRAINT "referrals_referral_user_id_fkey" FOREIGN KEY ("referral_user_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

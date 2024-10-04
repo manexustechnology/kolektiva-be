@@ -42,7 +42,7 @@ model Property {
   marketAddress String                  @map("market_address")
   tokenAddress  String                  @map("token_address")
   propertyOwnerAddress  String?             @map("property_owner_address")
-  tokenName     String?            @map("token_name")
+  tokenName     String?            @map("token_name") @unique
   tokenSymbol   String?            @map("token_symbol")
   totalSupply   Int?               @map("total_supply")
   salePrice     Int?               @map("sale_price")
