@@ -3,7 +3,9 @@ import {
   Controller,
   HttpCode,
   HttpStatus,
+  Param,
   Post,
+  Put,
   UseInterceptors,
 } from '@nestjs/common';
 import { PropertyListingRequestService } from './property-listing-request.service';
@@ -28,6 +30,22 @@ export class PropertyListingRequestController {
   @Post('submit')
   async submitPropertyListingRequest(@Body() data: SubmitPropertyListingDto) {
     return await this.propertyListingRequestService.submitPropertyListingRequest(
+      data,
+    );
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Form submitted successfully!',
+  })
+  @ResponseMessage('Form submitted successfully!')
+  @Put('/:id')
+  async updatePropertyListingRequest(
+    @Param('id') id: string,
+    @Body() data: SubmitPropertyListingDto,
+  ) {
+    return await this.propertyListingRequestService.updatePropertyListingRequest(
+      id,
       data,
     );
   }

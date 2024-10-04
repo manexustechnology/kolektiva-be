@@ -58,22 +58,12 @@ export class PropertyController {
   })
   @ResponseMessage('Successfully updated property!')
   @Patch(':id')
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updatePropertyDto: UpdatePropertyDto,
   ) {
     return this.propertyService.update(id, updatePropertyDto);
   }
-
-  // @HttpCode(HttpStatus.OK)
-  // @ApiOkResponse({
-  //   description: 'Market successfully approved for property!',
-  // })
-  // @ResponseMessage('Market successfully approved for property!')
-  // @Post('approve-market/:id')
-  // approveMarket(@Param('id') id: string) {
-  //   return this.propertyService.approveMarket(id);
-  // }
 
   @HttpCode(HttpStatus.OK)
   @ApiOkResponse({

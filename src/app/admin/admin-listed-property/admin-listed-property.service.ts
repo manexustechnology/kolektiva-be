@@ -12,6 +12,7 @@ import { KolektivaContractService } from '../../kolektiva-contract/kolektiva-con
 import { Address } from 'viem';
 
 const paginate: PaginateFunction = paginator({ perPage: 10 });
+const emptyAddr: Address = '0x0000000000000000000000000000000000000000';
 
 @Injectable()
 export class AdminListedPropertyService {
@@ -90,7 +91,10 @@ export class AdminListedPropertyService {
         });
         updateData['isUpcoming'] = false;
 
-        if (!tokenAddr || !marketAddr) {
+        // Validate if tokenAddr and marketAddr are not empty addresses
+        const isEmptyAddress = (address: string) =>
+          !address || address === emptyAddr;
+        if (isEmptyAddress(tokenAddr) || isEmptyAddress(marketAddr)) {
           const { logs } = await this.kolektivaContract.createProperty({
             chainId: propertyData.chainId,
             name: propertyData.tokenName,
@@ -128,15 +132,14 @@ export class AdminListedPropertyService {
   async approveMarket(id: string) {
     const propertyData = await this.getListedPropertyDetail(id);
     if (
-      (!propertyData ||
-        !propertyData.tokenAddress ||
-        !propertyData.marketAddress) &&
-      propertyData.status === 'initialOffering'
+      !propertyData ||
+      !propertyData.tokenAddress ||
+      !propertyData.marketAddress ||
+      propertyData.status !== 'initialOffering'
     ) {
       throw new Error(`Property id ${id} not valid to approve market`);
     }
 
-    // Approve the market allowance onchain
     return await this.kolektivaContract.approveMarket({
       chainId: propertyData.chainId,
       name: propertyData.tokenName,

@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Post,
   Query,
   UseGuards,
@@ -63,7 +64,7 @@ export class AdminPropertyListingRequestController {
     description: 'Status successfully updated!',
   })
   @ResponseMessage('Status successfully updated!')
-  @Post('change-status/:id')
+  @Patch('change-status/:id')
   async changePropertyRequestStatus(
     @Param('id') id: string,
     @Body() body: AdminChangePropertyListingRequestStatusBodyDto,

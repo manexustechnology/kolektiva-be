@@ -18,7 +18,7 @@ interface DeployedContracts {
 export const deployedContracts: DeployedContracts = {
   4202: {
     KolektivaHandler: {
-      address: "0x870225C4DDD2C3d72fbC6e62664A22F8D6E0A2D6",
+      address: "0xA13EB2040be5cC14C29515893036C716C645bac1",
       abi: [
         {
           type: "constructor",
@@ -5372,7 +5372,7 @@ export const deployedContracts: DeployedContracts = {
   },
   11155111: {
     MockUSDT: {
-      address: "0x9e677d3281329d04fb3aa444e3668500bba139b2",
+      address: "0x6937e0521feab486631f35944989573f2d220472",
       abi: [
         {
           type: "constructor",
@@ -5801,7 +5801,7 @@ export const deployedContracts: DeployedContracts = {
       inheritedFunctions: {},
     },
     KolektivaOracle: {
-      address: "0x48abbfd9bdb6043f7d353530d6a4a55daf6cf6a9",
+      address: "0x207ed191a92b9d79d1f1d6c61a3da0fb40fd57a4",
       abi: [
         {
           type: "constructor",
@@ -6199,7 +6199,7 @@ export const deployedContracts: DeployedContracts = {
       inheritedFunctions: {},
     },
     KolektivaHandler: {
-      address: "0x031dfa7b58713500fa54d5e5eaf4140b2170f8be",
+      address: "0x07d6f30c5c192dcb344fe0b56974d8b400fdd6de",
       abi: [
         {
           type: "constructor",

@@ -3,19 +3,14 @@ import { CreatePropertyDto } from './dto/create-property-body.dto';
 import { PrismaService } from '../../shared/prisma/prisma.service';
 import { UpdatePropertyDto } from './dto/update-property-body.dto';
 import { ListPropertyQueryDto } from './dto/list-property-query.dto';
-import { KolektivaContractService } from '../kolektiva-contract/kolektiva-contract.service';
 import { Address } from 'viem';
+import { Prisma } from '@prisma/client';
 import * as dotenv from 'dotenv';
-// import { ChangePropertyStatusDto } from './dto/change-property-status.dto';
-import { Prisma, Property } from '@prisma/client';
 dotenv.config();
 
 @Injectable()
 export class PropertyService {
-  constructor(
-    private prisma: PrismaService,
-    // private kolektivaContract: KolektivaContractService,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   async create(createPropertyDto: CreatePropertyDto) {
     const { facilities, images, propertyData, ...others } = createPropertyDto;
@@ -100,23 +95,6 @@ export class PropertyService {
       },
     });
   }
-
-  // async approveMarket(id: string) {
-  //   const propertyData = await this.findOne(id);
-  //   if (
-  //     !propertyData ||
-  //     !propertyData.tokenAddress ||
-  //     !propertyData.marketAddress
-  //   ) {
-  //     throw new Error(`Property id ${id} not valid to approve market`);
-  //   }
-
-  //   // Approve the market allowance onchain
-  //   return await this.kolektivaContract.approveMarket({
-  //     chainId: propertyData.chainId,
-  //     name: propertyData.tokenName,
-  //   });
-  // }
 
   async update(id: string, updatePropertyDto: UpdatePropertyDto) {
     const { facilities, images, ...propertyData } = updatePropertyDto;
