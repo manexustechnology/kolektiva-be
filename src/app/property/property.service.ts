@@ -3,46 +3,28 @@ import { CreatePropertyDto } from './dto/create-property-body.dto';
 import { PrismaService } from '../../shared/prisma/prisma.service';
 import { UpdatePropertyDto } from './dto/update-property-body.dto';
 import { ListPropertyQueryDto } from './dto/list-property-query.dto';
-import { KolektivaContractService } from '../kolektiva-contract/kolektiva-contract.service';
-
-import * as dotenv from 'dotenv';
 import { Address } from 'viem';
+import { Prisma } from '@prisma/client';
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 @Injectable()
 export class PropertyService {
-  constructor(
-    private prisma: PrismaService,
-    private kolektivaContract: KolektivaContractService,
-  ) {}
+  constructor(private prisma: PrismaService) {}
 
   async create(createPropertyDto: CreatePropertyDto) {
-    const { facilities, images, ...propertyData } = createPropertyDto;
+    const { facilities, images, propertyData, ...others } = createPropertyDto;
     const tokenSymbol = await this.generateTokenSymbol();
-
-    // Create market and token contracts onchain
-    const { logs, ...others } = await this.kolektivaContract.createProperty({
-      chainId: propertyData.chainId,
-      name: propertyData.tokenName,
-      symbol: tokenSymbol,
-      propertyType: propertyData.type,
-      country: propertyData.country,
-      state: propertyData.state,
-      city: propertyData.city,
-      location: propertyData.location,
-      totalSupply: propertyData.totalSupply,
-      salePrice: propertyData.salePrice,
-      propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
-    });
-    console.log('createProp:', others);
 
     return await this.prisma.property.create({
       data: {
         propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
-        marketAddress: logs[0].args.marketAddress,
-        tokenAddress: logs[0].args.tokenAddress,
+        marketAddress: '',
+        tokenAddress: '',
+        isUpcoming: true,
         tokenSymbol,
-        ...propertyData,
+        propertyData: propertyData as unknown as Prisma.JsonObject,
+        ...others,
         facilities: {
           create: facilities,
         },
@@ -114,19 +96,6 @@ export class PropertyService {
     });
   }
 
-  async approveMarket(id: string) {
-    const propertyData = await this.findOne(id);
-    if (!propertyData) {
-      throw new Error(`Property id ${id} not found`);
-    }
-
-    // Approve the market allowance onchain
-    return await this.kolektivaContract.approveMarket({
-      chainId: propertyData.chainId,
-      name: propertyData.tokenName,
-    });
-  }
-
   async update(id: string, updatePropertyDto: UpdatePropertyDto) {
     const { facilities, images, ...propertyData } = updatePropertyDto;
 
@@ -163,7 +132,7 @@ export class PropertyService {
   private async generateTokenSymbol() {
     const count = (await this.prisma.property.count()) + 1;
     const prefix = 'KLTV';
-    const maxLimit = 9999; // KLV0001 format
+    const maxLimit = 9999; // KLTV0001 format
 
     if (count <= maxLimit) {
       return prefix + count.toString().padStart(4, '0');

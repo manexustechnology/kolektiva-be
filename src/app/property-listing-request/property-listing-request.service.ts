@@ -18,24 +18,32 @@ export class PropertyListingRequestService {
           email: data.email,
           address: data.address,
           priceEstimation: data.priceEstimation,
-          propertyData: {
-            googleMapsLink: data.googleMapsLink,
-            landArea: data.landArea,
-            buildingArea: data.buildingArea,
-            planToSell: data.planToSell,
-            propertyType: data.propertyType,
-            ownershipStatus: data.ownershipStatus,
-            propertyCondition: data.propertyCondition,
-            occupancyStatus: data.occupancyStatus,
-            propertyManager: data.propertyManager,
-            furniture: data.furniture,
-            propertyIssues: data.propertyIssues,
-            includedFurniture: data.includedFurniture,
-          } as Prisma.JsonObject,
+          propertyData: data.propertyData as unknown as Prisma.JsonObject,
         },
       });
 
       return newData;
+    } catch (error) {
+      throw new Error('Failed to submit property listing request');
+    }
+  }
+
+  async updatePropertyListingRequest(
+    id: string,
+    data: SubmitPropertyListingDto,
+  ): Promise<PropertyListingRequest> {
+    try {
+      return await this.prisma.propertyListingRequest.update({
+        where: { id },
+        data: {
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          address: data.address,
+          priceEstimation: data.priceEstimation,
+          propertyData: data.propertyData as unknown as Prisma.JsonObject,
+        },
+      });
     } catch (error) {
       throw new Error('Failed to submit property listing request');
     }

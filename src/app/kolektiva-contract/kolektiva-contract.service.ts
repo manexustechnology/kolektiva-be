@@ -2,8 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { ContractInteractionService } from '../contract-interaction/contract-interaction.service';
 import { WriteContractDto } from '../contract-interaction/dto/write-contract-dto';
 import { KolektivaCreatePropertyDto } from './dto/kolektiva-create-property-dto';
-import { error } from 'console';
 import { KolektivaApproveMarketDto } from './dto/kolektiva-approve-market-dto';
+import { KolektivaReadDto } from './dto/kolektiva-read.dto';
+import { ReadContractDto } from '../contract-interaction/dto/read-contract-dto';
 
 @Injectable()
 export class KolektivaContractService {
@@ -71,5 +72,25 @@ export class KolektivaContractService {
         }),
       );
     }
+  }
+
+  async getTokenAddress(input: KolektivaReadDto) {
+    const readContract: ReadContractDto = {
+      chainId: input.chainId.toString(),
+      contractName: 'KolektivaHandler',
+      functionName: 'tokenAddresses',
+      args: [input.name],
+    };
+    return await this.contractInteraction.readFunction(readContract);
+  }
+
+  async getMarketAddress(input: KolektivaReadDto) {
+    const readContract: ReadContractDto = {
+      chainId: input.chainId.toString(),
+      contractName: 'KolektivaHandler',
+      functionName: 'marketAddresses',
+      args: [input.name],
+    };
+    return await this.contractInteraction.readFunction(readContract);
   }
 }
