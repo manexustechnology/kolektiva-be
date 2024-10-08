@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class KolektivaReadDto {
-  @ApiProperty({ type: Number })
+  @ApiProperty()
   @IsNumber()
   chainId: number;
 

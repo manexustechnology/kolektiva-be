@@ -16,17 +16,17 @@ export class KolektivaCreatePropertyDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  name: string;
+  tokenName: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  symbol: string;
+  tokenSymbol: string;
 
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  propertyType: string;
+  type: string;
 
   @ApiProperty()
   @IsNotEmpty()
@@ -60,5 +60,5 @@ export class KolektivaCreatePropertyDto {
 
   @ApiProperty()
   @IsEthereumAddress()
-  propertyOwnerAddress: Address;
+  propertyOwnerAddress?: Address;
 }

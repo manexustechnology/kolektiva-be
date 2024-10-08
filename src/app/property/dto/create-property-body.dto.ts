@@ -1,14 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  isArray,
   IsBoolean,
   IsEthereumAddress,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { PropertyDataJsonDto } from '../../property-listing-request/dto/property-data-json.dto';
+import { PropertyDataDto } from '../../property-listing-request/dto/property-data.dto';
 import { Type } from 'class-transformer';
 
 export class CreatePropertyFacilityDto {
@@ -39,6 +39,26 @@ export class CreatePropertyImageDto {
 }
 
 export class CreatePropertyDto {
+  @ApiProperty({ required: false })
+  @IsEthereumAddress()
+  @IsNotEmpty()
+  marketAddress?: string;
+
+  @ApiProperty({ required: false })
+  @IsEthereumAddress()
+  @IsNotEmpty()
+  tokenAddress?: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  status: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  phase: string;
+
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
@@ -80,6 +100,11 @@ export class CreatePropertyDto {
   tokenName: string;
 
   @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  tokenSymbol: string;
+
+  @ApiProperty()
   @IsNumber()
   totalSupply: number;
 
@@ -101,14 +126,24 @@ export class CreatePropertyDto {
   @IsNumber()
   chainId: number;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsBoolean()
+  isUpcoming?: boolean;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsBoolean()
+  isAftermarket?: boolean;
+
   @ApiProperty({ type: [CreatePropertyFacilityDto] })
   facilities: CreatePropertyFacilityDto[];
 
   @ApiProperty({ type: [CreatePropertyImageDto] })
   images: CreatePropertyImageDto[];
 
-  @ApiProperty({ type: PropertyDataJsonDto })
+  @ApiProperty({ type: PropertyDataDto })
   @ValidateNested()
-  @Type(() => PropertyDataJsonDto)
-  propertyData: PropertyDataJsonDto;
+  @Type(() => PropertyDataDto)
+  propertyData: PropertyDataDto;
 }

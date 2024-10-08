@@ -56,10 +56,12 @@ model Property {
   latitude      String?                 @map("latitude")
   longitude     String?                 @map("longitude")
   description   String                  @map("description") @db.Text
-  status        String                  @default("pending") @map("status")
+  status        String                  @default("draft") @map("status")
+  phase         String                  @default("upcoming") @map("phase")
   isFeatured    Boolean?                @map("is_featured")
   isUpcoming    Boolean?                @map("is_upcoming")
   isAftermarket Boolean?                @map("is_aftermarket")
+  isApproved    Boolean?                @map("is_approved")
   createdBy     String                  @map("created_by")
   updatedBy     String                  @map("updated_by")
   createdAt     DateTime                @default(now()) @map("created_at")

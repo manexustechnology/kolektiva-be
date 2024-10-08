@@ -7,9 +7,19 @@ import {
 } from '../../../commons/paginator.commons';
 import { Prisma, Property } from '@prisma/client';
 import { AdminListedPropertyListDto } from './dto/admin-listed-property-list.dto';
-import { AdminChangeListedPropertyStatusDto } from './dto/admin-change-listed-property-status.dto';
+import {
+  AdminChangeListedPropertyPhaseDto,
+  AdminChangeListedPropertyStatusDto,
+} from './dto/admin-change-listed-property-status.dto';
 import { KolektivaContractService } from '../../kolektiva-contract/kolektiva-contract.service';
 import { Address } from 'viem';
+import {
+  CreatePropertyDto,
+  CreatePropertyImageDto,
+} from '../../property/dto/create-property-body.dto';
+import { PropertyDataDto } from '../../property-listing-request/dto/property-data.dto';
+import { PropertyService } from '../../property/property.service';
+import { KolektivaCreatePropertyDto } from '../../kolektiva-contract/dto/kolektiva-create-property-dto';
 
 const paginate: PaginateFunction = paginator({ perPage: 10 });
 const emptyAddr: Address = '0x0000000000000000000000000000000000000000';
@@ -18,6 +28,7 @@ const emptyAddr: Address = '0x0000000000000000000000000000000000000000';
 export class AdminListedPropertyService {
   constructor(
     private prisma: PrismaService,
+    private property: PropertyService,
     private kolektivaContract: KolektivaContractService,
   ) {}
 
@@ -63,13 +74,44 @@ export class AdminListedPropertyService {
 
     return data;
   }
-  async changePropertyStatus(
+
+  async createOrUpdatePropertyTokens(
+    propertyData: KolektivaCreatePropertyDto,
+  ): Promise<{ tokenAddress: Address; marketAddress: Address }> {
+    let tokenAddr = await this.kolektivaContract.getTokenAddress({
+      chainId: propertyData.chainId,
+      name: propertyData.tokenName,
+    });
+    let marketAddr = await this.kolektivaContract.getMarketAddress({
+      chainId: propertyData.chainId,
+      name: propertyData.tokenName,
+    });
+
+    const isEmptyAddress = (address: string) =>
+      !address || address === emptyAddr;
+    if (isEmptyAddress(tokenAddr) || isEmptyAddress(marketAddr)) {
+      const { logs } = await this.kolektivaContract.createProperty({
+        ...propertyData,
+        propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
+      });
+
+      tokenAddr = logs[0].args.tokenAddress;
+      marketAddr = logs[0].args.marketAddress;
+    }
+
+    return { tokenAddress: tokenAddr, marketAddress: marketAddr };
+  }
+
+  async changePropertyPhase(
     id: string,
-    body: AdminChangeListedPropertyStatusDto,
+    body: AdminChangeListedPropertyPhaseDto,
   ): Promise<any> {
     try {
       const propertyData = await this.getListedPropertyDetail(id);
-      let updateData = { status: body.status };
+      let updateData: any = {
+        phase: body.phase,
+        ...this.determineMarketPhase(body.phase),
+      };
 
       if (!propertyData) {
         throw new Error('Property not found');
@@ -78,50 +120,38 @@ export class AdminListedPropertyService {
       if (
         !propertyData.marketAddress &&
         !propertyData.tokenAddress &&
-        propertyData.status !== 'initialOffering' &&
-        body.status === 'initialOffering'
+        propertyData.phase !== 'initial-offering' &&
+        body.phase === 'initial-offering'
       ) {
-        let tokenAddr = await this.kolektivaContract.getTokenAddress({
-          chainId: propertyData.chainId,
-          name: propertyData.tokenName,
-        });
-        let marketAddr = await this.kolektivaContract.getMarketAddress({
-          chainId: propertyData.chainId,
-          name: propertyData.tokenName,
-        });
-        updateData['isUpcoming'] = false;
-
-        // Validate if tokenAddr and marketAddr are not empty addresses
-        const isEmptyAddress = (address: string) =>
-          !address || address === emptyAddr;
-        if (isEmptyAddress(tokenAddr) || isEmptyAddress(marketAddr)) {
-          const { logs } = await this.kolektivaContract.createProperty({
-            chainId: propertyData.chainId,
-            name: propertyData.tokenName,
-            symbol: propertyData.tokenSymbol,
-            propertyType: propertyData.type,
-            country: propertyData.country,
-            state: propertyData.state,
-            city: propertyData.city,
-            location: propertyData.location,
-            totalSupply: propertyData.totalSupply,
-            salePrice: propertyData.salePrice,
-            propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
-          });
-
-          tokenAddr = logs[0].args.tokenAddress;
-          marketAddr = logs[0].args.marketAddress;
-          updateData['marketAddress'] = marketAddr;
-          updateData['tokenAddress'] = tokenAddr;
-        } else {
-          updateData['marketAddress'] = marketAddr;
-          updateData['tokenAddress'] = tokenAddr;
-        }
+        const { tokenAddress, marketAddress } =
+          await this.createOrUpdatePropertyTokens(
+            this.transformToKolektivaCreatePropertyDto(propertyData),
+          );
+        updateData = {
+          ...updateData,
+          tokenAddress,
+          marketAddress,
+        };
       }
 
       return await this.prisma.property.update({
         where: { id },
         data: { ...updateData },
+      });
+    } catch (error) {
+      console.error('Change property status failed:', error);
+      throw error;
+    }
+  }
+
+  async changePropertyStatus(
+    id: string,
+    body: AdminChangeListedPropertyStatusDto,
+  ): Promise<any> {
+    try {
+      return await this.prisma.property.update({
+        where: { id },
+        data: { status: body.status },
       });
     } catch (error) {
       console.error('Change property status failed:', error);
@@ -133,16 +163,121 @@ export class AdminListedPropertyService {
     const propertyData = await this.getListedPropertyDetail(id);
     if (
       !propertyData ||
+      propertyData.isApproved === true ||
       !propertyData.tokenAddress ||
       !propertyData.marketAddress ||
-      propertyData.status !== 'initialOffering'
+      propertyData.phase !== 'initial-offering'
     ) {
-      throw new Error(`Property id ${id} not valid to approve market`);
+      return;
     }
-
-    return await this.kolektivaContract.approveMarket({
+    await this.kolektivaContract.approveMarket({
       chainId: propertyData.chainId,
       name: propertyData.tokenName,
     });
+    await this.prisma.property.update({
+      where: { id },
+      data: { isApproved: true },
+    });
+  }
+
+  async createListedProperty(propertyData: PropertyDataDto): Promise<Property> {
+    const tokenSymbol = await this.property.generateTokenSymbol();
+    const propertyDto = this.mapToCreatePropertyDto(propertyData, tokenSymbol);
+
+    if (propertyDto.phase === 'initial-offering') {
+      const { marketAddress, tokenAddress } =
+        await this.createOrUpdatePropertyTokens(
+          this.transformToKolektivaCreatePropertyDto(propertyDto),
+        );
+      propertyDto.marketAddress = marketAddress;
+      propertyDto.tokenAddress = tokenAddress;
+    }
+
+    const createdProperty = await this.property.create(propertyDto);
+
+    if (propertyDto.phase === 'initial-offering') {
+      await this.approveMarket(createdProperty.id);
+    }
+
+    return createdProperty;
+  }
+  private mapToCreatePropertyDto(
+    propertyData: PropertyDataDto,
+    tokenSymbol: string,
+  ): CreatePropertyDto {
+    return {
+      address: propertyData.propertyDetails.propertySummary.address,
+      location: propertyData.propertyDetails.propertySummary.district,
+      city: propertyData.propertyDetails.propertySummary.city,
+      state: propertyData.propertyDetails.propertySummary.state,
+      country: propertyData.propertyDetails.propertySummary.country,
+      status: propertyData.propertyDetails.propertyStatus.status,
+      phase: propertyData.propertyDetails.propertyStatus.phase,
+      type: propertyData.propertyDetails.propertyDetails.propertyType,
+      description: propertyData.propertyDetails.description,
+      tokenName: propertyData.propertyDetails.propertySummary.title,
+      tokenSymbol: tokenSymbol,
+      totalSupply: propertyData.financials.token.tokenSupply,
+      salePrice: propertyData.financials.token.tokenPrice,
+      createdBy: 'SYSTEM',
+      updatedBy: 'SYSTEM',
+      chainId: Number(process.env.DEFAULT_CHAIN_ID),
+      facilities: [], // Assuming no facilities data is provided in propertyData
+      images: this.imageUrlParser([
+        propertyData.propertyDetails.propertyImages.primary,
+        ...propertyData.propertyDetails.propertyImages.others,
+      ]),
+      propertyData: propertyData,
+      ...this.determineMarketPhase(
+        propertyData.propertyDetails.propertyStatus.phase,
+      ),
+    };
+  }
+
+  private imageUrlParser(urls: string[]): CreatePropertyImageDto[] {
+    return urls.map((url, index) => ({
+      image: url,
+      isHighlight: index === 0,
+    }));
+  }
+
+  private transformToKolektivaCreatePropertyDto(
+    input: any,
+  ): KolektivaCreatePropertyDto {
+    return {
+      chainId: input.chainId,
+      tokenName: input.tokenName,
+      tokenSymbol: input.tokenSymbol,
+      type: input.type,
+      country: input.country,
+      state: input.state,
+      city: input.city,
+      location: input.location,
+      totalSupply: input.totalSupply,
+      salePrice: input.salePrice,
+    };
+  }
+
+  private determineMarketPhase(phase: string): {
+    isUpcoming: boolean;
+    isAftermarket: boolean;
+  } {
+    let isUpcoming = false;
+    let isAftermarket = false;
+
+    switch (phase) {
+      case 'upcoming':
+        isUpcoming = true;
+        break;
+      case 'initial-offering':
+        isUpcoming = false;
+        isAftermarket = false;
+        break;
+      case 'aftermarket':
+        isAftermarket = true;
+        break;
+    }
+
+    return { isUpcoming, isAftermarket };
   }
 }

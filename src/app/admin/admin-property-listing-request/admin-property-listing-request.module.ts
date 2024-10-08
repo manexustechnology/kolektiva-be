@@ -1,20 +1,20 @@
 import { Module } from '@nestjs/common';
 import { AdminPropertyListingRequestService } from './admin-property-listing-request.service';
 import { AdminPropertyListingRequestController } from './admin-property-listing-request.controller';
-import { PropertyModule } from '../../property/property.module';
-import { PropertyService } from '../../property/property.service';
 import { KolektivaContractService } from '../../kolektiva-contract/kolektiva-contract.service';
 import { ContractInteractionService } from '../../contract-interaction/contract-interaction.service';
+import { AdminListedPropertyModule } from '../admin-listed-property/admin-listed-property.module';
+import { AdminListedPropertyService } from '../admin-listed-property/admin-listed-property.service';
+import { PropertyModule } from '../../property/property.module';
 
 @Module({
-  imports: [PropertyModule],
-  exports: [PropertyService],
+  imports: [AdminListedPropertyModule, PropertyModule],
   controllers: [AdminPropertyListingRequestController],
   providers: [
     AdminPropertyListingRequestService,
     ContractInteractionService,
     KolektivaContractService,
-    PropertyService,
+    AdminListedPropertyService,
   ],
 })
 export class AdminPropertyListingRequestModule {}

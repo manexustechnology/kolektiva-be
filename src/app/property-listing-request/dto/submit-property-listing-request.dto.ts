@@ -8,7 +8,7 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { PropertyDataJsonDto } from './property-data-json.dto';
+import { PropertyDataDto } from './property-data.dto';
 
 export class SubmitPropertyListingDto {
   @ApiProperty()
@@ -38,10 +38,10 @@ export class SubmitPropertyListingDto {
   @IsNumber()
   priceEstimation: number;
 
-  @ApiProperty({ type: PropertyDataJsonDto })
+  @ApiProperty({ type: PropertyDataDto })
   @ValidateNested()
-  @Type(() => PropertyDataJsonDto)
-  propertyData: PropertyDataJsonDto;
+  @Type(() => PropertyDataDto)
+  propertyData: PropertyDataDto;
 
   // @ApiProperty()
   // @IsNotEmpty()
