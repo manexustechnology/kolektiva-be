@@ -1,7 +1,11 @@
 export enum PropertyStatus {
-  PENDING = 'pending',
-  INITIAL_OFFERING = 'initialOffering',
-  AFTER_MARKET = 'afterMarket',
-  REJECTED = 'rejected',
-  ARCHIVED = 'archived',
+  VISIBLE = 'visible',
+  HIDDEN = 'hidden',
+  DRAFT = 'draft',
+}
+
+export enum PropertyPhase {
+  UPCOMING = 'upcoming',
+  AFTERMARKET = 'aftermarket',
+  INITIAL_OFFERING = 'initial-offering',
 }

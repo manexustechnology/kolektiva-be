@@ -14,9 +14,9 @@ export class KolektivaContractService {
     try {
       const {
         chainId,
-        name,
-        symbol,
-        propertyType,
+        tokenName,
+        tokenSymbol,
+        type,
         country,
         state,
         city,
@@ -31,9 +31,9 @@ export class KolektivaContractService {
         contractName: 'KolektivaHandler',
         functionName: 'createToken',
         args: [
-          name,
-          symbol,
-          propertyType,
+          tokenName,
+          tokenSymbol,
+          type,
           country,
           state,
           city,

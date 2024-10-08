@@ -8,9 +8,8 @@ import {
 import { PrismaService } from '../../../shared/prisma/prisma.service';
 import { AdminListPropertyListingRequestQueryDto } from './dto/admin-list-property-listing-request-query.dto';
 import { AdminChangePropertyListingRequestStatusBodyDto } from './dto/admin-change-property-listing-request-status-body.dto';
-import { PropertyService } from '../../property/property.service';
-import { PropertyDataJsonDto } from '../../property-listing-request/dto/property-data-json.dto';
-import { CreatePropertyImageDto } from '../../property/dto/create-property-body.dto';
+import { PropertyDataDto } from '../../property-listing-request/dto/property-data.dto';
+import { AdminListedPropertyService } from '../admin-listed-property/admin-listed-property.service';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -21,7 +20,7 @@ const paginate: PaginateFunction = paginator({ perPage: 10 });
 export class AdminPropertyListingRequestService {
   constructor(
     private prisma: PrismaService,
-    private property: PropertyService,
+    private property: AdminListedPropertyService,
   ) {}
 
   async getListPropertyRequest(
@@ -84,30 +83,9 @@ export class AdminPropertyListingRequestService {
           },
         });
 
-        const propertyData =
-          data.propertyData as unknown as PropertyDataJsonDto;
+        const propertyData = data.propertyData as unknown as PropertyDataDto;
         if (request.status !== 'approved' && body.status === 'approved') {
-          await this.property.create({
-            address: propertyData?.propertyDetails_propertySummary_address,
-            location: propertyData?.propertyDetails_propertySummary_district,
-            city: propertyData?.propertyDetails_propertySummary_city,
-            state: propertyData?.propertyDetails_propertySummary_state,
-            country: propertyData?.propertyDetails_propertySummary_country,
-            type: propertyData?.propertyDetails_propertyDetails_propertyType,
-            description: propertyData?.propertyDetails_description,
-            tokenName: propertyData?.propertyDetails_propertySummary_title,
-            totalSupply: propertyData?.financials_token_tokenSupply,
-            salePrice: propertyData?.financials_token_tokenPrice,
-            createdBy: 'SYSTEM',
-            updatedBy: 'SYSTEM',
-            chainId: Number(process.env.DEFAULT_CHAIN_ID!),
-            facilities: [],
-            images: this.imageUrlParser([
-              propertyData.propertyDetails_propertyImages_primary,
-              ...propertyData.propertyDetails_propertyImages_others,
-            ]),
-            propertyData: propertyData,
-          });
+          await this.property.createListedProperty(propertyData);
         }
 
         return data;
@@ -115,12 +93,5 @@ export class AdminPropertyListingRequestService {
     } catch (error) {
       console.error('Change property request status failed:', error);
     }
-  }
-
-  private imageUrlParser(urls: string[]): CreatePropertyImageDto[] {
-    return urls.map((url, index) => ({
-      image: url,
-      isHighlight: index === 0,
-    }));
   }
 }

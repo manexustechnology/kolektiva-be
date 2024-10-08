@@ -13,16 +13,19 @@ export class PropertyService {
   constructor(private prisma: PrismaService) {}
 
   async create(createPropertyDto: CreatePropertyDto) {
-    const { facilities, images, propertyData, ...others } = createPropertyDto;
-    const tokenSymbol = await this.generateTokenSymbol();
-
+    const {
+      facilities,
+      images,
+      marketAddress = '',
+      tokenAddress = '',
+      propertyData,
+      ...others
+    } = createPropertyDto;
     return await this.prisma.property.create({
       data: {
+        marketAddress,
+        tokenAddress,
         propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
-        marketAddress: '',
-        tokenAddress: '',
-        isUpcoming: true,
-        tokenSymbol,
         propertyData: propertyData as unknown as Prisma.JsonObject,
         ...others,
         facilities: {
@@ -129,7 +132,7 @@ export class PropertyService {
     });
   }
 
-  private async generateTokenSymbol() {
+  async generateTokenSymbol() {
     const count = (await this.prisma.property.count()) + 1;
     const prefix = 'KLTV';
     const maxLimit = 9999; // KLTV0001 format

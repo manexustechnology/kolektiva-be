@@ -8,6 +8,6 @@ import { KolektivaContractController } from './kolektiva-contract.controller';
   imports: [ContractInteractionModule],
   exports: [KolektivaContractService],
   controllers: [KolektivaContractController],
-  providers: [KolektivaContractService, PrismaService],
+  providers: [KolektivaContractService],
 })
 export class KolektivaContractModule {}
