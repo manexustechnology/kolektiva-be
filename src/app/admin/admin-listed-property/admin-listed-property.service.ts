@@ -20,6 +20,7 @@ import {
 import { PropertyDataDto } from '../../property-listing-request/dto/property-data.dto';
 import { PropertyService } from '../../property/property.service';
 import { KolektivaCreatePropertyDto } from '../../kolektiva-contract/dto/kolektiva-create-property-dto';
+import { UpdatePropertyDto } from '../../property/dto/update-property-body.dto';
 
 const paginate: PaginateFunction = paginator({ perPage: 10 });
 const emptyAddr: Address = '0x0000000000000000000000000000000000000000';
@@ -182,7 +183,10 @@ export class AdminListedPropertyService {
 
   async createListedProperty(propertyData: PropertyDataDto): Promise<Property> {
     const tokenSymbol = await this.property.generateTokenSymbol();
-    const propertyDto = this.mapToCreatePropertyDto(propertyData, tokenSymbol);
+    const propertyDto = this.mapToCreatePropertyDto(propertyData, {
+      tokenSymbol,
+      propertyData,
+    }) as CreatePropertyDto;
 
     if (propertyDto.phase === 'initial-offering') {
       const { marketAddress, tokenAddress } =
@@ -198,13 +202,39 @@ export class AdminListedPropertyService {
     if (propertyDto.phase === 'initial-offering') {
       await this.approveMarket(createdProperty.id);
     }
-
     return createdProperty;
   }
+
+  async updateListedProperty(
+    id: string,
+    propertyData: PropertyDataDto,
+  ): Promise<Property> {
+    const propertyDto = this.mapToCreatePropertyDto(propertyData, {
+      propertyData,
+    }) as UpdatePropertyDto;
+
+    if (
+      !propertyDto.marketAddress &&
+      !propertyDto.tokenAddress &&
+      propertyDto.phase === 'initial-offering'
+    ) {
+      const { marketAddress, tokenAddress } =
+        await this.createOrUpdatePropertyTokens(
+          this.transformToKolektivaCreatePropertyDto(propertyDto),
+        );
+      propertyDto.marketAddress = marketAddress;
+      propertyDto.tokenAddress = tokenAddress;
+
+      await this.approveMarket(id);
+    }
+
+    return await this.property.update(id, propertyDto);
+  }
+
   private mapToCreatePropertyDto(
     propertyData: PropertyDataDto,
-    tokenSymbol: string,
-  ): CreatePropertyDto {
+    others: any,
+  ): CreatePropertyDto | UpdatePropertyDto {
     return {
       address: propertyData.propertyDetails.propertySummary.address,
       location: propertyData.propertyDetails.propertySummary.district,
@@ -216,7 +246,7 @@ export class AdminListedPropertyService {
       type: propertyData.propertyDetails.propertyDetails.propertyType,
       description: propertyData.propertyDetails.description,
       tokenName: propertyData.propertyDetails.propertySummary.title,
-      tokenSymbol: tokenSymbol,
+      // tokenSymbol: tokenSymbol,
       totalSupply: propertyData.financials.token.tokenSupply,
       salePrice: propertyData.financials.token.tokenPrice,
       createdBy: 'SYSTEM',
@@ -227,10 +257,10 @@ export class AdminListedPropertyService {
         propertyData.propertyDetails.propertyImages.primary,
         ...propertyData.propertyDetails.propertyImages.others,
       ]),
-      propertyData: propertyData,
       ...this.determineMarketPhase(
         propertyData.propertyDetails.propertyStatus.phase,
       ),
+      ...others,
     };
   }
 
