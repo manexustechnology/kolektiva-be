@@ -6,13 +6,20 @@ import {
   HttpStatus,
   Param,
   Patch,
+  Post,
+  Put,
   Query,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { AdminListedPropertyService } from './admin-listed-property.service';
 import { AdminListedPropertyListDto } from './dto/admin-listed-property-list.dto';
-import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiOkResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { ResponseMessage } from '../../../decorators/response/response.decorator';
 import { TransformInterceptor } from '../../../interceptors/transform/transform.interceptor';
 import { AdminGuard } from '../../../guards/admin.guard';
@@ -20,6 +27,8 @@ import {
   AdminChangeListedPropertyPhaseDto,
   AdminChangeListedPropertyStatusDto,
 } from './dto/admin-change-listed-property-status.dto';
+import { PropertyDataDto } from '../../property-listing-request/dto/property-data.dto';
+import { Property } from '@prisma/client';
 
 @ApiTags('Listed Property (Admin)')
 @UseInterceptors(TransformInterceptor)
@@ -90,5 +99,39 @@ export class AdminListedPropertyController {
     );
     await this.adminListedPropertyService.approveMarket(id);
     return result;
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(AdminGuard)
+  @HttpCode(HttpStatus.CREATED)
+  @ApiCreatedResponse({
+    description: 'Property successfully created!',
+  })
+  @ResponseMessage('Property successfully created!')
+  @Post('submit')
+  async submitListedProperty(
+    @Body() propertyData: PropertyDataDto,
+  ): Promise<Property> {
+    return await this.adminListedPropertyService.createListedProperty(
+      propertyData,
+    );
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(AdminGuard)
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Property successfully updated!',
+  })
+  @ResponseMessage('Property successfully updated!')
+  @Put('update/:id')
+  async updateListedProperty(
+    @Param('id') id: string,
+    @Body() propertyData: PropertyDataDto,
+  ): Promise<Property> {
+    return await this.adminListedPropertyService.updateListedProperty(
+      id,
+      propertyData,
+    );
   }
 }

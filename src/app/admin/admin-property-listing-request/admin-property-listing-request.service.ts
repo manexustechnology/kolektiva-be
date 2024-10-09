@@ -64,34 +64,28 @@ export class AdminPropertyListingRequestService {
     id: string,
     body: AdminChangePropertyListingRequestStatusBodyDto,
   ): Promise<PropertyListingRequest> {
-    try {
-      return await this.prisma.$transaction(async (prisma) => {
-        const request = await prisma.propertyListingRequest.findUnique({
-          where: { id },
-        });
+    const request = await this.prisma.propertyListingRequest.findUnique({
+      where: { id },
+    });
 
-        if (!request) {
-          throw new Error('Property listing request not found');
-        }
-
-        const data = await prisma.propertyListingRequest.update({
-          where: {
-            id,
-          },
-          data: {
-            status: body.status,
-          },
-        });
-
-        const propertyData = data.propertyData as unknown as PropertyDataDto;
-        if (request.status !== 'approved' && body.status === 'approved') {
-          await this.property.createListedProperty(propertyData);
-        }
-
-        return data;
-      });
-    } catch (error) {
-      console.error('Change property request status failed:', error);
+    if (!request) {
+      throw new Error('Property listing request not found');
     }
+
+    const data = await this.prisma.propertyListingRequest.update({
+      where: {
+        id,
+      },
+      data: {
+        status: body.status,
+      },
+    });
+
+    const propertyData = data.propertyData as unknown as PropertyDataDto;
+    if (request.status !== 'approved' && body.status === 'approved') {
+      await this.property.createListedProperty(propertyData);
+    }
+
+    return data;
   }
 }
