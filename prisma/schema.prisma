@@ -1,76 +1,70 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch", "postgresqlExtensions"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
   extensions = [pg_trgm]
 }
 
 model User {
-  id                String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  walletAddress     String    @map("wallet_address") @unique
-  inviteCode        String?   @map("invite_code")
-  referralCode      String?   @map("referral_code")
-  referralCodeLimit Int?      @map("referral_code_limit")
-  point             BigInt    @default(0)
-  onboardingStep    BigInt    @default(1) @map("onboarding_step")
-  finishOnboarding  Boolean   @default(false) @map("finish_onboarding")
-  zkmeVerification  Boolean   @default(false) @map("zkme_verification")
-  createdAt         DateTime  @default(now()) @map("created_at")
-  updatedAt         DateTime  @updatedAt @map("updated_at")
-  deletedAt         DateTime? @map("deleted_at")
-
-  ownerships     UserPropertyOwnership[] @relation("OwnershipByUser")
-  myReferral     Referral?        @relation(name: "InvitedUser")
-  invitedUsers   Referral[]       @relation(name: "ReferralUser")
-  completedQuest CompletedQuest[]
+  id                String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  walletAddress     String                  @unique @map("wallet_address")
+  inviteCode        String?                 @map("invite_code")
+  referralCode      String?                 @map("referral_code")
+  referralCodeLimit Int?                    @map("referral_code_limit")
+  point             BigInt                  @default(0)
+  onboardingStep    BigInt                  @default(1) @map("onboarding_step")
+  finishOnboarding  Boolean                 @default(false) @map("finish_onboarding")
+  zkmeVerification  Boolean                 @default(false) @map("zkme_verification")
+  createdAt         DateTime                @default(now()) @map("created_at")
+  updatedAt         DateTime                @updatedAt @map("updated_at")
+  deletedAt         DateTime?               @map("deleted_at")
+  lastActive        DateTime?               @map("last_active")
+  completedQuest    CompletedQuest[]
+  myReferral        Referral?               @relation("InvitedUser")
+  invitedUsers      Referral[]              @relation("ReferralUser")
+  ownerships        UserPropertyOwnership[] @relation("OwnershipByUser")
 
   @@map("users")
 }
 
 model Property {
-  id            String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  marketAddress String                  @map("market_address")
-  tokenAddress  String                  @map("token_address")
-  propertyOwnerAddress  String?             @map("property_owner_address")
-  tokenName     String?            @map("token_name") @unique
-  tokenSymbol   String?            @map("token_symbol")
-  totalSupply   Int?               @map("total_supply")
-  salePrice     Int?               @map("sale_price")
-  address       String                  @map("address")
-  location       String?             @map("location")
-  city          String                  @map("city")
-  state         String                  @map("state")
-  country       String                  @map("country")
-  type          String                  @map("type")
-  chainId       Int?                    @map("chain_id")
-  latitude      String?                 @map("latitude")
-  longitude     String?                 @map("longitude")
-  description   String                  @map("description") @db.Text
-  status        String                  @default("draft") @map("status")
-  phase         String                  @default("upcoming") @map("phase")
-  isFeatured    Boolean?                @map("is_featured")
-  isUpcoming    Boolean?                @map("is_upcoming")
-  isAftermarket Boolean?                @map("is_aftermarket")
-  isApproved    Boolean?                @map("is_approved")
-  createdBy     String                  @map("created_by")
-  updatedBy     String                  @map("updated_by")
-  createdAt     DateTime                @default(now()) @map("created_at")
-  updatedAt     DateTime                @updatedAt @map("updated_at")
-  deletedAt     DateTime?               @map("deleted_at")
-  propertyData    Json?                 @map("property_data")
-  facilities    PropertyFacility[]      @relation("PropertyFacilities")
-  images        PropertyImage[]         @relation("PropertyImages")
-  ownerships    UserPropertyOwnership[] @relation("OwnershipOfProperty")
+  id                   String                  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  marketAddress        String                  @map("market_address")
+  tokenAddress         String                  @map("token_address")
+  propertyOwnerAddress String?                 @map("property_owner_address")
+  tokenName            String?                 @unique @map("token_name")
+  tokenSymbol          String?                 @map("token_symbol")
+  totalSupply          Int?                    @map("total_supply")
+  salePrice            Int?                    @map("sale_price")
+  address              String                  @map("address")
+  location             String?                 @map("location")
+  city                 String                  @map("city")
+  state                String                  @map("state")
+  country              String                  @map("country")
+  type                 String                  @map("type")
+  chainId              Int?                    @map("chain_id")
+  latitude             String?                 @map("latitude")
+  longitude            String?                 @map("longitude")
+  description          String                  @map("description")
+  status               String                  @default("draft") @map("status")
+  phase                String                  @default("upcoming") @map("phase")
+  isFeatured           Boolean?                @map("is_featured")
+  isUpcoming           Boolean?                @map("is_upcoming")
+  isAftermarket        Boolean?                @map("is_aftermarket")
+  createdBy            String                  @map("created_by")
+  updatedBy            String                  @map("updated_by")
+  createdAt            DateTime                @default(now()) @map("created_at")
+  updatedAt            DateTime                @updatedAt @map("updated_at")
+  deletedAt            DateTime?               @map("deleted_at")
+  propertyData         Json?                   @map("property_data")
+  isApproved           Boolean?                @map("is_approved")
+  facilities           PropertyFacility[]      @relation("PropertyFacilities")
+  images               PropertyImage[]         @relation("PropertyImages")
+  ownerships           UserPropertyOwnership[] @relation("OwnershipOfProperty")
 
   @@map("properties")
 }
@@ -80,11 +74,10 @@ model UserPropertyOwnership {
   propertyId    String   @map("property_id") @db.Uuid
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
+  property      Property @relation("OwnershipOfProperty", fields: [propertyId], references: [id])
+  user          User     @relation("OwnershipByUser", fields: [walletAddress], references: [walletAddress])
 
-  user     User     @relation(fields: [walletAddress], references: [walletAddress], name: "OwnershipByUser")
-  property Property @relation(fields: [propertyId], references: [id], name: "OwnershipOfProperty")
-
-  @@id(name: "walletAddress_propertyId", [walletAddress, propertyId])
+  @@id([walletAddress, propertyId], name: "walletAddress_propertyId")
   @@unique([walletAddress, propertyId])
   @@map("user_property_ownerships")
 }
@@ -97,8 +90,7 @@ model PropertyFacility {
   isHighlight Boolean  @map("is_highlight")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-
-  property Property @relation(fields: [propertyId], references: [id], name: "PropertyFacilities")
+  property    Property @relation("PropertyFacilities", fields: [propertyId], references: [id])
 
   @@map("property_facilities")
 }
@@ -110,8 +102,7 @@ model PropertyImage {
   isHighlight Boolean  @map("is_highlight")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-
-  property Property @relation(fields: [propertyId], references: [id], name: "PropertyImages")
+  property    Property @relation("PropertyImages", fields: [propertyId], references: [id])
 
   @@map("property_images")
 }
@@ -137,31 +128,29 @@ model Referral {
   invitedUserId  String?  @unique @map("invited_user_id") @db.Uuid
   createdAt      DateTime @default(now()) @map("created_at")
   updatedAt      DateTime @updatedAt @map("updated_at")
-
-  referralUser User  @relation(fields: [referralUserId], references: [id], name: "ReferralUser")
-  invitedUser  User? @relation(fields: [invitedUserId], references: [id], name: "InvitedUser")
+  invitedUser    User?    @relation("InvitedUser", fields: [invitedUserId], references: [id])
+  referralUser   User     @relation("ReferralUser", fields: [referralUserId], references: [id])
 
   @@map("referrals")
 }
 
 model Quest {
-  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  imageUrl       String?   @map("image_url") @db.Text
-  authorName     String    @map("author_name")
-  authorUsername String?   @map("author_username")
+  id             String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  imageUrl       String?          @map("image_url")
+  authorName     String           @map("author_name")
+  authorUsername String?          @map("author_username")
   title          String?
-  description    String    @db.Text
+  description    String
   type           String
-  startDate      DateTime? @map("start_date")
-  endDate        DateTime? @map("end_date")
-  status         String    @default("active")
-  rewardPoint    BigInt    @map("reward_point")
-  totalReward    BigInt    @default(0) @map("total_reward")
-  campaignLink   String?   @map("campaign_link") @db.Text
-  ctaButton      String    @map("cta_button")
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
-
+  startDate      DateTime?        @map("start_date")
+  endDate        DateTime?        @map("end_date")
+  status         String           @default("active")
+  rewardPoint    BigInt           @map("reward_point")
+  totalReward    BigInt           @default(0) @map("total_reward")
+  campaignLink   String?          @map("campaign_link")
+  ctaButton      String           @map("cta_button")
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
   completedQuest CompletedQuest[]
 
   @@map("quests")
@@ -174,10 +163,8 @@ model CompletedQuest {
   rewardPoint BigInt   @map("reward_point")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-
-  quest Quest @relation(fields: [questId], references: [id])
-  user  User  @relation(fields: [userId], references: [id])
+  quest       Quest    @relation(fields: [questId], references: [id])
+  user        User     @relation(fields: [userId], references: [id])
 
   @@map("completed_quests")
 }
-

@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 export const jwtConstants = {
   secret: process.env.AUTH_SECRET || '',
   signature: process.env.AUTH_SIGNATURE || '',

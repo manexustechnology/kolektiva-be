@@ -126,6 +126,16 @@ export class VerifyGuard implements CanActivate {
             walletAddress,
             referralCode,
             referralCodeLimit: Number(process.env.MAXIMUM_REFERRALS || 10),
+            lastActive: new Date(),
+          },
+        });
+      } else {
+        await this.prisma.user.update({
+          where: {
+            walletAddress,
+          },
+          data: {
+            lastActive: new Date(),
           },
         });
       }

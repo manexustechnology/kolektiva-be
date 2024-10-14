@@ -15,6 +15,7 @@ import { KolektivaContractService } from '../../kolektiva-contract/kolektiva-con
 import { Address } from 'viem';
 import {
   CreatePropertyDto,
+  CreatePropertyFacilityDto,
   CreatePropertyImageDto,
 } from '../../property/dto/create-property-body.dto';
 import { PropertyDataDto } from '../../property-listing-request/dto/property-data.dto';
@@ -41,13 +42,13 @@ export class AdminListedPropertyService {
     if (query.searchAddress) {
       searchAddress = query.searchAddress.replace(' ', ' | ');
     }
-
     const queryList: Prisma.PropertyFindManyArgs = {
       where: {
         status: query.status || undefined,
         address: {
           search: searchAddress,
         },
+        deletedAt: null,
       },
       orderBy: {
         updatedAt: 'desc',
@@ -156,7 +157,7 @@ export class AdminListedPropertyService {
       });
     } catch (error) {
       console.error('Change property status failed:', error);
-      throw error; // Rethrow the error to ensure that the caller is aware that the operation failed
+      throw error;
     }
   }
 
@@ -252,11 +253,8 @@ export class AdminListedPropertyService {
       createdBy: 'SYSTEM',
       updatedBy: 'SYSTEM',
       chainId: Number(process.env.DEFAULT_CHAIN_ID),
-      facilities: [], // Assuming no facilities data is provided in propertyData
-      images: this.imageUrlParser([
-        propertyData.propertyDetails.propertyImages.primary,
-        ...propertyData.propertyDetails.propertyImages.others,
-      ]),
+      facilities: this.facilitiesParser(propertyData), // Assuming no facilities data is provided in propertyData
+      images: this.imagesParser(propertyData),
       ...this.determineMarketPhase(
         propertyData.propertyDetails.propertyStatus.phase,
       ),
@@ -264,11 +262,97 @@ export class AdminListedPropertyService {
     };
   }
 
-  private imageUrlParser(urls: string[]): CreatePropertyImageDto[] {
+  private imagesParser(
+    propertyData: PropertyDataDto,
+  ): CreatePropertyImageDto[] {
+    const urls = [
+      propertyData.propertyDetails.propertyImages.primary,
+      ...propertyData.propertyDetails.propertyImages.others,
+    ];
     return urls.map((url, index) => ({
       image: url,
       isHighlight: index === 0,
     }));
+  }
+  private facilitiesParser(
+    propertyData: PropertyDataDto,
+  ): CreatePropertyFacilityDto[] {
+    const facilities: CreatePropertyFacilityDto[] = [];
+
+    const propertySpecs = propertyData.propertyDetails.propertySpecifications;
+    const propertySummary = propertyData.propertyDetails.propertySummary;
+    if (propertySummary.landArea) {
+      facilities.push({
+        type: 'LAND_AREA',
+        facility: propertySummary.landArea.toString(),
+        isHighlight: true,
+      });
+    }
+    if (propertySummary.buildingArea) {
+      facilities.push({
+        type: 'BUILDING_AREA',
+        facility: propertySummary.buildingArea.toString(),
+        isHighlight: true,
+      });
+    }
+    if (propertySpecs.floors) {
+      facilities.push({
+        type: 'FLOORS',
+        facility: propertySpecs.floors.toString(),
+        isHighlight: true,
+      });
+    }
+    if (propertySpecs.waterSupply) {
+      facilities.push({
+        type: 'WATER_SUPPLY',
+        facility: propertySpecs.waterSupply,
+        isHighlight: true,
+      });
+    }
+    if (propertySpecs.propertyCertificate) {
+      facilities.push({
+        type: 'CERTIFICATE',
+        facility: propertySpecs.propertyCertificate,
+        isHighlight: true,
+      });
+    }
+    if (propertySpecs.garage) {
+      facilities.push({
+        type: 'GARAGE',
+        facility: propertySpecs.garage,
+        isHighlight: true,
+      });
+    }
+    if (propertySpecs.bedrooms) {
+      facilities.push({
+        type: 'BEDROOMS',
+        facility: propertySpecs.bedrooms.toString(),
+        isHighlight: true,
+      });
+    }
+    if (propertySpecs.garden) {
+      facilities.push({
+        type: 'GARDEN',
+        facility: propertySpecs.garden,
+        isHighlight: true,
+      });
+    }
+    if (propertySpecs.bathrooms) {
+      facilities.push({
+        type: 'BATHROOMS',
+        facility: propertySpecs.bathrooms.toString(),
+        isHighlight: true,
+      });
+    }
+    if (propertySpecs.swimPool) {
+      facilities.push({
+        type: 'POOL',
+        facility: propertySpecs.swimPool,
+        isHighlight: true,
+      });
+    }
+
+    return facilities;
   }
 
   private transformToKolektivaCreatePropertyDto(

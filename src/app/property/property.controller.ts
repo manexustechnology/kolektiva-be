@@ -74,4 +74,14 @@ export class PropertyController {
   remove(@Param('id') id: string) {
     return this.propertyService.remove(id);
   }
+
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Successfully set property to aftermarket phase!',
+  })
+  @ResponseMessage('Successfully set property to aftermarket phase!')
+  @Patch('set-aftermarket/:id')
+  async setAftermarket(@Param('id') id: string) {
+    return this.propertyService.setAftermarketPhase(id);
+  }
 }
