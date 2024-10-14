@@ -42,13 +42,13 @@ export class AdminListedPropertyService {
     if (query.searchAddress) {
       searchAddress = query.searchAddress.replace(' ', ' | ');
     }
-
     const queryList: Prisma.PropertyFindManyArgs = {
       where: {
         status: query.status || undefined,
         address: {
           search: searchAddress,
         },
+        deletedAt: null,
       },
       orderBy: {
         updatedAt: 'desc',
