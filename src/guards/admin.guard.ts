@@ -7,6 +7,8 @@ import {
 import { AdminGuardFailedException } from '../exceptions/admin-guard-failed.exception';
 import { JwtService } from '@nestjs/jwt';
 import { adminJwtConstants } from '../constants/auth.constants';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 @Injectable()
 export class AdminGuard implements CanActivate {
@@ -21,6 +23,7 @@ export class AdminGuard implements CanActivate {
     if (!request.headers.authorization) {
       throw new UnauthorizedException();
     }
+
     const authorization: string = request.headers.authorization;
     const token = authorization.split(' ')[1];
 
@@ -45,12 +48,14 @@ export class AdminGuard implements CanActivate {
       }
 
       const emailAddress = payload.email;
-      if (!emailAddress || !emailAddress.endsWith('@manexus.xyz')) {
-        throw new AdminGuardFailedException(
-          'Invalid email address, please use manexus email',
-        );
-      }
 
+      if (process.env.NODE_ENV !== 'development') {
+        if (!emailAddress || !emailAddress.endsWith('@manexus.xyz')) {
+          throw new AdminGuardFailedException(
+            'Invalid email address, please use manexus email',
+          );
+        }
+      }
       // Valid
       return true;
     } catch (error) {

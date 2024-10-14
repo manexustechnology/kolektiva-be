@@ -53,7 +53,7 @@ export class KolektivaCreatePropertyDto {
   @IsPositive()
   totalSupply: number;
 
-  @ApiProperty()
+  @ApiProperty({ description: 'Sale price with 0 decimals' })
   @IsNumber()
   @IsPositive()
   salePrice: number;

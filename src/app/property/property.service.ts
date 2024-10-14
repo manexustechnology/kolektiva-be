@@ -43,9 +43,11 @@ export class PropertyService {
   }
 
   async findAll(request: ListPropertyQueryDto) {
-    const { sort, location, propertyType, search, chainId } = request;
+    const { sort, location, propertyType, search, chainId, phase } = request;
 
     const whereClause: any = { AND: [] };
+    // only shown visible properties
+    whereClause.status = 'visible';
 
     if (chainId && !isNaN(Number(chainId))) {
       whereClause.chainId = Number(chainId);
@@ -57,6 +59,10 @@ export class PropertyService {
 
     if (propertyType && propertyType !== 'All') {
       whereClause.type = propertyType;
+    }
+
+    if (phase && phase !== 'All') {
+      whereClause.type = phase;
     }
 
     if (search && search.trim()) {
@@ -128,6 +134,17 @@ export class PropertyService {
       include: {
         facilities: true,
         images: true,
+      },
+    });
+  }
+
+  async setAftermarketPhase(id: string) {
+    return this.prisma.property.update({
+      where: { id },
+      data: {
+        isUpcoming: false,
+        isAftermarket: true,
+        phase: 'aftermarket',
       },
     });
   }

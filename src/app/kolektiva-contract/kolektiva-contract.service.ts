@@ -6,6 +6,8 @@ import { KolektivaApproveMarketDto } from './dto/kolektiva-approve-market-dto';
 import { KolektivaReadDto } from './dto/kolektiva-read.dto';
 import { ReadContractDto } from '../contract-interaction/dto/read-contract-dto';
 
+const precision: number = 1_000_000; // 6 decimals
+
 @Injectable()
 export class KolektivaContractService {
   constructor(private contractInteraction: ContractInteractionService) {}
@@ -39,7 +41,7 @@ export class KolektivaContractService {
           city,
           location,
           totalSupply,
-          salePrice,
+          salePrice * precision,
           propertyOwnerAddress,
         ],
         eventName: ['MarketCreated'],

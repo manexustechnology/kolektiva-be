@@ -25,33 +25,270 @@ window.onload = function() {
           ]
         }
       },
-      "/newsletter/subscribe": {
+      "/property": {
         "post": {
-          "operationId": "NewsletterController_subscribe",
+          "operationId": "PropertyController_create",
           "parameters": [],
           "requestBody": {
             "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubscribeDto"
+                  "$ref": "#/components/schemas/CreatePropertyDto"
                 }
               }
             }
           },
           "responses": {
             "200": {
-              "description": "Successfully subscribe!"
+              "description": "Successfully created new property!"
             }
           },
           "tags": [
-            "Newsletter"
+            "Property"
+          ]
+        },
+        "get": {
+          "operationId": "PropertyController_findAll",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successfully get property data!"
+            }
+          },
+          "tags": [
+            "Property"
           ]
         }
       },
-      "/quest/available": {
+      "/property/{id}": {
         "get": {
-          "operationId": "QuestController_available",
+          "operationId": "PropertyController_findOne",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully get property data!"
+            }
+          },
+          "tags": [
+            "Property"
+          ]
+        },
+        "patch": {
+          "operationId": "PropertyController_update",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdatePropertyDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully updated property!"
+            }
+          },
+          "tags": [
+            "Property"
+          ]
+        },
+        "delete": {
+          "operationId": "PropertyController_remove",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully deleted property!"
+            }
+          },
+          "tags": [
+            "Property"
+          ]
+        }
+      },
+      "/property/set-aftermarket/{id}": {
+        "patch": {
+          "operationId": "PropertyController_setAftermarket",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully set property to aftermarket phase!"
+            }
+          },
+          "tags": [
+            "Property"
+          ]
+        }
+      },
+      "/user-property": {
+        "post": {
+          "operationId": "UserPropertyOwnershipController_create",
+          "parameters": [],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserPropertyDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully created new user property!"
+            }
+          },
+          "tags": [
+            "User Property Ownership"
+          ]
+        }
+      },
+      "/user-property/{walletAddress}": {
+        "get": {
+          "operationId": "UserPropertyOwnershipController_findUserProperties",
+          "parameters": [
+            {
+              "name": "walletAddress",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully get user property data!"
+            }
+          },
+          "tags": [
+            "User Property Ownership"
+          ]
+        }
+      },
+      "/user-property/count/{walletAddress}": {
+        "get": {
+          "operationId": "UserPropertyOwnershipController_getCountUserProperties",
+          "parameters": [
+            {
+              "name": "walletAddress",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully get count user property data!"
+            }
+          },
+          "tags": [
+            "User Property Ownership"
+          ]
+        }
+      },
+      "/property-listing-request/submit": {
+        "post": {
+          "operationId": "PropertyListingRequestController_submitPropertyListingRequest",
+          "parameters": [],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitPropertyListingDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Form submitted successfully!"
+            }
+          },
+          "tags": [
+            "Property Listing Request (User)"
+          ]
+        }
+      },
+      "/property-listing-request/{id}": {
+        "put": {
+          "operationId": "PropertyListingRequestController_updatePropertyListingRequest",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitPropertyListingDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Form submitted successfully!"
+            }
+          },
+          "tags": [
+            "Property Listing Request (User)"
+          ]
+        }
+      },
+      "/admin/property-listing-request": {
+        "get": {
+          "operationId": "AdminPropertyListingRequestController_getListPropertyRequest",
           "parameters": [
             {
               "name": "page",
@@ -68,15 +305,31 @@ window.onload = function() {
               "schema": {
                 "type": "number"
               }
+            },
+            {
+              "name": "status",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "search",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
             }
           ],
           "responses": {
             "200": {
-              "description": "Successfully retrieve data!"
+              "description": "Data retrieved successfully!"
             }
           },
           "tags": [
-            "Quest"
+            "Property Listing Request (Admin)"
           ],
           "security": [
             {
@@ -85,9 +338,75 @@ window.onload = function() {
           ]
         }
       },
-      "/quest/completed": {
+      "/admin/property-listing-request/detail/{id}": {
         "get": {
-          "operationId": "QuestController_completed",
+          "operationId": "AdminPropertyListingRequestController_getPropertyRequestDetail",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Data retrieved successfully!"
+            }
+          },
+          "tags": [
+            "Property Listing Request (Admin)"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/admin/property-listing-request/change-status/{id}": {
+        "patch": {
+          "operationId": "AdminPropertyListingRequestController_changePropertyRequestStatus",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminChangePropertyListingRequestStatusBodyDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Status successfully updated!"
+            }
+          },
+          "tags": [
+            "Property Listing Request (Admin)"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/admin/listed-property": {
+        "get": {
+          "operationId": "AdminListedPropertyController_list",
           "parameters": [
             {
               "name": "page",
@@ -104,15 +423,31 @@ window.onload = function() {
               "schema": {
                 "type": "number"
               }
+            },
+            {
+              "name": "status",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "searchAddress",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
             }
           ],
           "responses": {
             "200": {
-              "description": "Successfully retrieve data!"
+              "description": "Data retrieved successfully!"
             }
           },
           "tags": [
-            "Quest"
+            "Listed Property (Admin)"
           ],
           "security": [
             {
@@ -121,27 +456,64 @@ window.onload = function() {
           ]
         }
       },
-      "/quest/complete-quest": {
-        "post": {
-          "operationId": "QuestController_completeQuest",
-          "parameters": [],
+      "/admin/listed-property/detail/{id}": {
+        "get": {
+          "operationId": "AdminListedPropertyController_getPropertyRequestDetail",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Data retrieved successfully!"
+            }
+          },
+          "tags": [
+            "Listed Property (Admin)"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/admin/listed-property/change-status/{id}": {
+        "patch": {
+          "operationId": "AdminListedPropertyController_changePropertyRequestStatus",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
           "requestBody": {
             "required": true,
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CompleteQuestBodyDto"
+                  "$ref": "#/components/schemas/AdminChangeListedPropertyStatusDto"
                 }
               }
             }
           },
           "responses": {
             "200": {
-              "description": "Successfully complete quest!"
+              "description": "Status successfully updated!"
             }
           },
           "tags": [
-            "Quest"
+            "Listed Property (Admin)"
           ],
           "security": [
             {
@@ -150,22 +522,132 @@ window.onload = function() {
           ]
         }
       },
-      "/quest/leaderboards": {
-        "get": {
-          "operationId": "QuestController_leaderboards",
-          "parameters": [],
+      "/admin/listed-property/change-phase/{id}": {
+        "patch": {
+          "operationId": "AdminListedPropertyController_changePropertyRequestPhase",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminChangeListedPropertyPhaseDto"
+                }
+              }
+            }
+          },
           "responses": {
             "200": {
-              "description": "Successfully retrieve leadeboards!"
+              "description": "Status successfully updated!"
             }
           },
           "tags": [
-            "Quest"
+            "Listed Property (Admin)"
           ],
           "security": [
             {
               "bearer": []
             }
+          ]
+        }
+      },
+      "/admin/listed-property/submit": {
+        "post": {
+          "operationId": "AdminListedPropertyController_submitListedProperty",
+          "parameters": [],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyDataDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Property successfully created!"
+            }
+          },
+          "tags": [
+            "Listed Property (Admin)"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/admin/listed-property/update/{id}": {
+        "put": {
+          "operationId": "AdminListedPropertyController_updateListedProperty",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyDataDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Property successfully updated!"
+            }
+          },
+          "tags": [
+            "Listed Property (Admin)"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/kolektiva-contract": {
+        "post": {
+          "operationId": "KolektivaContractController_create",
+          "parameters": [],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/KolektivaCreatePropertyDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successfully created new kolektiva property!"
+            }
+          },
+          "tags": [
+            "Kolektiva Contract"
           ]
         }
       },
@@ -265,567 +747,29 @@ window.onload = function() {
           ]
         }
       },
-      "/playground/image-generator": {
+      "/auth/update/zkme-verification": {
         "post": {
-          "operationId": "PlaygroundController_generateImage",
-          "summary": "Generate Image",
-          "description": "Generates an image based on the provided input data.",
-          "parameters": [],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageGeneratorDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully generated image!"
-            }
-          },
-          "tags": [
-            "Playground"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        }
-      },
-      "/playground/image-analyzer": {
-        "post": {
-          "operationId": "PlaygroundController_analyzeImage",
-          "summary": "Analyze Image",
-          "description": "Analyzes an image based on the provided input data.",
-          "parameters": [],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageAnalyzerDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully analyzed image!"
-            }
-          },
-          "tags": [
-            "Playground"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        }
-      },
-      "/playground/chat": {
-        "post": {
-          "operationId": "ChatController_createNewSession",
-          "summary": "Create New Chat Session",
-          "description": "Creates a new chat session based on the provided input data.",
-          "parameters": [],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InputChatSessionDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully create chat session!"
-            }
-          },
-          "tags": [
-            "Playground"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        },
-        "get": {
-          "operationId": "ChatController_findAllSessions",
-          "summary": "Find All Chat Sessions",
-          "description": "Finds all chat sessions based on the provided input data.",
+          "operationId": "AuthController_setUserZkmeVerification",
           "parameters": [],
           "responses": {
             "200": {
-              "description": "Successfully find all chat sessions!"
+              "description": "Successfully verify data!"
             }
           },
           "tags": [
-            "Playground"
+            "Auth"
           ],
           "security": [
             {
               "bearer": []
             }
-          ]
-        }
-      },
-      "/playground/chat/{sessionId}": {
-        "get": {
-          "operationId": "ChatController_findOneSession",
-          "summary": "Find One Chat Session",
-          "description": "Finds a single chat session along with its associated messages based on the provided input data.",
-          "parameters": [
-            {
-              "name": "sessionId",
-              "required": true,
-              "in": "path",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successfully find chat session!"
-            }
-          },
-          "tags": [
-            "Playground"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        },
-        "patch": {
-          "operationId": "ChatController_updateSession",
-          "summary": "Update Chat Session",
-          "description": "Updates a chat session based on the provided input data.",
-          "parameters": [
-            {
-              "name": "sessionId",
-              "required": true,
-              "in": "path",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UpdateChatSessionDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully update chat session!"
-            }
-          },
-          "tags": [
-            "Playground"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        },
-        "post": {
-          "operationId": "ChatController_addMessage",
-          "summary": "Add Chat Message",
-          "description": "Adds a message to a chat session based on the provided input data.",
-          "parameters": [
-            {
-              "name": "sessionId",
-              "required": true,
-              "in": "path",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InputChatSessionDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully add chat message!"
-            }
-          },
-          "tags": [
-            "Playground"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        },
-        "delete": {
-          "operationId": "ChatController_deleteSession",
-          "summary": "Delete Chat Session",
-          "description": "Deletes a chat session based on the provided input data.",
-          "parameters": [
-            {
-              "name": "sessionId",
-              "required": true,
-              "in": "path",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successfully delete chat session!"
-            }
-          },
-          "tags": [
-            "Playground"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        }
-      },
-      "/point/faucet": {
-        "post": {
-          "operationId": "PointController_faucet",
-          "summary": "Faucet Points",
-          "description": "Adds points to the user account in development environment.",
-          "parameters": [],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PointDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully faucet points!"
-            }
-          },
-          "tags": [
-            "Point"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        }
-      },
-      "/digital-collection/list": {
-        "get": {
-          "operationId": "DigitalCollectionController_list",
-          "summary": "List Digital Collections",
-          "description": "Retrieves a list of digital collections.",
-          "parameters": [
-            {
-              "name": "page",
-              "required": false,
-              "in": "query",
-              "schema": {
-                "type": "number"
-              }
-            },
-            {
-              "name": "perPage",
-              "required": false,
-              "in": "query",
-              "schema": {
-                "type": "number"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successfully retrieve data!"
-            }
-          },
-          "tags": [
-            "Digital Collection"
-          ]
-        }
-      },
-      "/digital-collection/owned-list": {
-        "get": {
-          "operationId": "DigitalCollectionController_ownedList",
-          "summary": "List Owned Digital Collections",
-          "description": "Retrieves a list of digital collections owned by the user.",
-          "parameters": [
-            {
-              "name": "page",
-              "required": false,
-              "in": "query",
-              "schema": {
-                "type": "number"
-              }
-            },
-            {
-              "name": "perPage",
-              "required": false,
-              "in": "query",
-              "schema": {
-                "type": "number"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successfully retrieve data!"
-            }
-          },
-          "tags": [
-            "Digital Collection"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        }
-      },
-      "/digital-collection/create": {
-        "post": {
-          "operationId": "DigitalCollectionController_create",
-          "summary": "Create Digital Collection",
-          "description": "Creates a new digital collection.",
-          "parameters": [],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CreateDigitalCollectionDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully create data!"
-            }
-          },
-          "tags": [
-            "Digital Collection"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        }
-      },
-      "/digital-collection/detail/{identifier}": {
-        "get": {
-          "operationId": "DigitalCollectionController_detail",
-          "summary": "Get Digital Collection Detail",
-          "description": "Retrieves the details of a specific digital collection.",
-          "parameters": [
-            {
-              "name": "identifier",
-              "required": true,
-              "in": "path",
-              "description": "Digital Collection Identifier",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successfully retrieve data!"
-            }
-          },
-          "tags": [
-            "Digital Collection"
-          ]
-        }
-      },
-      "/digital-collection/check-slug": {
-        "get": {
-          "operationId": "DigitalCollectionController_checkSlug",
-          "summary": "Check Digital Collection Slug",
-          "description": "Checks if a slug for a digital collection is available.",
-          "parameters": [
-            {
-              "name": "slug",
-              "required": true,
-              "in": "query",
-              "description": "Slug to check for uniqueness",
-              "example": "cute-dragon",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successfully check slug for digital collection!"
-            }
-          },
-          "tags": [
-            "Digital Collection"
-          ]
-        }
-      },
-      "/image-vector": {
-        "post": {
-          "operationId": "ImageVectorController_upsertImage",
-          "summary": "Upsert New Image Vector",
-          "description": "Creates a new chat session based on the provided input data.",
-          "parameters": [],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageVectorUpsertDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully upsert image vector!"
-            }
-          },
-          "tags": [
-            "Cortex"
-          ],
-          "security": [
-            {
-              "bearer": []
-            }
-          ]
-        },
-        "get": {
-          "operationId": "ImageVectorController_fetchByIds",
-          "summary": "Fetch Image Vectors by IDs",
-          "description": "Fetches image vectors based on the provided IDs.",
-          "parameters": [
-            {
-              "name": "ids",
-              "required": true,
-              "in": "query",
-              "schema": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Successfully fetch image vectors by IDs!"
-            }
-          },
-          "tags": [
-            "Cortex"
-          ]
-        }
-      },
-      "/image-vector/list": {
-        "get": {
-          "operationId": "ImageVectorController_listImageVectors",
-          "summary": "List Image Vectors",
-          "description": "Lists image vectors based on the provided options.",
-          "parameters": [],
-          "responses": {
-            "200": {
-              "description": "Successfully list image vectors!"
-            }
-          },
-          "tags": [
-            "Cortex"
-          ]
-        }
-      },
-      "/image-vector/search-by-text": {
-        "post": {
-          "operationId": "ImageVectorController_searchByText",
-          "summary": "Search Image Vectors by Text",
-          "description": "Searches image vectors based on the provided text.",
-          "parameters": [],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageVectorQueryByTextDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully search image vectors by text!"
-            }
-          },
-          "tags": [
-            "Cortex"
-          ]
-        }
-      },
-      "/image-vector/search-by-image": {
-        "post": {
-          "operationId": "ImageVectorController_searchByImage",
-          "summary": "Search Image Vectors by Image",
-          "description": "Searches image vectors based on the provided image.",
-          "parameters": [],
-          "requestBody": {
-            "required": true,
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ImageVectorQueryByImageDto"
-                }
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "Successfully search image vectors by image!"
-            }
-          },
-          "tags": [
-            "Cortex"
           ]
         }
       }
     },
     "info": {
-      "title": "Tenzro API",
-      "description": "Tenzro API specs",
+      "title": "Kolektiva API Documentation",
+      "description": "Kolektiva API Documentation",
       "version": "1.0",
       "contact": {}
     },
@@ -840,34 +784,371 @@ window.onload = function() {
         }
       },
       "schemas": {
-        "SubscribeDto": {
+        "CreatePropertyFacilityDto": {
           "type": "object",
           "properties": {
-            "email": {
+            "type": {
               "type": "string"
+            },
+            "facility": {
+              "type": "string"
+            },
+            "isHighlight": {
+              "type": "boolean"
             }
           },
           "required": [
-            "email"
+            "type",
+            "facility",
+            "isHighlight"
           ]
         },
-        "CompleteQuestBodyDto": {
+        "CreatePropertyImageDto": {
           "type": "object",
           "properties": {
-            "questId": {
+            "image": {
               "type": "string"
             },
-            "timestamp": {
+            "isHighlight": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "image",
+            "isHighlight"
+          ]
+        },
+        "PropertyDataDto": {
+          "type": "object",
+          "properties": {}
+        },
+        "CreatePropertyDto": {
+          "type": "object",
+          "properties": {
+            "marketAddress": {
+              "type": "string"
+            },
+            "tokenAddress": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "phase": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "tokenName": {
+              "type": "string"
+            },
+            "tokenSymbol": {
+              "type": "string"
+            },
+            "totalSupply": {
               "type": "number"
             },
-            "signature": {
+            "salePrice": {
+              "type": "number"
+            },
+            "createdBy": {
+              "type": "string"
+            },
+            "updatedBy": {
+              "type": "string"
+            },
+            "chainId": {
+              "type": "number"
+            },
+            "isUpcoming": {
+              "type": "boolean"
+            },
+            "isAftermarket": {
+              "type": "boolean"
+            },
+            "facilities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/CreatePropertyFacilityDto"
+              }
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/CreatePropertyImageDto"
+              }
+            },
+            "propertyData": {
+              "$ref": "#/components/schemas/PropertyDataDto"
+            }
+          },
+          "required": [
+            "status",
+            "phase",
+            "address",
+            "location",
+            "city",
+            "state",
+            "country",
+            "type",
+            "description",
+            "tokenName",
+            "tokenSymbol",
+            "totalSupply",
+            "salePrice",
+            "createdBy",
+            "updatedBy",
+            "chainId",
+            "facilities",
+            "images",
+            "propertyData"
+          ]
+        },
+        "UpdatePropertyDto": {
+          "type": "object",
+          "properties": {
+            "marketAddress": {
+              "type": "string"
+            },
+            "tokenAddress": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "phase": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "tokenName": {
+              "type": "string"
+            },
+            "tokenSymbol": {
+              "type": "string"
+            },
+            "totalSupply": {
+              "type": "number"
+            },
+            "salePrice": {
+              "type": "number"
+            },
+            "createdBy": {
+              "type": "string"
+            },
+            "updatedBy": {
+              "type": "string"
+            },
+            "chainId": {
+              "type": "number"
+            },
+            "isUpcoming": {
+              "type": "boolean"
+            },
+            "isAftermarket": {
+              "type": "boolean"
+            },
+            "facilities": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/CreatePropertyFacilityDto"
+              }
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/CreatePropertyImageDto"
+              }
+            }
+          },
+          "required": [
+            "status",
+            "phase",
+            "address",
+            "location",
+            "city",
+            "state",
+            "country",
+            "type",
+            "description",
+            "tokenName",
+            "tokenSymbol",
+            "totalSupply",
+            "salePrice",
+            "createdBy",
+            "updatedBy",
+            "chainId",
+            "facilities",
+            "images"
+          ]
+        },
+        "CreateUserPropertyDto": {
+          "type": "object",
+          "properties": {
+            "walletAddress": {
+              "type": "string"
+            },
+            "propertyId": {
               "type": "string"
             }
           },
           "required": [
-            "questId",
-            "timestamp",
-            "signature"
+            "walletAddress",
+            "propertyId"
+          ]
+        },
+        "SubmitPropertyListingDto": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "priceEstimation": {
+              "type": "number"
+            },
+            "propertyData": {
+              "$ref": "#/components/schemas/PropertyDataDto"
+            }
+          },
+          "required": [
+            "name",
+            "phone",
+            "email",
+            "address",
+            "priceEstimation",
+            "propertyData"
+          ]
+        },
+        "AdminChangePropertyListingRequestStatusBodyDto": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status"
+          ]
+        },
+        "AdminChangeListedPropertyStatusDto": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status"
+          ]
+        },
+        "AdminChangeListedPropertyPhaseDto": {
+          "type": "object",
+          "properties": {
+            "phase": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "phase"
+          ]
+        },
+        "KolektivaCreatePropertyDto": {
+          "type": "object",
+          "properties": {
+            "chainId": {
+              "type": "number"
+            },
+            "tokenName": {
+              "type": "string"
+            },
+            "tokenSymbol": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "totalSupply": {
+              "type": "number"
+            },
+            "salePrice": {
+              "type": "number",
+              "description": "Sale price with 0 decimals"
+            },
+            "propertyOwnerAddress": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "chainId",
+            "tokenName",
+            "tokenSymbol",
+            "type",
+            "country",
+            "state",
+            "city",
+            "location",
+            "totalSupply",
+            "salePrice",
+            "propertyOwnerAddress"
           ]
         },
         "InviteCodeBodyDto": {
@@ -895,145 +1176,6 @@ window.onload = function() {
             "walletAddress",
             "step"
           ]
-        },
-        "ImageGeneratorDto": {
-          "type": "object",
-          "properties": {
-            "input": {
-              "type": "string"
-            },
-            "config": {
-              "type": "object"
-            }
-          },
-          "required": [
-            "input"
-          ]
-        },
-        "ImageAnalyzerDto": {
-          "type": "object",
-          "properties": {
-            "input": {
-              "type": "string"
-            },
-            "includeVectorId": {
-              "type": "boolean"
-            }
-          }
-        },
-        "InputChatSessionDto": {
-          "type": "object",
-          "properties": {
-            "input": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "input"
-          ]
-        },
-        "UpdateChatSessionDto": {
-          "type": "object",
-          "properties": {
-            "title": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "title"
-          ]
-        },
-        "PointDto": {
-          "type": "object",
-          "properties": {
-            "point": {
-              "format": "int64",
-              "type": "integer"
-            }
-          },
-          "required": [
-            "point"
-          ]
-        },
-        "CreateDigitalCollectionDto": {
-          "type": "object",
-          "properties": {
-            "slug": {
-              "type": "string"
-            },
-            "banner": {
-              "type": "string"
-            },
-            "collectionName": {
-              "type": "string"
-            },
-            "contractAddress": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "collectionName",
-            "contractAddress"
-          ]
-        },
-        "ImageVectorUpsertDto": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "vectorId": {
-              "type": "string"
-            },
-            "imageUrl": {
-              "type": "string"
-            },
-            "context": {
-              "type": "string"
-            },
-            "metadata": {
-              "type": "object"
-            }
-          },
-          "required": [
-            "name",
-            "imageUrl",
-            "context"
-          ]
-        },
-        "ImageVectorQueryByTextDto": {
-          "type": "object",
-          "properties": {
-            "filter": {
-              "type": "object"
-            },
-            "topK": {
-              "type": "number"
-            },
-            "threshold": {
-              "type": "number"
-            },
-            "search": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "search"
-          ]
-        },
-        "ImageVectorQueryByImageDto": {
-          "type": "object",
-          "properties": {
-            "filter": {
-              "type": "object"
-            },
-            "topK": {
-              "type": "number"
-            },
-            "threshold": {
-              "type": "number"
-            }
-          }
         }
       }
     }
