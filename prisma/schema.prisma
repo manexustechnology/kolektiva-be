@@ -27,6 +27,7 @@ model User {
   myReferral        Referral?               @relation("InvitedUser")
   invitedUsers      Referral[]              @relation("ReferralUser")
   ownerships        UserPropertyOwnership[] @relation("OwnershipByUser")
+  activities        UserActivity[]          @relation("UserActivities")
 
   @@map("users")
 }
@@ -65,6 +66,7 @@ model Property {
   facilities           PropertyFacility[]      @relation("PropertyFacilities")
   images               PropertyImage[]         @relation("PropertyImages")
   ownerships           UserPropertyOwnership[] @relation("OwnershipOfProperty")
+  activities           UserActivity[]          @relation("PropertyActivities")
 
   @@map("properties")
 }
@@ -167,4 +169,21 @@ model CompletedQuest {
   user        User     @relation(fields: [userId], references: [id])
 
   @@map("completed_quests")
+}
+
+model UserActivity {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId        String   @map("user_id") @db.Uuid
+  propertyId    String   @map("property_id") @db.Uuid
+  activity      String   @map("activity")  // This can be renamed to activityDetails if more context is needed
+  activityType  String   @map("activity_type") // Enum can be added if you have fixed activity types (e.g., 'OrderPlaced', 'OrderFulfilled', etc.)
+  amount        BigInt?  @map("amount") // Nullable in case some activities don't have amounts
+  price         BigInt?  @map("price")  // Nullable for activities that don’t involve pricing
+  txHash        String?  @map("tx_hash") // Transaction hash from the on-chain event, nullable for non-transactional actions
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  user          User     @relation("UserActivities", fields: [userId], references: [id])
+  property      Property @relation("PropertyActivities", fields: [propertyId], references: [id])
+
+  @@map("user_activities")
 }
