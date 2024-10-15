@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -133,5 +134,17 @@ export class AdminListedPropertyController {
       id,
       propertyData,
     );
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(AdminGuard)
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Property successfully removed!',
+  })
+  @ResponseMessage('Property successfully removed!')
+  @Delete('remove/:id')
+  async removeListedProperty(@Param('id') id: string): Promise<Property> {
+    return await this.adminListedPropertyService.removeListedProperty(id);
   }
 }

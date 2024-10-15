@@ -77,6 +77,15 @@ export class AdminListedPropertyService {
     return data;
   }
 
+  async removeListedProperty(id: string): Promise<Property> {
+    return await this.prisma.property.update({
+      where: { id },
+      data: {
+        deletedAt: new Date(),
+      },
+    });
+  }
+
   async createOrUpdatePropertyTokens(
     propertyData: KolektivaCreatePropertyDto,
   ): Promise<{ tokenAddress: Address; marketAddress: Address }> {
