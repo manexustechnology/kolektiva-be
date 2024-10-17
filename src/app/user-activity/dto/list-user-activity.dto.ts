@@ -1,6 +1,13 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
-import { IsOptional, IsNumber, IsString, IsDate } from 'class-validator';
+import { Transform, Type } from 'class-transformer';
+import {
+  IsOptional,
+  IsNumber,
+  IsString,
+  IsDate,
+  Validate,
+} from 'class-validator';
+import { IsDateOrNullConstraint } from '../../../validators/is-date-or-null.validator';
 
 export class ListUserActivityDto {
   @ApiPropertyOptional()
@@ -48,6 +55,16 @@ export class ListUserActivityDto {
   @ApiPropertyOptional({ type: [Date] })
   @IsOptional()
   @Type(() => Date)
-  @IsDate({ each: true })
-  dateRange?: [Date, Date];
+  @Validate(IsDateOrNullConstraint, { each: true })
+  @Transform(({ value }) => {
+    const dates = Array.isArray(value) ? value : [value];
+
+    return dates.map((date: string) => {
+      if (!date || date === 'null' || isNaN(Date.parse(date))) {
+        return null;
+      }
+      return new Date(date);
+    });
+  })
+  dateRange?: [Date | null, Date | null];
 }

@@ -38,6 +38,17 @@ export class CreatePropertyImageDto {
   isHighlight: boolean;
 }
 
+export class CreatePropertyDocumentDto {
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
+  document: string;
+
+  @ApiProperty()
+  @IsBoolean()
+  isHighlight: boolean;
+}
+
 export class CreatePropertyDto {
   @ApiProperty({ required: false })
   @IsEthereumAddress()
@@ -141,6 +152,9 @@ export class CreatePropertyDto {
 
   @ApiProperty({ type: [CreatePropertyImageDto] })
   images: CreatePropertyImageDto[];
+
+  @ApiProperty({ type: [CreatePropertyDocumentDto] })
+  documents: CreatePropertyDocumentDto[];
 
   @ApiProperty({ type: PropertyDataDto })
   @ValidateNested()

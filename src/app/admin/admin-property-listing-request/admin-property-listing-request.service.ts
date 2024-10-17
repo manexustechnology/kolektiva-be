@@ -35,6 +35,7 @@ export class AdminPropertyListingRequestService {
         name: {
           search: query.search || undefined,
         },
+        deletedAt: null,
       },
       orderBy: {
         updatedAt: 'desc',
@@ -87,5 +88,16 @@ export class AdminPropertyListingRequestService {
     }
 
     return data;
+  }
+
+  async removePropertyListingRequest(
+    id: string,
+  ): Promise<PropertyListingRequest> {
+    return await this.prisma.propertyListingRequest.update({
+      where: { id },
+      data: {
+        deletedAt: new Date(),
+      },
+    });
   }
 }

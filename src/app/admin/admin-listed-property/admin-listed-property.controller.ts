@@ -144,7 +144,7 @@ export class AdminListedPropertyController {
   })
   @ResponseMessage('Property successfully removed!')
   @Delete('remove/:id')
-  async removeListedProperty(@Param('id') id: string): Promise<Property> {
+  async removeListedProperty(@Param('id') id: string) {
     return await this.adminListedPropertyService.removeListedProperty(id);
   }
 }

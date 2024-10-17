@@ -14,6 +14,7 @@ import {
 import { KolektivaContractService } from '../../kolektiva-contract/kolektiva-contract.service';
 import { Address } from 'viem';
 import {
+  CreatePropertyDocumentDto,
   CreatePropertyDto,
   CreatePropertyFacilityDto,
   CreatePropertyImageDto,
@@ -264,6 +265,7 @@ export class AdminListedPropertyService {
       chainId: Number(process.env.DEFAULT_CHAIN_ID),
       facilities: this.facilitiesParser(propertyData), // Assuming no facilities data is provided in propertyData
       images: this.imagesParser(propertyData),
+      documents: this.documentsParser(propertyData),
       ...this.determineMarketPhase(
         propertyData.propertyDetails.propertyStatus.phase,
       ),
@@ -283,6 +285,17 @@ export class AdminListedPropertyService {
       isHighlight: index === 0,
     }));
   }
+
+  private documentsParser(
+    propertyData: PropertyDataDto,
+  ): CreatePropertyDocumentDto[] {
+    const urls = propertyData.documents.documents;
+    return urls.map((url, index) => ({
+      document: url,
+      isHighlight: true,
+    }));
+  }
+
   private facilitiesParser(
     propertyData: PropertyDataDto,
   ): CreatePropertyFacilityDto[] {

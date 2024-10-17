@@ -11,19 +11,24 @@ import {
   HttpStatus,
   Req,
   Query,
+  UseInterceptors,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
+  ApiTags,
 } from '@nestjs/swagger';
-import { UserActivityService } from './user-activity.service';
 import { CreateUserActivityDto } from './dto/create-user-activity.dto';
 import { UpdateUserActivityDto } from './dto/update-user-activity.dto';
 import { RequestWithUser, VerifyGuard } from '../../guards/verify.guard';
 import { AdminGuard } from '../../guards/admin.guard';
 import { ListUserActivityDto } from './dto/list-user-activity.dto';
+import { UserActivityService } from './user-activity.service';
+import { TransformInterceptor } from '../../interceptors/transform/transform.interceptor';
 
+@ApiTags('User Activities')
+@UseInterceptors(TransformInterceptor)
 @Controller('user-activities')
 export class UserActivityController {
   constructor(private readonly userActivityService: UserActivityService) {}
