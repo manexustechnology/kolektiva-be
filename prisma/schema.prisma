@@ -27,6 +27,7 @@ model User {
   myReferral        Referral?               @relation("InvitedUser")
   invitedUsers      Referral[]              @relation("ReferralUser")
   ownerships        UserPropertyOwnership[] @relation("OwnershipByUser")
+  activities        UserActivity[]          @relation("UserActivities")
 
   @@map("users")
 }
@@ -64,7 +65,9 @@ model Property {
   isApproved           Boolean?                @map("is_approved")
   facilities           PropertyFacility[]      @relation("PropertyFacilities")
   images               PropertyImage[]         @relation("PropertyImages")
+  documents            PropertyDocument[]      @relation("PropertyDocuments")
   ownerships           UserPropertyOwnership[] @relation("OwnershipOfProperty")
+  activities           UserActivity[]          @relation("PropertyActivities")
 
   @@map("properties")
 }
@@ -90,6 +93,8 @@ model PropertyFacility {
   isHighlight Boolean  @map("is_highlight")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
   property    Property @relation("PropertyFacilities", fields: [propertyId], references: [id])
 
   @@map("property_facilities")
@@ -102,9 +107,24 @@ model PropertyImage {
   isHighlight Boolean  @map("is_highlight")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
   property    Property @relation("PropertyImages", fields: [propertyId], references: [id])
 
   @@map("property_images")
+}
+
+model PropertyDocument {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  propertyId  String   @map("property_id") @db.Uuid
+  document    String   @map("document")
+  isHighlight Boolean  @map("is_highlight")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+  property    Property @relation("PropertyDocuments", fields: [propertyId], references: [id])
+
+  @@map("property_documents")
 }
 
 model PropertyListingRequest {
@@ -118,6 +138,7 @@ model PropertyListingRequest {
   propertyData    Json?    @map("property_data")
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
+  deletedAt       DateTime?           @map("deleted_at")
 
   @@map("property_listing_requests")
 }
@@ -167,4 +188,22 @@ model CompletedQuest {
   user        User     @relation(fields: [userId], references: [id])
 
   @@map("completed_quests")
+}
+
+model UserActivity {
+  id            String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId        String   @map("user_id") @db.Uuid
+  propertyId    String   @map("property_id") @db.Uuid
+  activity      String   @map("activity") 
+  activityType  String   @map("activity_type") 
+  amount        BigInt?  @map("amount")
+  price         BigInt?  @map("price")  
+  txHash        String?  @map("tx_hash") 
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+  user          User     @relation("UserActivities", fields: [userId], references: [id])
+  property      Property @relation("PropertyActivities", fields: [propertyId], references: [id])
+
+  @@map("user_activities")
 }

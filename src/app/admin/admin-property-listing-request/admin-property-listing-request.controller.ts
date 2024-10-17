@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -72,6 +73,16 @@ export class AdminPropertyListingRequestController {
     return await this.adminPropertyListingRequestService.changePropertyRequestStatus(
       id,
       body,
+    );
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(AdminGuard)
+  @HttpCode(HttpStatus.OK)
+  @Delete('remove/:id')
+  async removePropertyListingRequest(@Param('id') id: string) {
+    return await this.adminPropertyListingRequestService.removePropertyListingRequest(
+      id,
     );
   }
 }

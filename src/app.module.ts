@@ -15,6 +15,8 @@ import { AdminPropertyListingRequestModule } from './app/admin/admin-property-li
 import { AdminListedPropertyModule } from './app/admin/admin-listed-property/admin-listed-property.module';
 import { AuthModule } from './app/auth/auth.module';
 import { KolektivaContractModule } from './app/kolektiva-contract/kolektiva-contract.module';
+import { UserActivityModule } from './app/user-activity/user-activity.module';
+import { DashboardModule } from './app/dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -35,6 +37,9 @@ import { KolektivaContractModule } from './app/kolektiva-contract/kolektiva-cont
     AdminListedPropertyModule,
     AuthModule,
     KolektivaContractModule,
+    UserActivityModule,
+    UserPropertyOwnershipModule,
+    DashboardModule,
   ],
   controllers: [AppController, PropertyController],
   providers: [AppService, PropertyService],

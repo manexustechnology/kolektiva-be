@@ -16,6 +16,7 @@ export class PropertyService {
     const {
       facilities,
       images,
+      documents,
       marketAddress = '',
       tokenAddress = '',
       propertyData,
@@ -33,6 +34,9 @@ export class PropertyService {
         },
         images: {
           create: images,
+        },
+        documents: {
+          create: documents,
         },
       },
       include: {
@@ -106,7 +110,8 @@ export class PropertyService {
   }
 
   async update(id: string, updatePropertyDto: UpdatePropertyDto) {
-    const { facilities, images, ...propertyData } = updatePropertyDto;
+    const { facilities, images, documents, ...propertyData } =
+      updatePropertyDto;
 
     return this.prisma.property.update({
       where: { id },
@@ -119,6 +124,10 @@ export class PropertyService {
         images: {
           deleteMany: {},
           create: images,
+        },
+        documents: {
+          deleteMany: {},
+          create: documents,
         },
       },
       include: {

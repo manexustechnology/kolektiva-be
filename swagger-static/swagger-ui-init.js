@@ -404,6 +404,34 @@ window.onload = function() {
           ]
         }
       },
+      "/admin/property-listing-request/remove/{id}": {
+        "delete": {
+          "operationId": "AdminPropertyListingRequestController_removePropertyListingRequest",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          },
+          "tags": [
+            "Property Listing Request (Admin)"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
       "/admin/listed-property": {
         "get": {
           "operationId": "AdminListedPropertyController_list",
@@ -627,6 +655,34 @@ window.onload = function() {
           ]
         }
       },
+      "/admin/listed-property/remove/{id}": {
+        "delete": {
+          "operationId": "AdminListedPropertyController_removeListedProperty",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Property successfully removed!"
+            }
+          },
+          "tags": [
+            "Listed Property (Admin)"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
       "/kolektiva-contract": {
         "post": {
           "operationId": "KolektivaContractController_create",
@@ -765,6 +821,355 @@ window.onload = function() {
             }
           ]
         }
+      },
+      "/user-activities/create": {
+        "post": {
+          "operationId": "UserActivityController_createUserActivity",
+          "parameters": [],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateUserActivityDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "User activity successfully created!"
+            }
+          },
+          "tags": [
+            "User Activities"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/user-activities/list": {
+        "get": {
+          "operationId": "UserActivityController_listUserActivities",
+          "parameters": [
+            {
+              "name": "page",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "number"
+              }
+            },
+            {
+              "name": "perPage",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "number"
+              }
+            },
+            {
+              "name": "sort",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "userId",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "propertyId",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "activityType",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "activity",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "dateRange",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "format": "date-time",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User activities successfully retrieved!"
+            }
+          },
+          "tags": [
+            "User Activities"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/user-activities/update/{id}": {
+        "patch": {
+          "operationId": "UserActivityController_updateUserActivity",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateUserActivityDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "User activity successfully updated!"
+            }
+          },
+          "tags": [
+            "User Activities"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/user-activities/remove/{id}": {
+        "delete": {
+          "operationId": "UserActivityController_removeUserActivity",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "User activity successfully removed!"
+            }
+          },
+          "tags": [
+            "User Activities"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/dashboard/total-users": {
+        "get": {
+          "operationId": "DashboardController_getTotalUsers",
+          "parameters": [
+            {
+              "name": "dateRange",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "format": "date-time",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/dashboard/new-users": {
+        "get": {
+          "operationId": "DashboardController_getUserCounts",
+          "parameters": [
+            {
+              "name": "dateRange",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "format": "date-time",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/dashboard/property-counts": {
+        "get": {
+          "operationId": "DashboardController_getPropertyCounts",
+          "parameters": [
+            {
+              "name": "dateRange",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "format": "date-time",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/dashboard/user-activities": {
+        "get": {
+          "operationId": "DashboardController_getUserActivities",
+          "parameters": [
+            {
+              "name": "dateRange",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "format": "date-time",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/dashboard/property-requests": {
+        "get": {
+          "operationId": "DashboardController_getPropertyListingRequests",
+          "parameters": [
+            {
+              "name": "dateRange",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "format": "date-time",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
+      },
+      "/dashboard/latest-trades": {
+        "get": {
+          "operationId": "DashboardController_getLatestTrades",
+          "parameters": [
+            {
+              "name": "dateRange",
+              "required": false,
+              "in": "query",
+              "schema": {
+                "format": "date-time",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "name": "activity",
+              "required": false,
+              "in": "query",
+              "description": "Activity type for filtering",
+              "schema": {
+                "enum": [
+                  "buy",
+                  "sell"
+                ],
+                "type": "string"
+              }
+            },
+            {
+              "name": "limit",
+              "required": false,
+              "in": "query",
+              "description": "Limit for query results",
+              "schema": {
+                "type": "number"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          }
+        }
       }
     },
     "info": {
@@ -815,6 +1220,21 @@ window.onload = function() {
           },
           "required": [
             "image",
+            "isHighlight"
+          ]
+        },
+        "CreatePropertyDocumentDto": {
+          "type": "object",
+          "properties": {
+            "document": {
+              "type": "string"
+            },
+            "isHighlight": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "document",
             "isHighlight"
           ]
         },
@@ -897,6 +1317,12 @@ window.onload = function() {
                 "$ref": "#/components/schemas/CreatePropertyImageDto"
               }
             },
+            "documents": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/CreatePropertyDocumentDto"
+              }
+            },
             "propertyData": {
               "$ref": "#/components/schemas/PropertyDataDto"
             }
@@ -920,6 +1346,7 @@ window.onload = function() {
             "chainId",
             "facilities",
             "images",
+            "documents",
             "propertyData"
           ]
         },
@@ -997,6 +1424,12 @@ window.onload = function() {
               "items": {
                 "$ref": "#/components/schemas/CreatePropertyImageDto"
               }
+            },
+            "documents": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/CreatePropertyDocumentDto"
+              }
             }
           },
           "required": [
@@ -1017,7 +1450,8 @@ window.onload = function() {
             "updatedBy",
             "chainId",
             "facilities",
-            "images"
+            "images",
+            "documents"
           ]
         },
         "CreateUserPropertyDto": {
@@ -1176,6 +1610,14 @@ window.onload = function() {
             "walletAddress",
             "step"
           ]
+        },
+        "CreateUserActivityDto": {
+          "type": "object",
+          "properties": {}
+        },
+        "UpdateUserActivityDto": {
+          "type": "object",
+          "properties": {}
         }
       }
     }

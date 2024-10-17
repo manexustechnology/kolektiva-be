@@ -40,7 +40,7 @@ CREATE TABLE "properties" (
     "longitude" TEXT,
     "description" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'draft',
-    "phase" TEXT DEFAULT 'upcoming';
+    "phase" TEXT DEFAULT 'upcoming',
     "is_featured" BOOLEAN,
     "is_upcoming" BOOLEAN,
     "is_aftermarket" BOOLEAN,
