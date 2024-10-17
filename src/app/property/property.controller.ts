@@ -84,4 +84,14 @@ export class PropertyController {
   async setAftermarket(@Param('id') id: string) {
     return this.propertyService.setAftermarketPhase(id);
   }
+
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Successfully set property to settlement phase!',
+  })
+  @ResponseMessage('Successfully set property to settlement phase!')
+  @Patch('set-settlement/:id')
+  async setSettlement(@Param('id') id: string) {
+    return this.propertyService.setSettlementPhase(id);
+  }
 }

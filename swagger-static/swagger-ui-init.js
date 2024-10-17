@@ -159,6 +159,29 @@ window.onload = function() {
           ]
         }
       },
+      "/property/set-settlement/{id}": {
+        "patch": {
+          "operationId": "PropertyController_setSettlement",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successfully set property to settlement phase!"
+            }
+          },
+          "tags": [
+            "Property"
+          ]
+        }
+      },
       "/user-property": {
         "post": {
           "operationId": "UserPropertyOwnershipController_create",

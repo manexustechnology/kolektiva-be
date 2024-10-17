@@ -52,6 +52,7 @@ export class PropertyService {
     const whereClause: any = { AND: [] };
     // only shown visible properties
     whereClause.status = 'visible';
+    whereClause.deletedAt = null;
 
     if (chainId && !isNaN(Number(chainId))) {
       whereClause.chainId = Number(chainId);
@@ -154,6 +155,17 @@ export class PropertyService {
         isUpcoming: false,
         isAftermarket: true,
         phase: 'aftermarket',
+      },
+    });
+  }
+
+  async setSettlementPhase(id: string) {
+    return this.prisma.property.update({
+      where: { id },
+      data: {
+        isUpcoming: false,
+        isAftermarket: false,
+        phase: 'settlement',
       },
     });
   }
