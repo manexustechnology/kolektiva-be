@@ -1,11 +1,12 @@
 export enum PropertyStatus {
   VISIBLE = 'visible',
   HIDDEN = 'hidden',
-  DRAFT = 'draft',
 }
 
 export enum PropertyPhase {
+  DRAFT = 'draft',
   UPCOMING = 'upcoming',
-  AFTERMARKET = 'aftermarket',
   INITIAL_OFFERING = 'initial-offering',
+  SETTLEMENT = 'settlement',
+  AFTERMARKET = 'aftermarket',
 }
