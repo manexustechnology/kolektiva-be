@@ -42,6 +42,7 @@ export class PropertyService {
       include: {
         facilities: true,
         images: true,
+        documents: true,
       },
     });
   }
@@ -49,8 +50,7 @@ export class PropertyService {
   async findAll(request: ListPropertyQueryDto) {
     const { sort, location, propertyType, search, chainId, phase } = request;
 
-    const whereClause: any = { AND: [] };
-    // only shown visible properties
+    const whereClause: any = { AND: [{ phase: { not: 'draft' } }] };
     whereClause.status = 'visible';
     whereClause.deletedAt = null;
 
@@ -96,6 +96,7 @@ export class PropertyService {
       include: {
         facilities: true,
         images: true,
+        documents: true,
       },
     });
   }
@@ -106,6 +107,7 @@ export class PropertyService {
       include: {
         facilities: true,
         images: true,
+        documents: true,
       },
     });
   }
@@ -134,6 +136,7 @@ export class PropertyService {
       include: {
         facilities: true,
         images: true,
+        documents: true,
       },
     });
   }
@@ -144,6 +147,7 @@ export class PropertyService {
       include: {
         facilities: true,
         images: true,
+        documents: true,
       },
     });
   }
