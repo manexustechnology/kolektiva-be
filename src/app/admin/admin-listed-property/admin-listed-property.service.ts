@@ -193,13 +193,12 @@ export class AdminListedPropertyService {
   }
 
   async createListedProperty(propertyData: PropertyDataDto): Promise<Property> {
-    const tokenSymbol = await this.property.generateTokenSymbol();
     const propertyDto = this.mapToCreatePropertyDto(propertyData, {
-      tokenSymbol,
       propertyData,
     }) as CreatePropertyDto;
 
     if (propertyDto.phase === 'initial-offering') {
+      propertyDto.tokenSymbol = await this.property.generateTokenSymbol();
       const { marketAddress, tokenAddress } =
         await this.createOrUpdatePropertyTokens(
           this.transformToKolektivaCreatePropertyDto(propertyDto),
@@ -229,6 +228,7 @@ export class AdminListedPropertyService {
       !propertyDto.tokenAddress &&
       propertyDto.phase === 'initial-offering'
     ) {
+      propertyDto.tokenSymbol = await this.property.generateTokenSymbol();
       const { marketAddress, tokenAddress } =
         await this.createOrUpdatePropertyTokens(
           this.transformToKolektivaCreatePropertyDto(propertyDto),
@@ -279,7 +279,7 @@ export class AdminListedPropertyService {
     const urls = [
       propertyData.propertyDetails.propertyImages.primary,
       ...propertyData.propertyDetails.propertyImages.others,
-    ];
+    ].filter((url) => url); // Filter out falsy values
     return urls.map((url, index) => ({
       image: url,
       isHighlight: index === 0,
@@ -289,7 +289,7 @@ export class AdminListedPropertyService {
   private documentsParser(
     propertyData: PropertyDataDto,
   ): CreatePropertyDocumentDto[] {
-    const urls = propertyData.documents.documents;
+    const urls = propertyData.documents.documents.filter((url) => url); // Filter out falsy values
     return urls.map((url, index) => ({
       document: url,
       isHighlight: true,
