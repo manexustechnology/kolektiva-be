@@ -83,6 +83,7 @@ export class KolektivaContractService {
       functionName: 'tokenAddresses',
       args: [input.name],
     };
+
     return await this.contractInteraction.readFunction(readContract);
   }
 

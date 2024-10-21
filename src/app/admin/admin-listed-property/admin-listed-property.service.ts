@@ -135,10 +135,13 @@ export class AdminListedPropertyService {
         propertyData.phase !== 'initial-offering' &&
         body.phase === 'initial-offering'
       ) {
+        console.log(propertyData);
+
         const { tokenAddress, marketAddress } =
           await this.createOrUpdatePropertyTokens(
             this.transformToKolektivaCreatePropertyDto(propertyData),
           );
+
         updateData = {
           ...updateData,
           tokenAddress,
@@ -151,7 +154,7 @@ export class AdminListedPropertyService {
         data: { ...updateData },
       });
     } catch (error) {
-      console.error('Change property status failed:', error);
+      console.error('Change property phase failed:', error);
       throw error;
     }
   }
@@ -193,13 +196,12 @@ export class AdminListedPropertyService {
   }
 
   async createListedProperty(propertyData: PropertyDataDto): Promise<Property> {
-    const tokenSymbol = await this.property.generateTokenSymbol();
     const propertyDto = this.mapToCreatePropertyDto(propertyData, {
-      tokenSymbol,
       propertyData,
     }) as CreatePropertyDto;
 
     if (propertyDto.phase === 'initial-offering') {
+      propertyDto.tokenSymbol = await this.property.generateTokenSymbol();
       const { marketAddress, tokenAddress } =
         await this.createOrUpdatePropertyTokens(
           this.transformToKolektivaCreatePropertyDto(propertyDto),
@@ -229,6 +231,7 @@ export class AdminListedPropertyService {
       !propertyDto.tokenAddress &&
       propertyDto.phase === 'initial-offering'
     ) {
+      propertyDto.tokenSymbol = await this.property.generateTokenSymbol();
       const { marketAddress, tokenAddress } =
         await this.createOrUpdatePropertyTokens(
           this.transformToKolektivaCreatePropertyDto(propertyDto),
@@ -262,7 +265,7 @@ export class AdminListedPropertyService {
       salePrice: propertyData.financials.token.tokenPrice,
       createdBy: 'SYSTEM',
       updatedBy: 'SYSTEM',
-      chainId: Number(process.env.DEFAULT_CHAIN_ID),
+      chainId: propertyData.chain.chainId,
       facilities: this.facilitiesParser(propertyData), // Assuming no facilities data is provided in propertyData
       images: this.imagesParser(propertyData),
       documents: this.documentsParser(propertyData),
@@ -279,7 +282,7 @@ export class AdminListedPropertyService {
     const urls = [
       propertyData.propertyDetails.propertyImages.primary,
       ...propertyData.propertyDetails.propertyImages.others,
-    ];
+    ].filter((url) => url); // Filter out falsy values
     return urls.map((url, index) => ({
       image: url,
       isHighlight: index === 0,
@@ -289,7 +292,7 @@ export class AdminListedPropertyService {
   private documentsParser(
     propertyData: PropertyDataDto,
   ): CreatePropertyDocumentDto[] {
-    const urls = propertyData.documents.documents;
+    const urls = propertyData.documents.documents.filter((url) => url); // Filter out falsy values
     return urls.map((url, index) => ({
       document: url,
       isHighlight: true,

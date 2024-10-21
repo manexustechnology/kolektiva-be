@@ -50,6 +50,10 @@ export class PropertyDataDto {
     };
     description: string;
   };
+  chain: {
+    chainName: string;
+    chainId: number;
+  };
   financials: {
     token: {
       tokenPrice: number;
