@@ -57,6 +57,7 @@ export class ContractInteractionService {
     try {
       const client = this.createClient(chainId);
       const deployedContract = deployedContracts[chainId][contractName];
+
       const abi = deployedContract.abi;
       const address = contractAddress
         ? (contractAddress as Address)

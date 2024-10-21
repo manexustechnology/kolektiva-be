@@ -135,10 +135,13 @@ export class AdminListedPropertyService {
         propertyData.phase !== 'initial-offering' &&
         body.phase === 'initial-offering'
       ) {
+        console.log(propertyData);
+
         const { tokenAddress, marketAddress } =
           await this.createOrUpdatePropertyTokens(
             this.transformToKolektivaCreatePropertyDto(propertyData),
           );
+
         updateData = {
           ...updateData,
           tokenAddress,
@@ -151,7 +154,7 @@ export class AdminListedPropertyService {
         data: { ...updateData },
       });
     } catch (error) {
-      console.error('Change property status failed:', error);
+      console.error('Change property phase failed:', error);
       throw error;
     }
   }
@@ -262,7 +265,7 @@ export class AdminListedPropertyService {
       salePrice: propertyData.financials.token.tokenPrice,
       createdBy: 'SYSTEM',
       updatedBy: 'SYSTEM',
-      chainId: Number(process.env.DEFAULT_CHAIN_ID),
+      chainId: propertyData.chain.chainId,
       facilities: this.facilitiesParser(propertyData), // Assuming no facilities data is provided in propertyData
       images: this.imagesParser(propertyData),
       documents: this.documentsParser(propertyData),
