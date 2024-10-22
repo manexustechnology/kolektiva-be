@@ -1345,6 +1345,9 @@ window.onload = function() {
             "isAftermarket": {
               "type": "boolean"
             },
+            "txHash": {
+              "type": "string"
+            },
             "facilities": {
               "type": "array",
               "items": {
@@ -1385,6 +1388,7 @@ window.onload = function() {
             "createdBy",
             "updatedBy",
             "chainId",
+            "txHash",
             "facilities",
             "images",
             "documents",
@@ -1457,6 +1461,9 @@ window.onload = function() {
             "isAftermarket": {
               "type": "boolean"
             },
+            "txHash": {
+              "type": "string"
+            },
             "facilities": {
               "type": "array",
               "items": {
@@ -1494,6 +1501,7 @@ window.onload = function() {
             "createdBy",
             "updatedBy",
             "chainId",
+            "txHash",
             "facilities",
             "images",
             "documents"

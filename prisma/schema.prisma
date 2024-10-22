@@ -51,6 +51,7 @@ model Property {
   googleMapUrl         String?                 @map("google_map_url")
   latitude             String?                 @map("latitude")
   longitude            String?                 @map("longitude")
+  txHash               String?                 @map("tx_hash")
   description          String                  @map("description")
   status               String                  @default("hidden") @map("status")
   phase                String                  @default("draft") @map("phase")

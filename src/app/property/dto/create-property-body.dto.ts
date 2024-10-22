@@ -152,6 +152,10 @@ export class CreatePropertyDto {
   @IsBoolean()
   isAftermarket?: boolean;
 
+  @ApiProperty()
+  @IsString()
+  txHash?: string;
+
   @ApiProperty({ type: [CreatePropertyFacilityDto] })
   facilities: CreatePropertyFacilityDto[];
 
