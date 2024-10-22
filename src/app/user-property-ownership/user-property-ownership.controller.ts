@@ -7,12 +7,14 @@ import {
   Query,
   HttpCode,
   HttpStatus,
+  UseInterceptors,
 } from '@nestjs/common';
 import { UserPropertyOwnershipService } from './user-property-ownership.service';
 import { CreateUserPropertyDto } from './dto/create-user-property.dto';
 import { ListUserPropertyQueryDto } from './dto/list-user-property-query.dto';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ResponseMessage } from '../../decorators/response/response.decorator';
+import { TransformInterceptor } from '../../interceptors/transform/transform.interceptor';
 
 @ApiTags('User Property Ownership')
 @Controller('user-property')

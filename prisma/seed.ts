@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -17,15 +19,11 @@ async function runSingleFile() {
 
 async function runAll() {
   const directoryPath = path.join(__dirname, 'seeds');
-  //passsing directoryPath and callback function
-  fs.readdir(directoryPath, function (err, files) {
-    //handling error
-    if (err) {
-      return console.log('Unable to scan directory: ' + err);
-    }
-    //listing all files using forEach
-    files.forEach(async function (file) {
-      // Do whatever you want to do with the file
+  try {
+    const files = await fs.promises.readdir(directoryPath);
+    // Sort files to ensure they are processed in order
+    const sortedFiles = files.sort((a, b) => a.localeCompare(b));
+    for (const file of sortedFiles) {
       const seed = await import(`./seeds/${file}`);
       console.log(`[seeder] started run seed from ${file}`);
       try {
@@ -35,8 +33,10 @@ async function runAll() {
         console.log(`[seeder] error when running seed from ${file}`);
         throw error;
       }
-    });
-  });
+    }
+  } catch (err) {
+    console.log('Unable to scan directory: ' + err);
+  }
 }
 
 if (file) {

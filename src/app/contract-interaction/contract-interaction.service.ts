@@ -102,7 +102,6 @@ export class ContractInteractionService {
       contractAddress,
     );
     // Only can filter the indexed arguments
-    //   fromBlock: 9416687n,
     const filter = await client.createContractEventFilter({
       ...others,
       abi,
@@ -139,6 +138,7 @@ export class ContractInteractionService {
       const logs = parseEventLogs({ abi, logs: txReceipt.logs, eventName });
       return {
         ...txReceipt,
+        txHash,
         logs,
       };
     } catch (err) {
