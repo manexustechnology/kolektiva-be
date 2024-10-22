@@ -198,10 +198,10 @@ export class AdminListedPropertyService {
   async createListedProperty(propertyData: PropertyDataDto): Promise<Property> {
     const propertyDto = this.mapToCreatePropertyDto(propertyData, {
       propertyData,
+      tokenSymbol: await this.property.generateTokenSymbol(),
     }) as CreatePropertyDto;
 
     if (propertyDto.phase === 'initial-offering') {
-      propertyDto.tokenSymbol = await this.property.generateTokenSymbol();
       const { marketAddress, tokenAddress } =
         await this.createOrUpdatePropertyTokens(
           this.transformToKolektivaCreatePropertyDto(propertyDto),
@@ -231,7 +231,6 @@ export class AdminListedPropertyService {
       !propertyDto.tokenAddress &&
       propertyDto.phase === 'initial-offering'
     ) {
-      propertyDto.tokenSymbol = await this.property.generateTokenSymbol();
       const { marketAddress, tokenAddress } =
         await this.createOrUpdatePropertyTokens(
           this.transformToKolektivaCreatePropertyDto(propertyDto),
@@ -260,7 +259,7 @@ export class AdminListedPropertyService {
       type: propertyData.propertyDetails.propertyDetails.propertyType,
       description: propertyData.propertyDetails.description,
       tokenName: propertyData.propertyDetails.propertySummary.title,
-      // tokenSymbol: tokenSymbol,
+      googleMapUrl: propertyData.propertyDetails.propertySummary.googleMapUrl,
       totalSupply: propertyData.financials.token.tokenSupply,
       salePrice: propertyData.financials.token.tokenPrice,
       createdBy: 'SYSTEM',
@@ -306,6 +305,7 @@ export class AdminListedPropertyService {
 
     const propertySpecs = propertyData.propertyDetails.propertySpecifications;
     const propertySummary = propertyData.propertyDetails.propertySummary;
+    const furniture = propertyData.propertyDetails.propertyDetails.furniture;
     if (propertySummary.landArea) {
       facilities.push({
         type: 'LAND_AREA',
@@ -376,6 +376,13 @@ export class AdminListedPropertyService {
         isHighlight: true,
       });
     }
+    furniture.forEach((furnitureItem) => {
+      facilities.push({
+        type: 'OTHER',
+        facility: furnitureItem,
+        isHighlight: false,
+      });
+    });
 
     return facilities;
   }

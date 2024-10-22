@@ -16,6 +16,8 @@ import { PropertyService } from './property.service';
 import { ResponseMessage } from '../../decorators/response/response.decorator';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { ListPropertyQueryDto } from './dto/list-property-query.dto';
+import { PropertyLocationQueryDto } from './dto/property-location-query.dto';
+import { PropertyLocationResponseDto } from './dto/property-location-response.dto';
 
 @ApiTags('Property')
 @Controller('property')
@@ -93,5 +95,17 @@ export class PropertyController {
   @Patch('set-settlement/:id')
   async setSettlement(@Param('id') id: string) {
     return this.propertyService.setSettlementPhase(id);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Successfully retrieved property locations!',
+  })
+  @ResponseMessage('Successfully retrieved property locations!')
+  @Get('locations')
+  async getProperties(
+    @Query() query: PropertyLocationQueryDto,
+  ): Promise<PropertyLocationResponseDto[]> {
+    return this.propertyService.findLocations(query);
   }
 }

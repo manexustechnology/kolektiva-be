@@ -35,7 +35,7 @@ export class PropertyDataDto {
       occupancyStatus: string;
       propertyManager: string;
       furnish: string;
-      furniture: string;
+      furniture: string[];
       propertyIssues: string[];
     };
     propertySpecifications: {

@@ -4,8 +4,11 @@ import { PrismaService } from '../../shared/prisma/prisma.service';
 import { UpdatePropertyDto } from './dto/update-property-body.dto';
 import { ListPropertyQueryDto } from './dto/list-property-query.dto';
 import { Address } from 'viem';
-import { Prisma } from '@prisma/client';
+import { Prisma, Property } from '@prisma/client';
 import * as dotenv from 'dotenv';
+import { PropertyLocationQueryDto } from './dto/property-location-query.dto';
+import { PropertyLocationResponseDto } from './dto/property-location-response.dto';
+
 dotenv.config();
 
 @Injectable()
@@ -171,6 +174,59 @@ export class PropertyService {
         isAftermarket: false,
         phase: 'settlement',
       },
+    });
+  }
+
+  async findLocations(
+    query: PropertyLocationQueryDto,
+  ): Promise<PropertyLocationResponseDto[]> {
+    const {
+      city,
+      state,
+      country,
+      location,
+      filterCity,
+      filterState,
+      filterCountry,
+      filterLocation,
+    } = query;
+
+    // Dynamically select fields
+    let selectFields = {};
+    const whereFilters = {};
+    const distinctFields = [];
+
+    if (city) {
+      selectFields = { ...selectFields, city: true };
+      distinctFields.push('city');
+    }
+    if (state) {
+      selectFields = { ...selectFields, state: true };
+      distinctFields.push('state');
+    }
+    if (country) {
+      selectFields = { ...selectFields, country: true };
+      distinctFields.push('country');
+    }
+    if (location) {
+      selectFields = { ...selectFields, location: true };
+      distinctFields.push('location');
+    }
+    if (distinctFields.length === 0) {
+      selectFields = { city: true };
+      distinctFields.push('city');
+    }
+
+    // Filter conditions
+    if (filterCity) whereFilters['city'] = filterCity;
+    if (filterState) whereFilters['state'] = filterState;
+    if (filterCountry) whereFilters['country'] = filterCountry;
+    if (filterLocation) whereFilters['location'] = filterLocation;
+
+    return await this.prisma.property.findMany({
+      where: whereFilters,
+      select: selectFields,
+      distinct: distinctFields,
     });
   }
 

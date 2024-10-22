@@ -78,6 +78,11 @@ export class CreatePropertyDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
+  googleMapUrl: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
   location: string;
 
   @ApiProperty()

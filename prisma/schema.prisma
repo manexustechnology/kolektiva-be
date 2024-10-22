@@ -48,6 +48,7 @@ model Property {
   country              String                  @map("country")
   type                 String                  @map("type")
   chainId              Int?                    @map("chain_id")
+  googleMapUrl         String?                 @map("google_map_url")
   latitude             String?                 @map("latitude")
   longitude            String?                 @map("longitude")
   description          String                  @map("description")
