@@ -195,7 +195,7 @@ export class AdminListedPropertyService {
       chainId: propertyData.chainId,
       name: propertyData.tokenName,
     });
-    await this.prisma.property.update({
+    return await this.prisma.property.update({
       where: { id },
       data: { isApproved: true },
     });
@@ -220,7 +220,7 @@ export class AdminListedPropertyService {
     const createdProperty = await this.property.create(propertyDto);
 
     if (propertyDto.phase === 'initial-offering') {
-      await this.approveMarket(createdProperty.id);
+      return await this.approveMarket(createdProperty.id);
     }
     return createdProperty;
   }
