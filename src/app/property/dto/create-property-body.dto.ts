@@ -78,6 +78,11 @@ export class CreatePropertyDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
+  googleMapUrl: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  @IsString()
   location: string;
 
   @ApiProperty()
@@ -146,6 +151,10 @@ export class CreatePropertyDto {
   @IsOptional()
   @IsBoolean()
   isAftermarket?: boolean;
+
+  @ApiProperty()
+  @IsString()
+  txHash?: string;
 
   @ApiProperty({ type: [CreatePropertyFacilityDto] })
   facilities: CreatePropertyFacilityDto[];

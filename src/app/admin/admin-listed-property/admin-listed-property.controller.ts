@@ -104,6 +104,18 @@ export class AdminListedPropertyController {
 
   @ApiBearerAuth()
   @UseGuards(AdminGuard)
+  @HttpCode(HttpStatus.OK)
+  @ApiOkResponse({
+    description: 'Market successfully approved!',
+  })
+  @ResponseMessage('Market successfully approved!')
+  @Put('approve-market/:id')
+  async approveMarket(@Param('id') id: string) {
+    return await this.adminListedPropertyService.approveMarket(id);
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(AdminGuard)
   @HttpCode(HttpStatus.CREATED)
   @ApiCreatedResponse({
     description: 'Property successfully created!',

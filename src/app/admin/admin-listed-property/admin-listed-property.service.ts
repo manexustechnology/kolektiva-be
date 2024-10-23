@@ -89,7 +89,11 @@ export class AdminListedPropertyService {
 
   async createOrUpdatePropertyTokens(
     propertyData: KolektivaCreatePropertyDto,
-  ): Promise<{ tokenAddress: Address; marketAddress: Address }> {
+  ): Promise<{
+    tokenAddress: Address;
+    marketAddress: Address;
+    txHash?: string;
+  }> {
     let tokenAddr = await this.kolektivaContract.getTokenAddress({
       chainId: propertyData.chainId,
       name: propertyData.tokenName,
@@ -98,20 +102,23 @@ export class AdminListedPropertyService {
       chainId: propertyData.chainId,
       name: propertyData.tokenName,
     });
+    let txHash;
 
     const isEmptyAddress = (address: string) =>
       !address || address === emptyAddr;
     if (isEmptyAddress(tokenAddr) || isEmptyAddress(marketAddr)) {
-      const { logs } = await this.kolektivaContract.createProperty({
-        ...propertyData,
-        propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
-      });
+      const { logs, txHash: hash } =
+        await this.kolektivaContract.createProperty({
+          ...propertyData,
+          propertyOwnerAddress: process.env.DEPLOYER_ADDRESS! as Address,
+        });
 
       tokenAddr = logs[0].args.tokenAddress;
       marketAddr = logs[0].args.marketAddress;
+      txHash = hash;
     }
 
-    return { tokenAddress: tokenAddr, marketAddress: marketAddr };
+    return { tokenAddress: tokenAddr, marketAddress: marketAddr, txHash };
   }
 
   async changePropertyPhase(
@@ -135,9 +142,7 @@ export class AdminListedPropertyService {
         propertyData.phase !== 'initial-offering' &&
         body.phase === 'initial-offering'
       ) {
-        console.log(propertyData);
-
-        const { tokenAddress, marketAddress } =
+        const { tokenAddress, marketAddress, txHash } =
           await this.createOrUpdatePropertyTokens(
             this.transformToKolektivaCreatePropertyDto(propertyData),
           );
@@ -146,6 +151,7 @@ export class AdminListedPropertyService {
           ...updateData,
           tokenAddress,
           marketAddress,
+          txHash,
         };
       }
 
@@ -189,7 +195,7 @@ export class AdminListedPropertyService {
       chainId: propertyData.chainId,
       name: propertyData.tokenName,
     });
-    await this.prisma.property.update({
+    return await this.prisma.property.update({
       where: { id },
       data: { isApproved: true },
     });
@@ -198,22 +204,23 @@ export class AdminListedPropertyService {
   async createListedProperty(propertyData: PropertyDataDto): Promise<Property> {
     const propertyDto = this.mapToCreatePropertyDto(propertyData, {
       propertyData,
+      tokenSymbol: await this.property.generateTokenSymbol(),
     }) as CreatePropertyDto;
 
     if (propertyDto.phase === 'initial-offering') {
-      propertyDto.tokenSymbol = await this.property.generateTokenSymbol();
-      const { marketAddress, tokenAddress } =
+      const { marketAddress, tokenAddress, txHash } =
         await this.createOrUpdatePropertyTokens(
           this.transformToKolektivaCreatePropertyDto(propertyDto),
         );
       propertyDto.marketAddress = marketAddress;
       propertyDto.tokenAddress = tokenAddress;
+      propertyDto.txHash = txHash;
     }
 
     const createdProperty = await this.property.create(propertyDto);
 
     if (propertyDto.phase === 'initial-offering') {
-      await this.approveMarket(createdProperty.id);
+      return await this.approveMarket(createdProperty.id);
     }
     return createdProperty;
   }
@@ -231,13 +238,13 @@ export class AdminListedPropertyService {
       !propertyDto.tokenAddress &&
       propertyDto.phase === 'initial-offering'
     ) {
-      propertyDto.tokenSymbol = await this.property.generateTokenSymbol();
-      const { marketAddress, tokenAddress } =
+      const { marketAddress, tokenAddress, txHash } =
         await this.createOrUpdatePropertyTokens(
           this.transformToKolektivaCreatePropertyDto(propertyDto),
         );
       propertyDto.marketAddress = marketAddress;
       propertyDto.tokenAddress = tokenAddress;
+      propertyDto.txHash = txHash;
 
       await this.approveMarket(id);
     }
@@ -260,7 +267,7 @@ export class AdminListedPropertyService {
       type: propertyData.propertyDetails.propertyDetails.propertyType,
       description: propertyData.propertyDetails.description,
       tokenName: propertyData.propertyDetails.propertySummary.title,
-      // tokenSymbol: tokenSymbol,
+      googleMapUrl: propertyData.propertyDetails.propertySummary.googleMapUrl,
       totalSupply: propertyData.financials.token.tokenSupply,
       salePrice: propertyData.financials.token.tokenPrice,
       createdBy: 'SYSTEM',
@@ -306,6 +313,7 @@ export class AdminListedPropertyService {
 
     const propertySpecs = propertyData.propertyDetails.propertySpecifications;
     const propertySummary = propertyData.propertyDetails.propertySummary;
+    const furniture = propertyData.propertyDetails.propertyDetails.furniture;
     if (propertySummary.landArea) {
       facilities.push({
         type: 'LAND_AREA',
@@ -376,6 +384,13 @@ export class AdminListedPropertyService {
         isHighlight: true,
       });
     }
+    furniture.forEach((furnitureItem) => {
+      facilities.push({
+        type: 'OTHER',
+        facility: furnitureItem,
+        isHighlight: false,
+      });
+    });
 
     return facilities;
   }

@@ -25,6 +25,20 @@ window.onload = function() {
           ]
         }
       },
+      "/property/locations": {
+        "get": {
+          "operationId": "PropertyController_getProperties",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "Successfully retrieved property locations!"
+            }
+          },
+          "tags": [
+            "Property"
+          ]
+        }
+      },
       "/property": {
         "post": {
           "operationId": "PropertyController_create",
@@ -1283,6 +1297,9 @@ window.onload = function() {
             "address": {
               "type": "string"
             },
+            "googleMapUrl": {
+              "type": "string"
+            },
             "location": {
               "type": "string"
             },
@@ -1327,6 +1344,9 @@ window.onload = function() {
             },
             "isAftermarket": {
               "type": "boolean"
+            },
+            "txHash": {
+              "type": "string"
             },
             "facilities": {
               "type": "array",
@@ -1354,6 +1374,7 @@ window.onload = function() {
             "status",
             "phase",
             "address",
+            "googleMapUrl",
             "location",
             "city",
             "state",
@@ -1367,6 +1388,7 @@ window.onload = function() {
             "createdBy",
             "updatedBy",
             "chainId",
+            "txHash",
             "facilities",
             "images",
             "documents",
@@ -1389,6 +1411,9 @@ window.onload = function() {
               "type": "string"
             },
             "address": {
+              "type": "string"
+            },
+            "googleMapUrl": {
               "type": "string"
             },
             "location": {
@@ -1436,6 +1461,9 @@ window.onload = function() {
             "isAftermarket": {
               "type": "boolean"
             },
+            "txHash": {
+              "type": "string"
+            },
             "facilities": {
               "type": "array",
               "items": {
@@ -1459,6 +1487,7 @@ window.onload = function() {
             "status",
             "phase",
             "address",
+            "googleMapUrl",
             "location",
             "city",
             "state",
@@ -1472,6 +1501,7 @@ window.onload = function() {
             "createdBy",
             "updatedBy",
             "chainId",
+            "txHash",
             "facilities",
             "images",
             "documents"
