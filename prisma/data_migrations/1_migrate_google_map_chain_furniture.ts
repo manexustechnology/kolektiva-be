@@ -13,11 +13,16 @@ async function run() {
         propertyData: undefined,
       },
     },
+    take: 5, // Limit the query to 5 properties
   });
 
   console.log(`Found ${properties.length} properties to update.`);
 
-  await Promise.all(properties.map(updateProperty));
+  for (const property of properties) {
+    await updateProperty(property);
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Wait for 2 second between updates to reduce load
+  }
+
   console.log('Finished updating properties.');
 }
 
@@ -26,7 +31,7 @@ async function updateProperty(property) {
   const googleMapUrl =
     propertyData?.propertyDetails?.propertySummary?.googleMapUrl;
 
-  propertyData = updateFurniture(property.id, propertyData);
+  propertyData = await updateFurniture(property.id, propertyData); // Ensure furniture update is awaited
   propertyData = updateChain(propertyData);
 
   await prisma.property.update({
@@ -59,6 +64,7 @@ async function updateFurniture(propertyId, propertyData) {
       },
     };
     console.log(`Inserting furniture for property ${propertyId}`);
+    // Use Promise.all to wait for all furniture updates to complete before proceeding
     await Promise.all(
       furnitureArray.map((item) =>
         prisma.propertyFacility.create({
