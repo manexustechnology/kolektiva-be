@@ -625,6 +625,34 @@ window.onload = function() {
           ]
         }
       },
+      "/admin/listed-property/approve-market/{id}": {
+        "put": {
+          "operationId": "AdminListedPropertyController_approveMarket",
+          "parameters": [
+            {
+              "name": "id",
+              "required": true,
+              "in": "path",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Market successfully approved!"
+            }
+          },
+          "tags": [
+            "Listed Property (Admin)"
+          ],
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
       "/admin/listed-property/submit": {
         "post": {
           "operationId": "AdminListedPropertyController_submitListedProperty",
