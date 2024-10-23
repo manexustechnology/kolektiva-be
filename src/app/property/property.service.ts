@@ -231,8 +231,7 @@ export class PropertyService {
   }
 
   async generateTokenSymbol() {
-    const count =
-      (await this.prisma.property.count({ where: { isApproved: true } })) + 1;
+    const count = (await this.prisma.property.count()) + 1;
     const prefix = 'KLTV';
     const maxLimit = 9999; // KLTV0001 format
 
